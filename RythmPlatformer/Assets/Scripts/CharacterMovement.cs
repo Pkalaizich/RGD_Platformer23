@@ -26,15 +26,33 @@ public class CharacterMovement : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.RightArrow))
+        //float horiz = Input.GetAxis("Horizontal");
+        if (Input.GetKeyDown(KeyCode.RightArrow))
         {
-            IncreaseSpeedByOneLevel();
+            if(RythmController.Instance.validInput)
+            {
+                currentSpeedLevel = 2;
+                
+            }
+            else
+            {
+                currentSpeedLevel = currentSpeedLevel == 2 ? 1 : 0;
+            }
+            movement.x = currentSpeedLevel * speedIncrement;
+        }        
+        else if(Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            if (RythmController.Instance.validInput)
+            {
+                currentSpeedLevel = 2;
+
+            }
+            else
+            {
+                currentSpeedLevel = currentSpeedLevel == 2 ? 1 : 0;
+            }
+            movement.x = -1 *currentSpeedLevel * speedIncrement;
         }
     }
 
-    public void IncreaseSpeedByOneLevel()
-    {
-        currentSpeedLevel = Mathf.Clamp(currentSpeedLevel + 1, 0, speedLevelsAmount);
-        movement.x = currentSpeedLevel * speedIncrement;
-    }
 }

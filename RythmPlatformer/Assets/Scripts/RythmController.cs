@@ -7,8 +7,8 @@ public class RythmController : MonoBehaviour
     [SerializeField] private int BPM = 60;
     private float secPerBeat;
 
-    [Tooltip("Porcentaje del tiempo entre beats en el que el input es válido")]
-    [Range(0f, 1f)]
+    [Tooltip("Porcentaje del tiempo entre beats en el que el input es válido (porcentaje antes y porcentaje despues)")]
+    [Range(0f, 5f)]
     [SerializeField] private float inputThreshold;
 
     [SerializeField] private AudioClip tickSFX;
@@ -18,7 +18,25 @@ public class RythmController : MonoBehaviour
     private float lastBeatTime;
     private float percentage;
 
+    public bool validInput { get; private set; }
+
     private TestUI testUI;
+
+    #region Singleton
+    private static RythmController _instance;
+    public static RythmController Instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                _instance = GameObject.FindObjectOfType<RythmController>();
+                DontDestroyOnLoad(_instance.gameObject);
+            }
+            return _instance;
+        }
+    }
+    #endregion
 
     void Start()
     {
@@ -41,10 +59,12 @@ public class RythmController : MonoBehaviour
             if(currentTime < inputThreshold*secPerBeat || currentTime > secPerBeat * (1-inputThreshold)) 
             {
                 testUI.SetIndicatorValid();
+                validInput= true;
             }
             else
             {
                 testUI.SetIndicatorInvalid();
+                validInput= false;
             }
         }
         else
