@@ -10,6 +10,22 @@ public class TestUI : MonoBehaviour
     [SerializeField] private Image indicator;
     [SerializeField] private TextMeshProUGUI testMessage;
 
+    #region Singleton
+    private static TestUI _instance;
+    public static TestUI Instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                _instance = GameObject.FindObjectOfType<TestUI>();
+                DontDestroyOnLoad(_instance.gameObject);
+            }
+            return _instance;
+        }
+    }
+    #endregion
+
     public void UpdateDotPosition(float percentage)
     {
         dotContainer.rotation = Quaternion.Euler(0, 0, Mathf.Lerp(0, 360, percentage));

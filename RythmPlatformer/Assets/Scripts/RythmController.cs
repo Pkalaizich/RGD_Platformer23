@@ -5,7 +5,7 @@ using UnityEngine;
 public class RythmController : MonoBehaviour
 {
     [SerializeField] private int BPM = 60;
-    private float secPerBeat;
+    public float secPerBeat { get; private set; }
 
     [Tooltip("Porcentaje del tiempo entre beats en el que el input es válido (porcentaje antes y porcentaje despues)")]
     [Range(0f, 5f)]
@@ -20,7 +20,11 @@ public class RythmController : MonoBehaviour
 
     public bool validInput { get; private set; }
 
+    public bool recivedInputInBeat = false;
+
     private TestUI testUI;
+    private CharacterMovement charMov;
+    private CharacterMovementRb charMovRb;
 
     #region Singleton
     private static RythmController _instance;
@@ -38,8 +42,10 @@ public class RythmController : MonoBehaviour
     }
     #endregion
 
-    void Start()
+    void Awake()
     {
+        //charMov= FindObjectOfType<CharacterMovement>();
+        charMovRb = FindObjectOfType<CharacterMovementRb>();
         aSource = GetComponent<AudioSource>();
         secPerBeat= 60f / BPM;
         testUI = FindObjectOfType<TestUI>();
@@ -55,6 +61,7 @@ public class RythmController : MonoBehaviour
             {
                 aSource.PlayOneShot(tickSFX);
                 lastBeatTime = Time.time;
+                StartCoroutine(CheckInput());
             }
             if(currentTime < inputThreshold*secPerBeat || currentTime > secPerBeat * (1-inputThreshold)) 
             {
@@ -78,5 +85,19 @@ public class RythmController : MonoBehaviour
         }
     }
 
+    private IEnumerator CheckInput()
+    {
+        yield return new WaitForSeconds(inputThreshold*secPerBeat);
+        if(!recivedInputInBeat)
+        {
+            //charMov.InputNotSent();
+            charMovRb.WrongInput();
+            TestUI.Instance.SetMessage("MAL!");
+        }
+        else
+        {
+            recivedInputInBeat= false;
+        }
+    }
 
 }
