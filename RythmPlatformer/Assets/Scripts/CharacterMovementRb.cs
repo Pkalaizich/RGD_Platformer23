@@ -120,7 +120,10 @@ public class CharacterMovementRb : MonoBehaviour
                 }
                 if(inputs.Contains(InputController.InputActions.Jump))
                 {
-                    playerVelocity.x = (Mathf.Abs(playerVelocity.x) / playerVelocity.x) * currentSpeedLevel * unitMeasuredSpeedIncrement;
+                    if(Mathf.Abs(playerVelocity.x) >=0.1f)
+                    {
+                        playerVelocity.x = (Mathf.Abs(playerVelocity.x) / playerVelocity.x) * currentSpeedLevel * unitMeasuredSpeedIncrement;
+                    }                    
                     playerVelocity.y += jumpSpeed;
                     CurrentState = PlayerStateRb.Jumping;
                 }
