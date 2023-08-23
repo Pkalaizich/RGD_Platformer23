@@ -10,16 +10,30 @@ public class CharacterMovementRb : MonoBehaviour
 
     [SerializeField] private LayerMask groundMask;
     [SerializeField] private LayerMask wallMask;
-    [SerializeField] private float speedIncrement;
-    [SerializeField] private int speedLevelsAmount;
+    [HideInInspector] [SerializeField] private float speedIncrement;
+
+    [Tooltip("Cuantas unidades se quiere que avance el jugador por beat")]
+    [SerializeField] private float unitsPerBeatSpeed;
+    private float unitMeasuredSpeedIncrement;
+
+    
+
+    [SerializeField] private int dashModificator;
+    private float dashSpeed;
 
     [SerializeField] private float jumpSpeed;
+    
+
+    
+
     [Range(1f, 2f)]
     [SerializeField] private float walljumpModificator;
 
     private float currentGravity;
     private float normalGravity;
     private float grabbedGravity;
+
+    [Tooltip("Multiplicador que afecta a la velocidad vertical inicial del salto cuando se hace un walljump")]
     [Range(0f, 1f)]
     [SerializeField] private float grabbedGravityModificator;
 
@@ -43,16 +57,19 @@ public class CharacterMovementRb : MonoBehaviour
     }
 
     private void Start()
-    {
-        float jumpTime = RythmController.Instance.secPerBeat * jumpBeatDuration;
+    {        
+        float jumpTime = RythmController.Instance.secPerBeat * jumpBeatDuration;        
         normalGravity = -(2 * jumpSpeed) / jumpTime;
         grabbedGravity = normalGravity * grabbedGravityModificator;
         currentGravity= grabbedGravity;
+
+        unitMeasuredSpeedIncrement = unitsPerBeatSpeed / RythmController.Instance.secPerBeat;
+        dashSpeed = unitMeasuredSpeedIncrement * dashModificator;
     }
     
 
     private void Update()
-    {
+    {        
         grounded = IsGrounded();        
         if (grounded && playerVelocity.y < 0)
         {
@@ -66,34 +83,37 @@ public class CharacterMovementRb : MonoBehaviour
                 RythmController.Instance.recivedInputInBeat = true;
                 if (RythmController.Instance.validInput)
                 {
-                    currentSpeedLevel = 2;
+                    currentSpeedLevel = 1;
                     TestUI.Instance.SetMessage("BIEN!");
                 }
                 else
                 {
                     WrongInput();
                 }
-                playerVelocity.x = currentSpeedLevel * speedIncrement;
+                //playerVelocity.x = currentSpeedLevel * speedIncrement;
+                playerVelocity.x = currentSpeedLevel * unitMeasuredSpeedIncrement;
             }
             if (Input.GetKeyDown(KeyCode.LeftArrow))
             {
                 RythmController.Instance.recivedInputInBeat = true;
                 if (RythmController.Instance.validInput)
                 {
-                    currentSpeedLevel = 2;
+                    currentSpeedLevel = 1;
                     TestUI.Instance.SetMessage("BIEN!");
                 }
                 else
                 {
                     WrongInput();
                 }
-                playerVelocity.x = -1f * currentSpeedLevel * speedIncrement;
+                //playerVelocity.x = -1f * currentSpeedLevel * speedIncrement;
+                playerVelocity.x = -1f * currentSpeedLevel * unitMeasuredSpeedIncrement;
             }
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 RythmController.Instance.recivedInputInBeat = true;
                 if (RythmController.Instance.validInput)
-                {                    
+                {
+                    playerVelocity.x = (Mathf.Abs(playerVelocity.x) / playerVelocity.x) * currentSpeedLevel * unitMeasuredSpeedIncrement;
                     playerVelocity.y += jumpSpeed;
                     CurrentState = PlayerStateRb.Jumping;
                     TestUI.Instance.SetMessage("BIEN!");
@@ -113,9 +133,10 @@ public class CharacterMovementRb : MonoBehaviour
                 if (RythmController.Instance.validInput && CurrentState==PlayerStateRb.WallGrab)
                 {
                     playerVelocity.y += walljumpModificator * jumpSpeed;
-                    currentSpeedLevel = 2;
+                    currentSpeedLevel = 1;
                     int modificator = wallAtRight ? -1 : 1;
-                    playerVelocity.x = modificator * currentSpeedLevel * speedIncrement;
+                    //playerVelocity.x = modificator * currentSpeedLevel * speedIncrement;
+                    playerVelocity.x = modificator * currentSpeedLevel * unitMeasuredSpeedIncrement;
                     currentGravity = normalGravity;
                     CurrentState = PlayerStateRb.Jumping;
                     wallGrab = false;
@@ -128,6 +149,18 @@ public class CharacterMovementRb : MonoBehaviour
             }
             
         }
+        if(Input.GetKeyDown(KeyCode.LeftShift) && CurrentState != PlayerStateRb.WallGrab && playerVelocity.x!=0)
+        {
+            RythmController.Instance.recivedInputInBeat = true;
+            if(RythmController.Instance.validInput)
+            {
+                playerVelocity.x = (Mathf.Abs(playerVelocity.x) / playerVelocity.x) * dashSpeed;
+            }
+            else
+            {
+                WrongInput();
+            }            
+        }
         playerVelocity.y += currentGravity * Time.deltaTime;
         rb.velocity = playerVelocity;
     }
@@ -138,15 +171,23 @@ public class CharacterMovementRb : MonoBehaviour
         {
             currentSpeedLevel = currentSpeedLevel == 2 ? 1 : 0;
             TestUI.Instance.SetMessage("MAL!");
+            if(CurrentState == PlayerStateRb.WallGrab)
+            {
+                currentGravity= normalGravity;
+                CurrentState= PlayerStateRb.Jumping;
+            }
             if (currentSpeedLevel != 0)
             {
-                playerVelocity.x = (Mathf.Abs(playerVelocity.x) / playerVelocity.x) * currentSpeedLevel * speedIncrement;
+                //playerVelocity.x = (Mathf.Abs(playerVelocity.x) / playerVelocity.x) * currentSpeedLevel * speedIncrement;
+                //playerVelocity.x = (Mathf.Abs(playerVelocity.x) / playerVelocity.x) * currentSpeedLevel * unitMeasuredSpeedIncrement;
+                //playerVelocity.x = 0f;
             }
             else
             {
                 playerVelocity.x = 0f;
             }
         }
+        
     }
 
 

@@ -15,8 +15,7 @@ public class RythmController : MonoBehaviour
     private AudioSource aSource;
 
     private bool gameStarted;
-    private float lastBeatTime;
-    private float percentage;
+    private float lastBeatTime;    
 
     public bool validInput { get; private set; }
 
