@@ -1,54 +1,47 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static CharacterMovement;
 
 public class CharacterMovementRb : MonoBehaviour
 {
     private Rigidbody rb;
     private CapsuleCollider capsCollider;
 
+    [Header("Mascaras de capas a detectar")]
     [SerializeField] private LayerMask groundMask;
     [SerializeField] private LayerMask wallMask;
-    [HideInInspector] [SerializeField] private float speedIncrement;
+    [Space(10)]
+    //[HideInInspector] [SerializeField] private float speedIncrement;
 
+
+    [Header("Parámetros")]
     [Tooltip("Cuantas unidades se quiere que avance el jugador por beat")]
     [SerializeField] private float unitsPerBeatSpeed;
     private float unitMeasuredSpeedIncrement;
-
-    
-
     [SerializeField] private int dashModificator;
     private float dashSpeed;
-
-    [SerializeField] private float jumpSpeed;
-    
-
-    
-
+    [SerializeField] private float jumpSpeed;   
     [Range(1f, 2f)]
     [SerializeField] private float walljumpModificator;
-
-    private float currentGravity;
-    private float normalGravity;
-    private float grabbedGravity;
-
     [Tooltip("Multiplicador que afecta a la velocidad vertical inicial del salto cuando se hace un walljump")]
     [Range(0f, 1f)]
     [SerializeField] private float grabbedGravityModificator;
-
     [SerializeField] private float jumpBeatDuration;
-    public int currentSpeedLevel;
 
-    public PlayerStateRb CurrentState;
-    //public float currentSpeed;
-
+    #region Private variables
+    private float currentGravity;
+    private float normalGravity;
+    private float grabbedGravity;
     private Vector3 playerVelocity = Vector3.zero;
-
     private bool wallAtRight;
+    private bool grounded;
+    private bool wallGrab;
+    private int currentSpeedLevel;
+    public PlayerStateRb CurrentState;
+    #endregion
+    
 
-    public bool grounded;
-    public bool wallGrab;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -65,101 +58,18 @@ public class CharacterMovementRb : MonoBehaviour
 
         unitMeasuredSpeedIncrement = unitsPerBeatSpeed / RythmController.Instance.secPerBeat;
         dashSpeed = unitMeasuredSpeedIncrement * dashModificator;
+
+        GameplayEvents.OnProcessInputs.AddListener(SetMovement);
     }
     
 
     private void Update()
-    {        
+    {
+        IsGrabingWall();
         grounded = IsGrounded();        
         if (grounded && playerVelocity.y < 0)
         {
             playerVelocity.y = 0f;
-        }
-
-        if(grounded)
-        {
-            if (Input.GetKeyDown(KeyCode.RightArrow))
-            {
-                RythmController.Instance.recivedInputInBeat = true;
-                if (RythmController.Instance.validInput)
-                {
-                    currentSpeedLevel = 1;
-                    TestUI.Instance.SetMessage("BIEN!");
-                }
-                else
-                {
-                    WrongInput();
-                }
-                //playerVelocity.x = currentSpeedLevel * speedIncrement;
-                playerVelocity.x = currentSpeedLevel * unitMeasuredSpeedIncrement;
-            }
-            if (Input.GetKeyDown(KeyCode.LeftArrow))
-            {
-                RythmController.Instance.recivedInputInBeat = true;
-                if (RythmController.Instance.validInput)
-                {
-                    currentSpeedLevel = 1;
-                    TestUI.Instance.SetMessage("BIEN!");
-                }
-                else
-                {
-                    WrongInput();
-                }
-                //playerVelocity.x = -1f * currentSpeedLevel * speedIncrement;
-                playerVelocity.x = -1f * currentSpeedLevel * unitMeasuredSpeedIncrement;
-            }
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                RythmController.Instance.recivedInputInBeat = true;
-                if (RythmController.Instance.validInput)
-                {
-                    playerVelocity.x = (Mathf.Abs(playerVelocity.x) / playerVelocity.x) * currentSpeedLevel * unitMeasuredSpeedIncrement;
-                    playerVelocity.y += jumpSpeed;
-                    CurrentState = PlayerStateRb.Jumping;
-                    TestUI.Instance.SetMessage("BIEN!");
-                }
-                else
-                {
-                    WrongInput();
-                }
-            }
-        }
-        else
-        {
-            IsGrabingWall();
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                RythmController.Instance.recivedInputInBeat = true;
-                if (RythmController.Instance.validInput && CurrentState==PlayerStateRb.WallGrab)
-                {
-                    playerVelocity.y += walljumpModificator * jumpSpeed;
-                    currentSpeedLevel = 1;
-                    int modificator = wallAtRight ? -1 : 1;
-                    //playerVelocity.x = modificator * currentSpeedLevel * speedIncrement;
-                    playerVelocity.x = modificator * currentSpeedLevel * unitMeasuredSpeedIncrement;
-                    currentGravity = normalGravity;
-                    CurrentState = PlayerStateRb.Jumping;
-                    wallGrab = false;
-                    TestUI.Instance.SetMessage("BIEN!");
-                }
-                else
-                {
-                    WrongInput();
-                }
-            }
-            
-        }
-        if(Input.GetKeyDown(KeyCode.LeftShift) && CurrentState != PlayerStateRb.WallGrab && playerVelocity.x!=0)
-        {
-            RythmController.Instance.recivedInputInBeat = true;
-            if(RythmController.Instance.validInput)
-            {
-                playerVelocity.x = (Mathf.Abs(playerVelocity.x) / playerVelocity.x) * dashSpeed;
-            }
-            else
-            {
-                WrongInput();
-            }            
         }
         playerVelocity.y += currentGravity * Time.deltaTime;
         rb.velocity = playerVelocity;
@@ -169,18 +79,15 @@ public class CharacterMovementRb : MonoBehaviour
     {
         if (CurrentState != PlayerStateRb.Jumping)
         {
-            currentSpeedLevel = currentSpeedLevel == 2 ? 1 : 0;
-            TestUI.Instance.SetMessage("MAL!");
+            currentSpeedLevel = currentSpeedLevel == 2 ? 1 : 0;            
             if(CurrentState == PlayerStateRb.WallGrab)
             {
                 currentGravity= normalGravity;
                 CurrentState= PlayerStateRb.Jumping;
             }
             if (currentSpeedLevel != 0)
-            {
-                //playerVelocity.x = (Mathf.Abs(playerVelocity.x) / playerVelocity.x) * currentSpeedLevel * speedIncrement;
-                //playerVelocity.x = (Mathf.Abs(playerVelocity.x) / playerVelocity.x) * currentSpeedLevel * unitMeasuredSpeedIncrement;
-                //playerVelocity.x = 0f;
+            {                
+                playerVelocity.x = (Mathf.Abs(playerVelocity.x) / playerVelocity.x) * currentSpeedLevel * unitMeasuredSpeedIncrement;
             }
             else
             {
@@ -190,7 +97,56 @@ public class CharacterMovementRb : MonoBehaviour
         
     }
 
+    public void SetMovement()
+    {
+        List<InputController.InputActions> inputs = InputController.Instance.thisBeatActions;
+        if (inputs.Count ==0 || inputs.Contains(InputController.InputActions.Offbeat))
+        {
+            WrongInput();
+        }
+        else
+        {
+            if (grounded)
+            {
+                if (inputs.Contains(InputController.InputActions.Right))
+                {
+                    currentSpeedLevel = 1;
+                    playerVelocity.x = currentSpeedLevel * unitMeasuredSpeedIncrement;
+                }
+                if (inputs.Contains(InputController.InputActions.Left))
+                {
+                    currentSpeedLevel = 1;
+                    playerVelocity.x = -1f* currentSpeedLevel * unitMeasuredSpeedIncrement;
+                }
+                if(inputs.Contains(InputController.InputActions.Jump))
+                {
+                    playerVelocity.x = (Mathf.Abs(playerVelocity.x) / playerVelocity.x) * currentSpeedLevel * unitMeasuredSpeedIncrement;
+                    playerVelocity.y += jumpSpeed;
+                    CurrentState = PlayerStateRb.Jumping;
+                }
+            }
+            else
+            {
+                if (inputs.Contains(InputController.InputActions.Jump))
+                {
+                    if(CurrentState == PlayerStateRb.WallGrab)
+                    {
+                        playerVelocity.y += walljumpModificator * jumpSpeed;
+                        currentSpeedLevel = 1;
+                        int modificator = wallAtRight ? -1 : 1;                        
+                        playerVelocity.x = modificator * currentSpeedLevel * unitMeasuredSpeedIncrement;
+                        currentGravity = normalGravity;
+                        CurrentState = PlayerStateRb.Jumping;
+                        wallGrab = false;
+                    }
+                }
+            }
+        }
 
+        InputController.Instance.ResetInputs();
+    }
+
+    #region Chequeos
     private bool IsGrounded()
     {
         bool ground = Physics.Raycast(capsCollider.bounds.center, Vector3.down, capsCollider.height / 2 ,groundMask);
@@ -225,6 +181,8 @@ public class CharacterMovementRb : MonoBehaviour
 
         return grabing;
     }
+    #endregion
+
 
     public enum PlayerStateRb
     {

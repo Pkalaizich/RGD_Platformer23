@@ -22,7 +22,7 @@ public class RythmController : MonoBehaviour
     public bool recivedInputInBeat = false;
 
     private TestUI testUI;
-    private CharacterMovement charMov;
+    
     private CharacterMovementRb charMovRb;
 
     #region Singleton
@@ -42,8 +42,7 @@ public class RythmController : MonoBehaviour
     #endregion
 
     void Awake()
-    {
-        //charMov= FindObjectOfType<CharacterMovement>();
+    {        
         charMovRb = FindObjectOfType<CharacterMovementRb>();
         aSource = GetComponent<AudioSource>();
         secPerBeat= 60f / BPM;
@@ -87,7 +86,8 @@ public class RythmController : MonoBehaviour
     private IEnumerator CheckInput()
     {
         yield return new WaitForSeconds(inputThreshold*secPerBeat);
-        if(!recivedInputInBeat)
+        InputController.Instance.ProcessInput();
+        /*if(!recivedInputInBeat)
         {
             //charMov.InputNotSent();
             charMovRb.WrongInput();
@@ -96,7 +96,7 @@ public class RythmController : MonoBehaviour
         else
         {
             recivedInputInBeat= false;
-        }
+        }*/
     }
 
 }

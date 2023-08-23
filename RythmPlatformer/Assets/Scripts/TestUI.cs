@@ -47,21 +47,7 @@ public class TestUI : MonoBehaviour
         //indicator.color = Color.white;
         indicator.color = aux;
     }
-
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            if(RythmController.Instance.validInput)
-            {
-                SetMessage("BIEN!");
-            }
-            else
-            {
-                SetMessage("MAL!");
-            }
-        }
-    }
+   
 
     public void SetMessage(string message)
     {
