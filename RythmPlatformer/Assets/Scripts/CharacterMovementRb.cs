@@ -10,6 +10,7 @@ public class CharacterMovementRb : MonoBehaviour
     [Header("Mascaras de capas a detectar")]
     [SerializeField] private LayerMask groundMask;
     [SerializeField] private LayerMask wallMask;
+    [SerializeField] private LayerMask enemyMask;
     [Space(10)]
     //[HideInInspector] [SerializeField] private float speedIncrement;
 
@@ -127,6 +128,11 @@ public class CharacterMovementRb : MonoBehaviour
                     playerVelocity.y += jumpSpeed;
                     CurrentState = PlayerStateRb.Jumping;
                 }
+                if(inputs.Contains(InputController.InputActions.Attack))
+                {
+                    Debug.Log("Atacando");
+                    CheckEnemy();
+                }
             }
             else
             {
@@ -183,6 +189,30 @@ public class CharacterMovementRb : MonoBehaviour
         
 
         return grabing;
+    }
+
+    private bool CheckEnemy()
+    {
+        RaycastHit nearHit;
+        float modifier = playerVelocity.x != 0 ? (Mathf.Abs(playerVelocity.x) / playerVelocity.x) : 1;
+        bool nearEnemy = Physics.Raycast(capsCollider.bounds.center, Vector3.right * modifier, out nearHit, capsCollider.radius + unitsPerBeatSpeed*(1f/3f), enemyMask);               
+        //bool nearEnemy = Physics.SphereCast(capsCollider.bounds.center + new Vector3((capsCollider.radius + unitsPerBeatSpeed * 1f / 6f) * modifier, 0, 0), unitsPerBeatSpeed * (1f / 6f), Vector3.right * modifier, out nearHit,Mathf.Infinity, enemyMask);        
+        if (nearEnemy)
+        {
+            nearHit.transform.GetComponent<Enemy>().DeactivateEnemy(RythmController.Instance.secPerBeat* (1f/ 12f));
+            Debug.Log("Ataque cercano");
+            return true;
+        }
+        RaycastHit farHit;
+        bool farEnemy = Physics.Raycast(capsCollider.bounds.center, Vector3.right * modifier, out farHit, capsCollider.radius + unitsPerBeatSpeed, enemyMask);
+        //bool farEnemy = Physics.SphereCast(capsCollider.bounds.center + new Vector3((capsCollider.radius + unitsPerBeatSpeed * 4f / 6f) * modifier, 0, 0), unitsPerBeatSpeed * (2f / 6f), Vector3.right * modifier, out farHit, Mathf.Infinity, enemyMask);        
+        if (farEnemy)
+        {
+            farHit.transform.GetComponent<Enemy>().DeactivateEnemy(RythmController.Instance.secPerBeat *(5f/ 12f));
+            Debug.Log("Ataque lejano");
+            return true;
+        }
+        return false;
     }
     #endregion
 

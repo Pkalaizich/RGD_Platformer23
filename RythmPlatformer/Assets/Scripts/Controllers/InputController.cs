@@ -91,6 +91,17 @@ public class InputController : MonoBehaviour
                     AddInputToList(InputActions.Offbeat);
                 }
             }
+            if (Input.GetButtonDown("Fire1"))
+            {
+                if (validTime)
+                {
+                    AddInputToList(InputActions.Attack);
+                }
+                else
+                {
+                    AddInputToList(InputActions.Offbeat);
+                }
+            }
             #endregion
         }
     }
