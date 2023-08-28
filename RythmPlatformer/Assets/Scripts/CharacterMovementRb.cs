@@ -29,16 +29,19 @@ public class CharacterMovementRb : MonoBehaviour
     [SerializeField] private float grabbedGravityModificator;
     [SerializeField] private float jumpBeatDuration;
 
+    [SerializeField] private GameObject armature;
+
     #region Private variables
     private float currentGravity;
     private float normalGravity;
     private float grabbedGravity;
     private Vector3 playerVelocity = Vector3.zero;
     private bool wallAtRight;
-    private bool grounded;
+    public bool grounded;
     private bool wallGrab;
     private int currentSpeedLevel;
     public PlayerStateRb CurrentState;
+    private Animator animator;
     #endregion
     
 
@@ -47,6 +50,7 @@ public class CharacterMovementRb : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         capsCollider = GetComponent<CapsuleCollider>();
+        animator = GetComponent<Animator>();
         CurrentState = PlayerStateRb.Stopped;
     }
 
@@ -113,11 +117,15 @@ public class CharacterMovementRb : MonoBehaviour
                 {
                     currentSpeedLevel = 1;
                     playerVelocity.x = currentSpeedLevel * unitMeasuredSpeedIncrement;
+                    animator.SetTrigger("Run");
+                    armature.transform.localScale = new Vector3(1, 1, 1);
                 }
                 if (inputs.Contains(InputController.InputActions.Left))
                 {
                     currentSpeedLevel = 1;
                     playerVelocity.x = -1f* currentSpeedLevel * unitMeasuredSpeedIncrement;
+                    animator.SetTrigger("Run");
+                    armature.transform.localScale = new Vector3(1, 1, -1);
                 }
                 if(inputs.Contains(InputController.InputActions.Jump))
                 {
@@ -127,11 +135,13 @@ public class CharacterMovementRb : MonoBehaviour
                     }                    
                     playerVelocity.y += jumpSpeed;
                     CurrentState = PlayerStateRb.Jumping;
+                    animator.SetTrigger("ToIdle");
                 }
                 if(inputs.Contains(InputController.InputActions.Attack))
                 {
                     Debug.Log("Atacando");
                     CheckEnemy();
+                    animator.SetTrigger("ToIdle");
                 }
             }
             else
@@ -147,6 +157,7 @@ public class CharacterMovementRb : MonoBehaviour
                         currentGravity = normalGravity;
                         CurrentState = PlayerStateRb.Jumping;
                         wallGrab = false;
+                        animator.SetTrigger("ToIdle");
                     }
                 }
             }
@@ -158,7 +169,7 @@ public class CharacterMovementRb : MonoBehaviour
     #region Chequeos
     private bool IsGrounded()
     {
-        bool ground = Physics.Raycast(capsCollider.bounds.center, Vector3.down, capsCollider.height / 2 ,groundMask);
+        bool ground = Physics.Raycast(capsCollider.bounds.center, Vector3.down, capsCollider.height / 2 +0.05f ,groundMask);
         if(ground && playerVelocity.y<=0.5f)
         {
             currentGravity = normalGravity;
