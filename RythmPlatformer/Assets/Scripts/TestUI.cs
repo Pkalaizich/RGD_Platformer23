@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using DG.Tweening;
 
 public class TestUI : MonoBehaviour
 {
     [SerializeField] private RectTransform dotContainer;
     [SerializeField] private Image indicator;
     [SerializeField] private TextMeshProUGUI testMessage;
+
+    [SerializeField] private Image eneryIndicator;
 
     #region Singleton
     private static TestUI _instance;
@@ -60,5 +63,10 @@ public class TestUI : MonoBehaviour
         testMessage.text = message;
         yield return new WaitForSeconds(0.2f);
         testMessage.gameObject.SetActive(false);
+    }
+
+    public void UpdateEnergyBar(float percentage)
+    {
+        eneryIndicator.DOFillAmount(percentage, 0.2f);
     }
 }
