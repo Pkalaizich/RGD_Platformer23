@@ -79,7 +79,7 @@ public class CharacterMovementRb : MonoBehaviour
     }
     
 
-    private void Update()
+    private void FixedUpdate()
     {
         IsGrabingWall();
         grounded = IsGrounded();        
@@ -88,16 +88,11 @@ public class CharacterMovementRb : MonoBehaviour
             playerVelocity.y = 0f;
         }
         playerVelocity.y += currentGravity * Time.deltaTime; 
-        //playerVelocity.y += Mathf.Clamp(playerVelocity.y + currentGravity * Time.deltaTime, (-1f *jumpSpeed),Mathf.Infinity);
-        rb.velocity = playerVelocity;
-        if(playerVelocity.x<1f)
+        if(playerVelocity.y < (-1f * jumpSpeed))
         {
-            armature.transform.localScale = new Vector3(1, 1, -1);
+            playerVelocity.y = -1f * jumpSpeed;
         }
-        if (playerVelocity.x > 1f)
-        {
-            armature.transform.localScale = new Vector3(1, 1, 1);
-        }
+        rb.velocity = playerVelocity;        
     }
 
     public void WrongInput()
@@ -105,8 +100,9 @@ public class CharacterMovementRb : MonoBehaviour
         if (CurrentState != PlayerStateRb.Jumping)
         {
             if(CurrentState != PlayerStateRb.Stopped)
-            {
+            {                
                 totalErrors+= 1;
+                GameplayEvents.OnBadAction?.Invoke();
                 float energyLoss = Mathf.Clamp(totalErrors * energyLossPerError,energyLossPerError,maxEnergyLoss);
                 currentEnergy = Mathf.Clamp(currentEnergy - energyLoss, 0, maxEnergy);
                 testUI.UpdateEnergyBar(currentEnergy / maxEnergy);
@@ -128,6 +124,7 @@ public class CharacterMovementRb : MonoBehaviour
             else
             {
                 playerVelocity.x = 0f;
+                animator.SetTrigger("ToIdle");
             }
         }
         
@@ -135,9 +132,14 @@ public class CharacterMovementRb : MonoBehaviour
 
     public void SetMovement()
     {
+        bool right = armature.transform.localScale.z ==1? true:false;
         List<InputController.InputActions> inputs = InputController.Instance.thisBeatActions;
         if (inputs.Count ==0 || inputs.Contains(InputController.InputActions.Offbeat))
         {
+            if (currentSpeedLevel != 0)
+            {
+                right = (Mathf.Abs(playerVelocity.x) / playerVelocity.x) >0? true : false;
+            }
             WrongInput();
         }
         else
@@ -149,18 +151,24 @@ public class CharacterMovementRb : MonoBehaviour
             {
                 if (inputs.Contains(InputController.InputActions.Down))
                 {
+                    if (currentSpeedLevel != 0)
+                    {
+                        right = (Mathf.Abs(playerVelocity.x) / playerVelocity.x) > 0 ? true : false;
+                    }
                     currentSpeedLevel = 0;
                     playerVelocity.x = currentSpeedLevel * unitMeasuredSpeedIncrement;
                     animator.SetTrigger("ToIdle");                    
                 }
                 if (inputs.Contains(InputController.InputActions.Right))
                 {
+                    right = true;
                     currentSpeedLevel = 1;
                     playerVelocity.x = currentSpeedLevel * unitMeasuredSpeedIncrement;
                     animator.SetTrigger("Run");                    
                 }
                 if (inputs.Contains(InputController.InputActions.Left))
                 {
+                    right = false;
                     currentSpeedLevel = 1;
                     playerVelocity.x = -1f* currentSpeedLevel * unitMeasuredSpeedIncrement;
                     animator.SetTrigger("Run");                    
@@ -170,16 +178,24 @@ public class CharacterMovementRb : MonoBehaviour
                     if(Mathf.Abs(playerVelocity.x) >=0.1f)
                     {
                         playerVelocity.x = (Mathf.Abs(playerVelocity.x) / playerVelocity.x) * currentSpeedLevel * unitMeasuredSpeedIncrement;
+                        if (currentSpeedLevel != 0)
+                        {
+                            right = (Mathf.Abs(playerVelocity.x) / playerVelocity.x) > 0 ? true : false;
+                        }
                     }                    
                     playerVelocity.y += jumpSpeed;
                     CurrentState = PlayerStateRb.Jumping;
-                    animator.SetTrigger("ToIdle");
+                    //animator.SetTrigger("ToIdle");
                 }
-                if(inputs.Contains(InputController.InputActions.Attack))
+                if(inputs.Contains(InputController.InputActions.Attack) && !inputs.Contains(InputController.InputActions.Jump))
                 {
+                    if (currentSpeedLevel != 0)
+                    {
+                        right = (Mathf.Abs(playerVelocity.x) / playerVelocity.x) > 0 ? true : false;
+                    }
                     Debug.Log("Atacando");
                     CheckEnemy();
-                    animator.SetTrigger("ToIdle");
+                    //animator.SetTrigger("ToIdle");
                 }
             }
             else
@@ -190,17 +206,25 @@ public class CharacterMovementRb : MonoBehaviour
                     {
                         playerVelocity.y += walljumpModificator * jumpSpeed;
                         currentSpeedLevel = 1;
-                        int modificator = wallAtRight ? -1 : 1;                        
+                        int modificator = wallAtRight ? -1 : 1; 
+                        right = modificator ==1? true: false;
                         playerVelocity.x = modificator * currentSpeedLevel * unitMeasuredSpeedIncrement;
                         currentGravity = normalGravity;
                         CurrentState = PlayerStateRb.Jumping;
                         wallGrab = false;
-                        animator.SetTrigger("ToIdle");
+                        //animator.SetTrigger("ToIdle");
                     }
                 }
             }
         }
-
+        if (right)
+        {
+            armature.transform.localScale = new Vector3(1, 1, 1);
+        }
+        else
+        {
+            armature.transform.localScale = new Vector3(1, 1, -1);
+        }
         InputController.Instance.ResetInputs();
     }
 

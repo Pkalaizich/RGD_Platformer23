@@ -10,6 +10,7 @@ public class RythmController : MonoBehaviour
     [Tooltip("Porcentaje del tiempo entre beats en el que el input es válido (porcentaje antes y porcentaje despues)")]
     [Range(0f, 5f)]
     [SerializeField] private float inputThreshold;
+    public float THRESHOLD => inputThreshold; 
 
     [SerializeField] private AudioClip tickSFX;
     private AudioSource aSource;
@@ -24,6 +25,7 @@ public class RythmController : MonoBehaviour
     private TestUI testUI;
     
     private CharacterMovementRb charMovRb;
+    private bool inThresHold;
 
     #region Singleton
     private static RythmController _instance;
@@ -47,6 +49,7 @@ public class RythmController : MonoBehaviour
         aSource = GetComponent<AudioSource>();
         secPerBeat= 60f / BPM;
         testUI = FindObjectOfType<TestUI>();
+        inThresHold = true;
     }
 
     private void Update()
@@ -63,11 +66,21 @@ public class RythmController : MonoBehaviour
             }
             if(currentTime < inputThreshold*secPerBeat || currentTime > secPerBeat * (1-inputThreshold)) 
             {
+                if(!inThresHold)
+                {
+                    inThresHold= true;
+                    GameplayEvents.OnThresholdEnter?.Invoke();
+                }
                 testUI.SetIndicatorValid();
                 validInput= true;
             }
             else
             {
+                if(inThresHold)
+                {
+                    inThresHold = false;
+                    GameplayEvents.OnBeatEnded?.Invoke();
+                }                
                 testUI.SetIndicatorInvalid();
                 validInput= false;
             }
@@ -99,4 +112,13 @@ public class RythmController : MonoBehaviour
         }*/
     }
 
+    /// <summary>
+    /// Returns the duration of the input window in seconds
+    /// </summary>
+    /// <returns></returns>
+    public float ThresholdDuration()
+    {
+        float duration = inputThreshold * secPerBeat * 2;
+        return duration;
+    }
 }
