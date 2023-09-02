@@ -50,8 +50,10 @@ public class CharacterMovementRb : MonoBehaviour
     public PlayerStateRb CurrentState;
     private Animator animator;
     private TestUI testUI;
+
+    private static readonly int hGlobalParam = Animator.StringToHash("GlobalParameter");
     #endregion
-    
+
 
 
     private void Awake()
@@ -119,12 +121,13 @@ public class CharacterMovementRb : MonoBehaviour
             }
             if (currentSpeedLevel != 0)
             {                
-                playerVelocity.x = (Mathf.Abs(playerVelocity.x) / playerVelocity.x) * currentSpeedLevel * unitMeasuredSpeedIncrement;
+                playerVelocity.x = (Mathf.Abs(playerVelocity.x) / playerVelocity.x) * currentSpeedLevel/2 * unitMeasuredSpeedIncrement;
             }
             else
             {
                 playerVelocity.x = 0f;
-                animator.SetTrigger("ToIdle");
+                SetAnimationByIndex(0);
+                //animator.SetTrigger("ToIdle");
             }
         }
         
@@ -157,35 +160,39 @@ public class CharacterMovementRb : MonoBehaviour
                     }
                     currentSpeedLevel = 0;
                     playerVelocity.x = currentSpeedLevel * unitMeasuredSpeedIncrement;
-                    animator.SetTrigger("ToIdle");                    
+                    SetAnimationByIndex(0);
+                    //animator.SetTrigger("ToIdle");                    
                 }
                 if (inputs.Contains(InputController.InputActions.Right))
                 {
                     right = true;
-                    currentSpeedLevel = 1;
-                    playerVelocity.x = currentSpeedLevel * unitMeasuredSpeedIncrement;
-                    animator.SetTrigger("Run");                    
+                    currentSpeedLevel = 2;
+                    playerVelocity.x = currentSpeedLevel * unitMeasuredSpeedIncrement /2;
+                    SetAnimationByIndex(1);
+                    //animator.SetTrigger("Run");                    
                 }
                 if (inputs.Contains(InputController.InputActions.Left))
                 {
                     right = false;
-                    currentSpeedLevel = 1;
-                    playerVelocity.x = -1f* currentSpeedLevel * unitMeasuredSpeedIncrement;
-                    animator.SetTrigger("Run");                    
+                    currentSpeedLevel = 2;
+                    playerVelocity.x = -1f* currentSpeedLevel * unitMeasuredSpeedIncrement /2;
+                    SetAnimationByIndex(1);
+                    //animator.SetTrigger("Run");                    
                 }
                 if(inputs.Contains(InputController.InputActions.Jump))
                 {
                     if(Mathf.Abs(playerVelocity.x) >=0.1f)
-                    {
-                        playerVelocity.x = (Mathf.Abs(playerVelocity.x) / playerVelocity.x) * currentSpeedLevel * unitMeasuredSpeedIncrement;
+                    {   
                         if (currentSpeedLevel != 0)
                         {
                             right = (Mathf.Abs(playerVelocity.x) / playerVelocity.x) > 0 ? true : false;
-                        }
+                            currentSpeedLevel= 2;
+                        }                        
+                        playerVelocity.x = (Mathf.Abs(playerVelocity.x) / playerVelocity.x) * currentSpeedLevel * unitMeasuredSpeedIncrement/2;
                     }                    
                     playerVelocity.y += jumpSpeed;
                     CurrentState = PlayerStateRb.Jumping;
-                    //animator.SetTrigger("ToIdle");
+                    
                 }
                 if(inputs.Contains(InputController.InputActions.Attack) && !inputs.Contains(InputController.InputActions.Jump))
                 {
@@ -195,7 +202,7 @@ public class CharacterMovementRb : MonoBehaviour
                     }
                     Debug.Log("Atacando");
                     CheckEnemy();
-                    //animator.SetTrigger("ToIdle");
+                    
                 }
             }
             else
@@ -205,14 +212,14 @@ public class CharacterMovementRb : MonoBehaviour
                     if(CurrentState == PlayerStateRb.WallGrab)
                     {
                         playerVelocity.y += walljumpModificator * jumpSpeed;
-                        currentSpeedLevel = 1;
+                        currentSpeedLevel = 2;
                         int modificator = wallAtRight ? -1 : 1; 
                         right = modificator ==1? true: false;
-                        playerVelocity.x = modificator * currentSpeedLevel * unitMeasuredSpeedIncrement;
+                        playerVelocity.x = modificator * currentSpeedLevel * unitMeasuredSpeedIncrement/2;
                         currentGravity = normalGravity;
                         CurrentState = PlayerStateRb.Jumping;
                         wallGrab = false;
-                        //animator.SetTrigger("ToIdle");
+                        SetAnimationByIndex(1);
                     }
                 }
             }
@@ -240,7 +247,7 @@ public class CharacterMovementRb : MonoBehaviour
             if(currentSpeedLevel ==2) CurrentState= PlayerStateRb.Running;
         }
         return ground;
-        //return Physics.BoxCast(capsCollider.bounds.center, capsCollider.bounds.size, Vector3.down, Quaternion.identity, 0f, groundMask);
+        
     }
 
     private bool IsGrabingWall()
@@ -258,6 +265,7 @@ public class CharacterMovementRb : MonoBehaviour
             playerVelocity.y = 0f;
             currentSpeedLevel = 0;
             CurrentState = PlayerStateRb.WallGrab;
+            SetAnimationByIndex(3);
         }
         
 
@@ -289,6 +297,18 @@ public class CharacterMovementRb : MonoBehaviour
     }
     #endregion
 
+    /// <summary>
+    /// 0:IDLE
+    /// 1:RUN
+    /// 2:???
+    /// 3:WALLGRAB
+    /// 4:WALLJUMP
+    /// </summary>
+    /// <param name="animation"></param>
+    private void SetAnimationByIndex(int animation)
+    {
+        animator.SetInteger(hGlobalParam, animation);
+    }
 
     public enum PlayerStateRb
     {

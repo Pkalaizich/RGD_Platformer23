@@ -9,6 +9,7 @@ public class TestUI : MonoBehaviour
 {
     [SerializeField] private RectTransform dotContainer;
     [SerializeField] private Image indicator;
+    [SerializeField] private RectTransform energyBar;
     [SerializeField] private TextMeshProUGUI testMessage;
 
     [SerializeField] private Image energyIndicator;
@@ -85,8 +86,8 @@ public class TestUI : MonoBehaviour
     {
         Sequence scaling = DOTween.Sequence();
 
-        scaling.Append(bunnyHead.rectTransform.DOScale(Vector3.one * 1.1f, animDuration).SetEase(Ease.Linear))
-            .Append(bunnyHead.rectTransform.DOScale(Vector3.one, animDuration).SetEase(Ease.Linear));
+        scaling.Append(bunnyHead.rectTransform.DOScale(Vector3.one * 1.1f, animDuration).SetEase(Ease.Linear)).Join(energyBar.DOScale(Vector3.one * 1.1f, animDuration).SetEase(Ease.Linear))
+            .Append(bunnyHead.rectTransform.DOScale(Vector3.one, animDuration).SetEase(Ease.Linear)).Join(energyBar.DOScale(Vector3.one, animDuration).SetEase(Ease.Linear));
         scaling.Play();
     }
 
