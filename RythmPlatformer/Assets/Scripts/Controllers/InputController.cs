@@ -81,7 +81,7 @@ public class InputController : MonoBehaviour
                     AddInputToList(InputActions.Offbeat);
                 }
             }
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
             {
                 if (validTime)
                 {                    
