@@ -493,11 +493,11 @@ MonoBehaviour:
   m_StreamingVersion: 20170927
   m_Priority: 10
   m_StandbyUpdate: 2
-  m_LookAt: {fileID: 0}
-  m_Follow: {fileID: 6532583553064665341}
+  m_LookAt: {fileID: 1901961020}
+  m_Follow: {fileID: 1901961020}
   m_Lens:
     FieldOfView: 100
-    OrthographicSize: 7.5
+    OrthographicSize: 10.5
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
@@ -521,7 +521,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 765569352}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -25, y: -0.09999937, z: -10}
+  m_LocalPosition: {x: -25, y: 1.4000006, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -759,7 +759,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BPM: 80
-  inputThreshold: 0.15
+  inputThreshold: 0.22
   tickSFX: {fileID: 8300000, guid: 32d4b1811dda14a6cb9e059ee8ad17d2, type: 3}
   recivedInputInBeat: 0
 --- !u!4 &1653027573
@@ -968,6 +968,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 373486547723117075, guid: 6ce920f77ad80f34a857e23ddd701f8b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 21.96
+      objectReference: {fileID: 0}
+    - target: {fileID: 975662838363404528, guid: 6ce920f77ad80f34a857e23ddd701f8b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 170.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 3429310328208859217, guid: 6ce920f77ad80f34a857e23ddd701f8b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 144.65
+      objectReference: {fileID: 0}
     - target: {fileID: 6211919834463646975, guid: 6ce920f77ad80f34a857e23ddd701f8b, type: 3}
       propertyPath: m_CastShadows
       value: 1
@@ -984,6 +996,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: cdf39766c703a4a42ad2ed62a75e1196, type: 2}
+    - target: {fileID: 6312593991219518298, guid: 6ce920f77ad80f34a857e23ddd701f8b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 17.97
+      objectReference: {fileID: 0}
     - target: {fileID: 6864381263909405231, guid: 6ce920f77ad80f34a857e23ddd701f8b, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -1036,8 +1052,43 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7723348579561099596, guid: 6ce920f77ad80f34a857e23ddd701f8b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 73.9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6ce920f77ad80f34a857e23ddd701f8b, type: 3}
+--- !u!1 &1901961019
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1901961020}
+  m_Layer: 0
+  m_Name: CameraTarget
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1901961020
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1901961019}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6532583553064665341}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1930781182
 GameObject:
   m_ObjectHideFlags: 0
@@ -2033,7 +2084,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6532583552238858856}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -25, y: -0.09999937, z: -10}
+  m_LocalPosition: {x: -25, y: 1.4000006, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2075,7 +2126,7 @@ Camera:
   far clip plane: 1000
   field of view: 100
   orthographic: 1
-  orthographic size: 7.5
+  orthographic size: 10.5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -3111,15 +3162,15 @@ MonoBehaviour:
   enemyMask:
     serializedVersion: 2
     m_Bits: 128
-  unitsPerBeatSpeed: 10
+  unitsPerBeatSpeed: 7
   dashModificator: 4
   jumpSpeed: 25
   walljumpModificator: 1.25
   grabbedGravityModificator: 0.2
   jumpBeatDuration: 1.5
   maxEnergy: 20
-  energyLossPerError: 2
-  maxEnergyLoss: 10
+  energyLossPerError: 1
+  maxEnergyLoss: 5
   energyRecoveredPerBeat: 1
   armature: {fileID: 6532583551698551530}
   grounded: 0
@@ -3168,6 +3219,7 @@ Transform:
   m_Children:
   - {fileID: 6532583551698551531}
   - {fileID: 6532583552465473418}
+  - {fileID: 1901961020}
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
