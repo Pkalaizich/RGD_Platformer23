@@ -37,7 +37,14 @@ public class CharacterMovementRb : MonoBehaviour
     private int totalErrors;
 
     [SerializeField] private GameObject armature;
+    [SerializeField] private float groundDistanceFallAnimation;
 
+    [Header("Screen Shake Parameters")]
+    [SerializeField] private float wrongInputShakeTime;
+    [SerializeField] private float wrongInputShakeIntensity;
+    private CameraShake camShak;
+
+    [Space(25)]
     #region Private variables
     private float currentGravity;
     private float normalGravity;
@@ -65,6 +72,7 @@ public class CharacterMovementRb : MonoBehaviour
         CurrentState = PlayerStateRb.Stopped;
         totalErrors= 0;
         currentEnergy = maxEnergy;
+        camShak = FindObjectOfType<CameraShake>();
     }
 
     private void Start()
@@ -89,6 +97,24 @@ public class CharacterMovementRb : MonoBehaviour
         {
             playerVelocity.y = 0f;
         }
+        if((!grounded && CurrentState!=PlayerStateRb.WallGrab) && playerVelocity.y < 0)
+        {                        
+            SetAnimationByIndex(3);            
+            if (CurrentState == PlayerStateRb.Falling)
+            {
+                if (OverGround())
+                {
+                    //animator.StartPlayback();
+                    animator.speed = 1;
+                }
+                else
+                {
+                    //animator.StopPlayback();
+                    animator.speed = 0;
+                }
+            }
+            CurrentState = PlayerStateRb.Falling;
+        }
         playerVelocity.y += currentGravity * Time.deltaTime; 
         if(playerVelocity.y < (-1f * jumpSpeed))
         {
@@ -99,12 +125,17 @@ public class CharacterMovementRb : MonoBehaviour
 
     public void WrongInput()
     {
-        if (CurrentState != PlayerStateRb.Jumping)
+        
+        if (CurrentState != PlayerStateRb.Jumping && CurrentState != PlayerStateRb.Falling)
         {
             if(CurrentState != PlayerStateRb.Stopped)
             {                
                 totalErrors+= 1;
                 GameplayEvents.OnBadAction?.Invoke();
+                if(camShak!=null)
+                {
+                    camShak.ShakeCamera(wrongInputShakeIntensity, wrongInputShakeTime);
+                }                
                 float energyLoss = Mathf.Clamp(totalErrors * energyLossPerError,energyLossPerError,maxEnergyLoss);
                 currentEnergy = Mathf.Clamp(currentEnergy - energyLoss, 0, maxEnergy);
                 testUI.UpdateEnergyBar(currentEnergy / maxEnergy);
@@ -126,16 +157,15 @@ public class CharacterMovementRb : MonoBehaviour
             else
             {
                 playerVelocity.x = 0f;
-                SetAnimationByIndex(0);
-                //animator.SetTrigger("ToIdle");
+                SetAnimationByIndex(0);                
             }
-        }
+        }        
         
     }
 
     public void SetMovement()
     {
-        bool right = armature.transform.localScale.z ==1? true:false;
+        bool right = armature.transform.localScale.y ==100? true:false;
         List<InputController.InputActions> inputs = InputController.Instance.thisBeatActions;
         if (inputs.Count ==0 || inputs.Contains(InputController.InputActions.Offbeat))
         {
@@ -160,24 +190,21 @@ public class CharacterMovementRb : MonoBehaviour
                     }
                     currentSpeedLevel = 0;
                     playerVelocity.x = currentSpeedLevel * unitMeasuredSpeedIncrement;
-                    SetAnimationByIndex(0);
-                    //animator.SetTrigger("ToIdle");                    
+                    SetAnimationByIndex(0);  //IDLE                                    
                 }
                 if (inputs.Contains(InputController.InputActions.Right))
                 {
                     right = true;
                     currentSpeedLevel = 2;
                     playerVelocity.x = currentSpeedLevel * unitMeasuredSpeedIncrement /2;
-                    SetAnimationByIndex(1);
-                    //animator.SetTrigger("Run");                    
+                    SetAnimationByIndex(1);   //RUN                                     
                 }
                 if (inputs.Contains(InputController.InputActions.Left))
                 {
                     right = false;
                     currentSpeedLevel = 2;
                     playerVelocity.x = -1f* currentSpeedLevel * unitMeasuredSpeedIncrement /2;
-                    SetAnimationByIndex(1);
-                    //animator.SetTrigger("Run");                    
+                    SetAnimationByIndex(1);   //RUN                                     
                 }
                 if(inputs.Contains(InputController.InputActions.Jump))
                 {
@@ -192,7 +219,7 @@ public class CharacterMovementRb : MonoBehaviour
                     }                    
                     playerVelocity.y += jumpSpeed;
                     CurrentState = PlayerStateRb.Jumping;
-                    
+                    SetAnimationByIndex(2);   //JUMP                 
                 }
                 if(inputs.Contains(InputController.InputActions.Attack) && !inputs.Contains(InputController.InputActions.Jump))
                 {
@@ -219,32 +246,48 @@ public class CharacterMovementRb : MonoBehaviour
                         currentGravity = normalGravity;
                         CurrentState = PlayerStateRb.Jumping;
                         wallGrab = false;
-                        SetAnimationByIndex(1);
+                        SetAnimationByIndex(2); //CAMBIAR POR ANIMACION DE WALLJUMP!!
                     }
                 }
             }
         }
         if (right)
         {
-            armature.transform.localScale = new Vector3(1, 1, 1);
+            armature.transform.localScale = new Vector3(100, 100, 100);
         }
         else
         {
-            armature.transform.localScale = new Vector3(1, 1, -1);
+            armature.transform.localScale = new Vector3(100, -100, 100);
         }
         InputController.Instance.ResetInputs();
     }
 
     #region Chequeos
     private bool IsGrounded()
-    {
+    {        
         bool ground = Physics.Raycast(capsCollider.bounds.center, Vector3.down, capsCollider.height / 2 +0.05f ,groundMask);
         if(ground && playerVelocity.y<=0.5f)
         {
             currentGravity = normalGravity;
-            if(currentSpeedLevel == 0) CurrentState= PlayerStateRb.Stopped;
-            if (currentSpeedLevel == 1) CurrentState = PlayerStateRb.RunningHalfSpeed; 
-            if(currentSpeedLevel ==2) CurrentState= PlayerStateRb.Running;
+            animator.speed = 1;
+            if (currentSpeedLevel == 0)
+            {
+                CurrentState = PlayerStateRb.Stopped;                
+                SetAnimationByIndex(0);
+            }
+            if (currentSpeedLevel == 1) 
+            {
+                //animator.StartPlayback();
+                SetAnimationByIndex(1);
+                animator.speed = 0.5f;
+                CurrentState = PlayerStateRb.RunningHalfSpeed;
+            }
+            if (currentSpeedLevel == 2)
+            {
+                //animator.StartPlayback();
+                SetAnimationByIndex(1);
+                CurrentState = PlayerStateRb.Running;
+            } 
         }
         return ground;
         
@@ -265,11 +308,17 @@ public class CharacterMovementRb : MonoBehaviour
             playerVelocity.y = 0f;
             currentSpeedLevel = 0;
             CurrentState = PlayerStateRb.WallGrab;
-            SetAnimationByIndex(3);
+            SetAnimationByIndex(0); //CAMBIAR POR ANIMACION DE WALLGRAB!!!
         }
         
 
         return grabing;
+    }
+
+    private bool OverGround()
+    {
+        bool ground = Physics.Raycast(capsCollider.bounds.center, Vector3.down, capsCollider.height / 2 + groundDistanceFallAnimation, groundMask);
+        return ground;
     }
 
     private bool CheckEnemy()
@@ -300,9 +349,10 @@ public class CharacterMovementRb : MonoBehaviour
     /// <summary>
     /// 0:IDLE
     /// 1:RUN
-    /// 2:???
-    /// 3:WALLGRAB
-    /// 4:WALLJUMP
+    /// 2:JUMP
+    /// 3:FALL
+    /// 4:WALLGRAB
+    /// 5:WALLJUMP
     /// </summary>
     /// <param name="animation"></param>
     private void SetAnimationByIndex(int animation)
@@ -316,6 +366,8 @@ public class CharacterMovementRb : MonoBehaviour
         Running,
         RunningHalfSpeed,
         Jumping,
+        Falling,
+        Attacking,
         WallGrab
     }
 }

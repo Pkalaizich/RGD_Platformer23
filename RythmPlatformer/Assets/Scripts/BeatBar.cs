@@ -51,7 +51,7 @@ public class BeatBar : MonoBehaviour
         if(currentPos ==0)
         {
             movement.Append(barImage.rectTransform.DOLocalMoveX(direction * (barDistance * currentPos +headWidth/2), beatDuration-thresholdDuration)).Join(barImage.rectTransform.DOScale(Vector3.one * (4f / (4f + currentPos * 4f)), beatDuration-thresholdDuration))
-            .Append((barImage.rectTransform.DOLocalMoveX(0,thresholdDuration))).Join(barImage.DOFade(0f, thresholdDuration)).Join(barImage.rectTransform.DOScale(Vector3.one *0.5f, thresholdDuration));
+            .Append((barImage.rectTransform.DOLocalMoveX(0,thresholdDuration*0.95f))).Join(barImage.DOFade(0f, thresholdDuration*0.95f)).Join(barImage.rectTransform.DOScale(Vector3.one *0.5f, thresholdDuration * 0.95f));
         }
         else
         {
