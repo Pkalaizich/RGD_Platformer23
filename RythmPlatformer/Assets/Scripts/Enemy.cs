@@ -4,11 +4,22 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    private Animator anim;
+    private SphereCollider sphCollider;
+
+    private void Awake()
+    {
+        sphCollider = GetComponent<SphereCollider>();
+        anim = GetComponentInChildren<Animator>();
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if(other.tag == "Player")
         {
             Debug.Log("Choco al Player!");
+            anim.SetTrigger("Destroyed");
+            sphCollider.enabled = false;
             //this.gameObject.SetActive(false);
         }
     }
