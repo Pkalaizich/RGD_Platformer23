@@ -48,7 +48,7 @@ public class InputController : MonoBehaviour
             {
                 if(validTime)
                 {                                   
-                    if(!thisBeatActions.Contains(InputActions.Left))
+                    if(!thisBeatActions.Contains(InputActions.Left)&& !thisBeatActions.Contains(InputActions.Down))
                         AddInputToList(InputActions.Right);
                 }
                 else
@@ -61,7 +61,7 @@ public class InputController : MonoBehaviour
             {
                 if (validTime)
                 {
-                    if (!thisBeatActions.Contains(InputActions.Right))
+                    if (!thisBeatActions.Contains(InputActions.Right) && !thisBeatActions.Contains(InputActions.Down))
                         AddInputToList(InputActions.Left);
                 }
                 else
@@ -69,7 +69,19 @@ public class InputController : MonoBehaviour
                     AddInputToList(InputActions.Offbeat);
                 }
             }
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.S)|| Input.GetKeyDown(KeyCode.DownArrow))
+            {
+                if (validTime)
+                {
+                    if (!thisBeatActions.Contains(InputActions.Right) && !thisBeatActions.Contains(InputActions.Left))
+                        AddInputToList(InputActions.Down);
+                }
+                else
+                {
+                    AddInputToList(InputActions.Offbeat);
+                }
+            }
+            if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
             {
                 if (validTime)
                 {                    

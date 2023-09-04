@@ -29,6 +29,13 @@ public class CharacterMovementRb : MonoBehaviour
     [SerializeField] private float grabbedGravityModificator;
     [SerializeField] private float jumpBeatDuration;
 
+    [SerializeField] private float maxEnergy;
+    private float currentEnergy;
+    [SerializeField] private float energyLossPerError;
+    [SerializeField] private float maxEnergyLoss;
+    [SerializeField] private float energyRecoveredPerBeat;
+    private int totalErrors;
+
     [SerializeField] private GameObject armature;
 
     #region Private variables
@@ -42,16 +49,22 @@ public class CharacterMovementRb : MonoBehaviour
     private int currentSpeedLevel;
     public PlayerStateRb CurrentState;
     private Animator animator;
+    private TestUI testUI;
+
+    private static readonly int hGlobalParam = Animator.StringToHash("GlobalParameter");
     #endregion
-    
+
 
 
     private void Awake()
     {
+        testUI = FindObjectOfType<TestUI>();
         rb = GetComponent<Rigidbody>();
         capsCollider = GetComponent<CapsuleCollider>();
         animator = GetComponent<Animator>();
         CurrentState = PlayerStateRb.Stopped;
+        totalErrors= 0;
+        currentEnergy = maxEnergy;
     }
 
     private void Start()
@@ -59,7 +72,7 @@ public class CharacterMovementRb : MonoBehaviour
         float jumpTime = RythmController.Instance.secPerBeat * jumpBeatDuration;        
         normalGravity = -(2 * jumpSpeed) / jumpTime;
         grabbedGravity = normalGravity * grabbedGravityModificator;
-        currentGravity= grabbedGravity;
+        currentGravity= normalGravity;
 
         unitMeasuredSpeedIncrement = unitsPerBeatSpeed / RythmController.Instance.secPerBeat;
         dashSpeed = unitMeasuredSpeedIncrement * dashModificator;
@@ -68,7 +81,7 @@ public class CharacterMovementRb : MonoBehaviour
     }
     
 
-    private void Update()
+    private void FixedUpdate()
     {
         IsGrabingWall();
         grounded = IsGrounded();        
@@ -76,14 +89,30 @@ public class CharacterMovementRb : MonoBehaviour
         {
             playerVelocity.y = 0f;
         }
-        playerVelocity.y += currentGravity * Time.deltaTime;
-        rb.velocity = playerVelocity;
+        playerVelocity.y += currentGravity * Time.deltaTime; 
+        if(playerVelocity.y < (-1f * jumpSpeed))
+        {
+            playerVelocity.y = -1f * jumpSpeed;
+        }
+        rb.velocity = playerVelocity;        
     }
 
     public void WrongInput()
     {
         if (CurrentState != PlayerStateRb.Jumping)
         {
+            if(CurrentState != PlayerStateRb.Stopped)
+            {                
+                totalErrors+= 1;
+                GameplayEvents.OnBadAction?.Invoke();
+                float energyLoss = Mathf.Clamp(totalErrors * energyLossPerError,energyLossPerError,maxEnergyLoss);
+                currentEnergy = Mathf.Clamp(currentEnergy - energyLoss, 0, maxEnergy);
+                testUI.UpdateEnergyBar(currentEnergy / maxEnergy);
+                if(currentEnergy<=0)
+                {
+                    Debug.Log("GAME OVER!");
+                }
+            }
             currentSpeedLevel = currentSpeedLevel == 2 ? 1 : 0;            
             if(CurrentState == PlayerStateRb.WallGrab)
             {
@@ -92,11 +121,13 @@ public class CharacterMovementRb : MonoBehaviour
             }
             if (currentSpeedLevel != 0)
             {                
-                playerVelocity.x = (Mathf.Abs(playerVelocity.x) / playerVelocity.x) * currentSpeedLevel * unitMeasuredSpeedIncrement;
+                playerVelocity.x = (Mathf.Abs(playerVelocity.x) / playerVelocity.x) * currentSpeedLevel/2 * unitMeasuredSpeedIncrement;
             }
             else
             {
                 playerVelocity.x = 0f;
+                SetAnimationByIndex(0);
+                //animator.SetTrigger("ToIdle");
             }
         }
         
@@ -104,44 +135,74 @@ public class CharacterMovementRb : MonoBehaviour
 
     public void SetMovement()
     {
+        bool right = armature.transform.localScale.z ==1? true:false;
         List<InputController.InputActions> inputs = InputController.Instance.thisBeatActions;
         if (inputs.Count ==0 || inputs.Contains(InputController.InputActions.Offbeat))
         {
+            if (currentSpeedLevel != 0)
+            {
+                right = (Mathf.Abs(playerVelocity.x) / playerVelocity.x) >0? true : false;
+            }
             WrongInput();
         }
         else
         {
+            currentEnergy = Mathf.Clamp(currentEnergy+energyRecoveredPerBeat,0,maxEnergy);
+            testUI.UpdateEnergyBar(currentEnergy/maxEnergy);
+
             if (grounded)
             {
+                if (inputs.Contains(InputController.InputActions.Down))
+                {
+                    if (currentSpeedLevel != 0)
+                    {
+                        right = (Mathf.Abs(playerVelocity.x) / playerVelocity.x) > 0 ? true : false;
+                    }
+                    currentSpeedLevel = 0;
+                    playerVelocity.x = currentSpeedLevel * unitMeasuredSpeedIncrement;
+                    SetAnimationByIndex(0);
+                    //animator.SetTrigger("ToIdle");                    
+                }
                 if (inputs.Contains(InputController.InputActions.Right))
                 {
-                    currentSpeedLevel = 1;
-                    playerVelocity.x = currentSpeedLevel * unitMeasuredSpeedIncrement;
-                    animator.SetTrigger("Run");
-                    armature.transform.localScale = new Vector3(1, 1, 1);
+                    right = true;
+                    currentSpeedLevel = 2;
+                    playerVelocity.x = currentSpeedLevel * unitMeasuredSpeedIncrement /2;
+                    SetAnimationByIndex(1);
+                    //animator.SetTrigger("Run");                    
                 }
                 if (inputs.Contains(InputController.InputActions.Left))
                 {
-                    currentSpeedLevel = 1;
-                    playerVelocity.x = -1f* currentSpeedLevel * unitMeasuredSpeedIncrement;
-                    animator.SetTrigger("Run");
-                    armature.transform.localScale = new Vector3(1, 1, -1);
+                    right = false;
+                    currentSpeedLevel = 2;
+                    playerVelocity.x = -1f* currentSpeedLevel * unitMeasuredSpeedIncrement /2;
+                    SetAnimationByIndex(1);
+                    //animator.SetTrigger("Run");                    
                 }
                 if(inputs.Contains(InputController.InputActions.Jump))
                 {
                     if(Mathf.Abs(playerVelocity.x) >=0.1f)
-                    {
-                        playerVelocity.x = (Mathf.Abs(playerVelocity.x) / playerVelocity.x) * currentSpeedLevel * unitMeasuredSpeedIncrement;
+                    {   
+                        if (currentSpeedLevel != 0)
+                        {
+                            right = (Mathf.Abs(playerVelocity.x) / playerVelocity.x) > 0 ? true : false;
+                            currentSpeedLevel= 2;
+                        }                        
+                        playerVelocity.x = (Mathf.Abs(playerVelocity.x) / playerVelocity.x) * currentSpeedLevel * unitMeasuredSpeedIncrement/2;
                     }                    
                     playerVelocity.y += jumpSpeed;
                     CurrentState = PlayerStateRb.Jumping;
-                    animator.SetTrigger("ToIdle");
+                    
                 }
-                if(inputs.Contains(InputController.InputActions.Attack))
+                if(inputs.Contains(InputController.InputActions.Attack) && !inputs.Contains(InputController.InputActions.Jump))
                 {
+                    if (currentSpeedLevel != 0)
+                    {
+                        right = (Mathf.Abs(playerVelocity.x) / playerVelocity.x) > 0 ? true : false;
+                    }
                     Debug.Log("Atacando");
                     CheckEnemy();
-                    animator.SetTrigger("ToIdle");
+                    
                 }
             }
             else
@@ -151,18 +212,26 @@ public class CharacterMovementRb : MonoBehaviour
                     if(CurrentState == PlayerStateRb.WallGrab)
                     {
                         playerVelocity.y += walljumpModificator * jumpSpeed;
-                        currentSpeedLevel = 1;
-                        int modificator = wallAtRight ? -1 : 1;                        
-                        playerVelocity.x = modificator * currentSpeedLevel * unitMeasuredSpeedIncrement;
+                        currentSpeedLevel = 2;
+                        int modificator = wallAtRight ? -1 : 1; 
+                        right = modificator ==1? true: false;
+                        playerVelocity.x = modificator * currentSpeedLevel * unitMeasuredSpeedIncrement/2;
                         currentGravity = normalGravity;
                         CurrentState = PlayerStateRb.Jumping;
                         wallGrab = false;
-                        animator.SetTrigger("ToIdle");
+                        SetAnimationByIndex(1);
                     }
                 }
             }
         }
-
+        if (right)
+        {
+            armature.transform.localScale = new Vector3(1, 1, 1);
+        }
+        else
+        {
+            armature.transform.localScale = new Vector3(1, 1, -1);
+        }
         InputController.Instance.ResetInputs();
     }
 
@@ -178,7 +247,7 @@ public class CharacterMovementRb : MonoBehaviour
             if(currentSpeedLevel ==2) CurrentState= PlayerStateRb.Running;
         }
         return ground;
-        //return Physics.BoxCast(capsCollider.bounds.center, capsCollider.bounds.size, Vector3.down, Quaternion.identity, 0f, groundMask);
+        
     }
 
     private bool IsGrabingWall()
@@ -196,6 +265,7 @@ public class CharacterMovementRb : MonoBehaviour
             playerVelocity.y = 0f;
             currentSpeedLevel = 0;
             CurrentState = PlayerStateRb.WallGrab;
+            SetAnimationByIndex(3);
         }
         
 
@@ -227,6 +297,18 @@ public class CharacterMovementRb : MonoBehaviour
     }
     #endregion
 
+    /// <summary>
+    /// 0:IDLE
+    /// 1:RUN
+    /// 2:???
+    /// 3:WALLGRAB
+    /// 4:WALLJUMP
+    /// </summary>
+    /// <param name="animation"></param>
+    private void SetAnimationByIndex(int animation)
+    {
+        animator.SetInteger(hGlobalParam, animation);
+    }
 
     public enum PlayerStateRb
     {
