@@ -31,10 +31,17 @@ public class CharacterMovementRb : MonoBehaviour
 
     [SerializeField] private float maxEnergy;
     private float currentEnergy;
-    [SerializeField] private float energyLossPerError;
+    [SerializeField] private float energyLossPerError;    
     [SerializeField] private float maxEnergyLoss;
+    [SerializeField] private float enemyCollisionEnergyLoss;
+    //[SerializeField] private float energyLossPerFailedAttack;
     [SerializeField] private float energyRecoveredPerBeat;
+    [SerializeField] private float timeToResetErrors;
+    private float lastErrorTime;
     private int totalErrors;
+    private bool damageFromEnemy =false;
+    private bool missedAttack =false;
+    private bool attacking =false;
 
     [SerializeField] private GameObject armature;
     [SerializeField] private float groundDistanceFallAnimation;
@@ -91,36 +98,39 @@ public class CharacterMovementRb : MonoBehaviour
 
     private void FixedUpdate()
     {
-        IsGrabingWall();
-        grounded = IsGrounded();        
-        if (grounded && playerVelocity.y < 0)
+        if(GameManager.Instance.gameIsActive)
         {
-            playerVelocity.y = 0f;
-        }
-        if((!grounded && CurrentState!=PlayerStateRb.WallGrab) && playerVelocity.y < 0)
-        {                        
-            SetAnimationByIndex(3);            
-            if (CurrentState == PlayerStateRb.Falling)
+            IsGrabingWall();
+            grounded = IsGrounded();
+            if (grounded && playerVelocity.y < 0)
             {
-                if (OverGround())
-                {
-                    //animator.StartPlayback();
-                    animator.speed = 1;
-                }
-                else
-                {
-                    //animator.StopPlayback();
-                    animator.speed = 0;
-                }
+                playerVelocity.y = 0f;
             }
-            CurrentState = PlayerStateRb.Falling;
-        }
-        playerVelocity.y += currentGravity * Time.deltaTime; 
-        if(playerVelocity.y < (-1f * jumpSpeed))
-        {
-            playerVelocity.y = -1f * jumpSpeed;
-        }
-        rb.velocity = playerVelocity;        
+            if ((!grounded && CurrentState != PlayerStateRb.WallGrab) && playerVelocity.y < 0)
+            {
+                SetAnimationByIndex(3);
+                if (CurrentState == PlayerStateRb.Falling)
+                {
+                    if (OverGround())
+                    {
+                        //animator.StartPlayback();
+                        animator.speed = 1;
+                    }
+                    else
+                    {
+                        //animator.StopPlayback();
+                        animator.speed = 0;
+                    }
+                }
+                CurrentState = PlayerStateRb.Falling;
+            }
+            playerVelocity.y += currentGravity * Time.deltaTime;
+            if (playerVelocity.y < (-1f * jumpSpeed))
+            {
+                playerVelocity.y = -1f * jumpSpeed;
+            }
+            rb.velocity = playerVelocity;
+        }              
     }
 
     public void WrongInput()
@@ -129,20 +139,19 @@ public class CharacterMovementRb : MonoBehaviour
         if (CurrentState != PlayerStateRb.Jumping && CurrentState != PlayerStateRb.Falling)
         {
             if(CurrentState != PlayerStateRb.Stopped)
-            {                
-                totalErrors+= 1;
-                GameplayEvents.OnBadAction?.Invoke();
-                if(camShak!=null)
+            {
+                if(damageFromEnemy)
                 {
-                    camShak.ShakeCamera(wrongInputShakeIntensity, wrongInputShakeTime);
-                }                
-                float energyLoss = Mathf.Clamp(totalErrors * energyLossPerError,energyLossPerError,maxEnergyLoss);
-                currentEnergy = Mathf.Clamp(currentEnergy - energyLoss, 0, maxEnergy);
-                testUI.UpdateEnergyBar(currentEnergy / maxEnergy);
-                if(currentEnergy<=0)
-                {
-                    Debug.Log("GAME OVER!");
+                    damageFromEnemy = false;
+                    currentSpeedLevel = 0;
                 }
+                else
+                {
+                    totalErrors += 1;
+                    lastErrorTime = Time.time;
+                    float energyLoss = Mathf.Clamp(totalErrors * energyLossPerError, energyLossPerError, maxEnergyLoss);
+                    EnergyLoss(energyLoss);
+                }                            
             }
             currentSpeedLevel = currentSpeedLevel == 2 ? 1 : 0;            
             if(CurrentState == PlayerStateRb.WallGrab)
@@ -165,6 +174,11 @@ public class CharacterMovementRb : MonoBehaviour
 
     public void SetMovement()
     {
+        attacking = false;
+        if(Time.time - lastErrorTime>= timeToResetErrors)
+        {
+            totalErrors = 0;
+        }
         bool right = armature.transform.localScale.y ==100? true:false;
         List<InputController.InputActions> inputs = InputController.Instance.thisBeatActions;
         if (inputs.Count ==0 || inputs.Contains(InputController.InputActions.Offbeat))
@@ -223,13 +237,17 @@ public class CharacterMovementRb : MonoBehaviour
                 }
                 if(inputs.Contains(InputController.InputActions.Attack) && !inputs.Contains(InputController.InputActions.Jump))
                 {
+                    attacking = true;
+                    SetAnimationByIndex(6);   //KICK   
                     if (currentSpeedLevel != 0)
-                    {
+                    {                        
                         right = (Mathf.Abs(playerVelocity.x) / playerVelocity.x) > 0 ? true : false;
                     }
+                    currentSpeedLevel = 2;
+                    int modif = right? 1 : -1;
+                    playerVelocity.x = modif * currentSpeedLevel * unitMeasuredSpeedIncrement / 2;
                     Debug.Log("Atacando");
-                    CheckEnemy();
-                    
+                    missedAttack = !CheckEnemy();
                 }
             }
             else
@@ -260,6 +278,41 @@ public class CharacterMovementRb : MonoBehaviour
             armature.transform.localScale = new Vector3(100, -100, 100);
         }
         InputController.Instance.ResetInputs();
+        if (missedAttack)
+        {
+            InputController.Instance.AddInputToList(InputController.InputActions.Offbeat);
+            missedAttack= false;
+        }
+    }
+
+    public void EnemyCollision()
+    {
+        InputController.Instance.AddInputToList(InputController.InputActions.Offbeat);
+        totalErrors += 1;
+        lastErrorTime = Time.time;
+        EnergyLoss(enemyCollisionEnergyLoss);
+        damageFromEnemy = true;
+    }
+
+    public void EnergyLoss(float loss)
+    {
+        currentEnergy = Mathf.Clamp(currentEnergy - loss, 0, maxEnergy);
+        testUI.UpdateEnergyBar(currentEnergy / maxEnergy);        
+        GameplayEvents.OnBadAction?.Invoke();
+        if (camShak != null)
+        {
+            camShak.ShakeCamera(wrongInputShakeIntensity, wrongInputShakeTime);
+        }
+        if (currentEnergy <= 0)
+        {
+            GameOver();
+        }
+    }
+
+    private void GameOver()
+    {
+        GameplayEvents.OnGameEnded?.Invoke();
+        this.gameObject.SetActive(false);
     }
 
     #region Chequeos
@@ -302,13 +355,14 @@ public class CharacterMovementRb : MonoBehaviour
         wallGrab = grabing;
         if(grabing)
         {
+            animator.speed = 1;
             wallAtRight = playerVelocity.x > 0 ? true : false;
             currentGravity = grabbedGravity;
             playerVelocity.x = 0f;
             playerVelocity.y = 0f;
             currentSpeedLevel = 0;
             CurrentState = PlayerStateRb.WallGrab;
-            SetAnimationByIndex(0); //CAMBIAR POR ANIMACION DE WALLGRAB!!!
+            SetAnimationByIndex(4); //CAMBIAR POR ANIMACION DE WALLGRAB!!!
         }
         
 
@@ -353,6 +407,7 @@ public class CharacterMovementRb : MonoBehaviour
     /// 3:FALL
     /// 4:WALLGRAB
     /// 5:WALLJUMP
+    /// 6:KICK
     /// </summary>
     /// <param name="animation"></param>
     private void SetAnimationByIndex(int animation)

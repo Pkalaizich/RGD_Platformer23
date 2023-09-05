@@ -18,6 +18,9 @@ public class TestUI : MonoBehaviour
     [SerializeField] private Sprite normalHead;
     [SerializeField] private Sprite failedHead;
 
+    [SerializeField] private TextMeshProUGUI countdownTMP;
+    private int beat = 0;
+
     WaitForSeconds wait = new WaitForSeconds(0.4f);
     private float animDuration;
     #region Singleton
@@ -29,7 +32,7 @@ public class TestUI : MonoBehaviour
             if (_instance == null)
             {
                 _instance = GameObject.FindObjectOfType<TestUI>();
-                DontDestroyOnLoad(_instance.gameObject);
+                //DontDestroyOnLoad(_instance.gameObject);
             }
             return _instance;
         }
@@ -41,7 +44,8 @@ public class TestUI : MonoBehaviour
         animDuration = RythmController.Instance.ThresholdDuration();
         //animDuration = 0.2f;
         GameplayEvents.OnThresholdEnter.AddListener(RabbitHeadScale);
-        GameplayEvents.OnBadAction.AddListener(ChangeFace);
+        GameplayEvents.OnThresholdEnter.AddListener(CountDownBeat);
+        GameplayEvents.OnBadAction.AddListener(ChangeFace);        
     }
     public void UpdateDotPosition(float percentage)
     {
@@ -101,5 +105,28 @@ public class TestUI : MonoBehaviour
         bunnyHead.sprite = failedHead;
         yield return wait;
         bunnyHead.sprite = normalHead;
+    }
+
+    private void CountDownBeat()
+    {
+        beat += 1;
+        if(beat < 4) 
+        {
+            Sequence countdown = DOTween.Sequence();
+            countdownTMP.text = beat.ToString();
+            countdown.Append(countdownTMP.rectTransform.DOScale(Vector3.one,animDuration*2)).Join(countdownTMP.DOFade(1,animDuration*2)).
+                Append(countdownTMP.rectTransform.DOScale(Vector3.zero, 0.1f)).Join(countdownTMP.DOFade(0, 0.1f));
+            countdown.Play();
+        }
+        else
+        {
+            Sequence countdown = DOTween.Sequence();
+            countdownTMP.text = "¡YA!";
+            countdown.Append(countdownTMP.rectTransform.DOScale(Vector3.one, animDuration * 2)).Join(countdownTMP.DOFade(1, animDuration * 2)).
+                Append(countdownTMP.rectTransform.DOScale(Vector3.zero, 0.1f)).Join(countdownTMP.DOFade(0, 0.1f));
+            countdown.Play();
+            GameplayEvents.OnThresholdEnter.RemoveListener(CountDownBeat);
+            GameplayEvents.OnCountdownEnded?.Invoke();
+        }
     }
 }

@@ -18,9 +18,8 @@ public class Enemy : MonoBehaviour
         if(other.tag == "Player")
         {
             Debug.Log("Choco al Player!");
-            anim.SetTrigger("Destroyed");
-            sphCollider.enabled = false;
-            //this.gameObject.SetActive(false);
+            StartCoroutine(DelayedDeactivate(0));
+            other.GetComponent<CharacterMovementRb>().EnemyCollision();
         }
     }
 
@@ -31,7 +30,10 @@ public class Enemy : MonoBehaviour
 
     private IEnumerator DelayedDeactivate(float dealy)
     {
+        sphCollider.enabled = false;
         yield return new WaitForSeconds(dealy);
+        anim.SetTrigger("Destroyed");
+        yield return new WaitForSeconds(2f);
         this.gameObject.SetActive(false);
     }
 }

@@ -545,7 +545,9 @@ MonoBehaviour:
   maxEnergy: 20
   energyLossPerError: 2
   maxEnergyLoss: 5
+  enemyCollisionEnergyLoss: 10
   energyRecoveredPerBeat: 1
+  timeToResetErrors: 23
   armature: {fileID: 8343860953871924429}
   groundDistanceFallAnimation: 3
   wrongInputShakeTime: 0.1
