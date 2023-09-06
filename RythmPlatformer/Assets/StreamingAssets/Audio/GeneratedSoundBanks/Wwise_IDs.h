@@ -14,9 +14,13 @@ namespace AK
     namespace EVENTS
     {
         static const AkUniqueID BACKGROUNDMUSIC = 626769978U;
+        static const AkUniqueID DMG = 513096003U;
+        static const AkUniqueID FOOTSTEPS = 2385628198U;
         static const AkUniqueID JUMP = 3833651337U;
         static const AkUniqueID JUMPLAND = 1548130050U;
         static const AkUniqueID KICKHIT = 3946660102U;
+        static const AkUniqueID KICKSWING = 1889171659U;
+        static const AkUniqueID WALLGRAB = 3604987179U;
     } // namespace EVENTS
 
     namespace BANKS

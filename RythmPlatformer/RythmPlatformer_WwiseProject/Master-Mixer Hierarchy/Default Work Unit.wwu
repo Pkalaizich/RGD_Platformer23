@@ -5,6 +5,11 @@
 			<ChildrenList>
 				<Bus Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}">
 					<PropertyList>
+						<Property Name="BusVolume" Type="Real64">
+							<ValueList>
+								<Value>-6</Value>
+							</ValueList>
+						</Property>
 						<Property Name="Color" Type="int16" Value="11"/>
 						<Property Name="OverrideColor" Type="bool" Value="True"/>
 					</PropertyList>
@@ -27,7 +32,6 @@
 								<Property Name="Color" Type="int16" Value="24"/>
 								<Property Name="OverrideColor" Type="bool" Value="True"/>
 							</PropertyList>
-							<ReferenceList/>
 						</Bus>
 						<Bus Name="SFXS" ID="{FB971F3C-DDBD-4110-9238-8D5E41CC1234}">
 							<PropertyList>

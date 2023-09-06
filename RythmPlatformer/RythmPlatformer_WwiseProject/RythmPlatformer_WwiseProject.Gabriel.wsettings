@@ -18,6 +18,7 @@
 				<Property Name="Event Action List\{ADCF71A2-2BD1-4687-A84F-EE5D82BB9603}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{BBFB3AEA-F4CB-4773-B681-6FD4DE21D79B}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{C366B2AB-94A6-46E3-94B2-BF0530F3DE5C}\x64_Expand States" Type="string" Value=""/>
+				<Property Name="Event Action List\{CB89F3C6-5DD2-4020-BADD-C9108FC3C235}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{E208040A-0009-4ECD-AF13-C8E8DF79B738}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{F45F6F7C-8024-473B-9F6C-60CE37FD774E}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="EventView\FilterMode1" Type="int32" Value="2"/>
@@ -42,7 +43,7 @@
 				<Property Name="GenerateSoundBanks\x64_SelectedSoundBanks" Type="string" Value="mEyhAkXpp0OEjPyWuTRjSxfTGE2knYtIi8Ib2g4tvpQ="/>
 				<Property Name="HardwareController\CurrentSession" Type="string" Value="{2451DD2E-A7B2-45E6-B93B-6F49B9B887AD}"/>
 				<Property Name="HardwareController\{2451DD2E-A7B2-45E6-B93B-6F49B9B887AD}\x64_ActiveGroups_v2" Type="string" Value="aVQJQajOokytHwSGrOFlXwEAz4uPAAAAwJSL/f5/AACorQIU9wEAAAAAAAD3AQAAwJSL/f5/AAA0lNHb/n8AALAseyH3AQAAAAAAAPcBAAAIAAAA9wEAACjoz4uPAAAAkBDm2/5/AACvEebb/n8AAJAQ5tv+fwAAwJSL/f5/AADAlIv9/n8AAKitAhT3AQAAAQAAAPHMqLdKv8NOvf2nh4q0pQ4BAM+LjwAAAMCUi/3+fwAAqK0CFPcBAAAAAAAA9wEAAMCUi/3+fwAANJTR2/5/AACwLHsh9wEAAAAAAAD3AQAACAAAAPcBAAAo6M+LjwAAAJAQ5tv+fwAArxHm2/5/AACQEObb/n8AAMCUi/3+fwAAwJSL/f5/AACorQIU9wEAAAEAAAA="/>
-				<Property Name="Interactive Music\x64_{E23A0B7E-AD1A-4CF4-AD14-2C57A91BCDE5} - SegmentEditorZoomInfo" Type="string" Value="mpmZmZmZuT8AAAAAAADwPwAAAAAAQGJAAAAAAAAA8D8AAAAAAAAAAAAAAAAAAAAA"/>
+				<Property Name="Interactive Music\x64_{E23A0B7E-AD1A-4CF4-AD14-2C57A91BCDE5} - SegmentEditorZoomInfo" Type="string" Value="mpmZmZmZuT8AAAAAAADwPwAAAAAAQGJAAAAAAAAA8D8AAAAAAAAAAAAAAAAAAD9A"/>
 				<Property Name="MeterView\LastObject1" Type="string" Value="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}"/>
 				<Property Name="MeterView\MeterMode1" Type="int32" Value="1"/>
 				<Property Name="MeterView\MeterMode1Viewpoint0" Type="int32" Value="1"/>

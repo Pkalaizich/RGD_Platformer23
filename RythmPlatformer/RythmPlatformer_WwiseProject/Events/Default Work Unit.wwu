@@ -37,6 +37,24 @@
 								</Action>
 							</ChildrenList>
 						</Event>
+						<Event Name="mainMenuMusic" ID="{CB89F3C6-5DD2-4020-BADD-C9108FC3C235}">
+							<PropertyList>
+								<Property Name="Color" Type="int16" Value="15"/>
+								<Property Name="OverrideColor" Type="bool" Value="True"/>
+							</PropertyList>
+							<ChildrenList>
+								<Action Name="" ID="{848F60F9-F4A8-4E85-A259-FF8362820CBC}" ShortID="1048015603">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="2"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Gameplay Music" ID="{DA2CAEF6-CCF9-4385-AA29-7BDAA10DDE98}" WorkUnitID="{957C5BCC-1AE0-4EDB-BAFD-7D26320D7F06}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
 					</ChildrenList>
 				</Folder>
 				<Folder Name="SFXS" ID="{D74A3D90-B3BB-49EA-831E-87470576CCD8}" ShortID="742364904">
