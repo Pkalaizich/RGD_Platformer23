@@ -16,12 +16,14 @@ public class MenusUI : MonoBehaviour
 
     private void Start()
     {
+        menuPanel.SetActive(true);
         playBtn.onClick.AddListener(() =>
         {
             GameManager.Instance.StartGame();
             menuPanel.SetActive(false);
             playBtn.onClick.RemoveAllListeners();
         });
+        silhouette.DOFade(1f, 0f);
         silhouette.rectTransform.DOScale(Vector3.zero, 1f);
         GameplayEvents.OnGameEnded.AddListener(EndAnimation);
     }
