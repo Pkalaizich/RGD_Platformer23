@@ -93,6 +93,10 @@ public class CharacterMovementRb : MonoBehaviour
         dashSpeed = unitMeasuredSpeedIncrement * dashModificator;
 
         GameplayEvents.OnProcessInputs.AddListener(SetMovement);
+        GameplayEvents.OnGameWon.AddListener(()=> {
+            SetAnimationByIndex(7);
+            rb.velocity = new Vector3(0, playerVelocity.y, 0);
+        });
     }
     
 

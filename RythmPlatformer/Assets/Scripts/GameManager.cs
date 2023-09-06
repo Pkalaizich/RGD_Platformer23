@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         GameplayEvents.OnGameEnded.AddListener(EndGame);
+        GameplayEvents.OnGameWon.AddListener(WonGame);
     }
     public void StartGame()
     {
@@ -35,14 +36,26 @@ public class GameManager : MonoBehaviour
     public void EndGame()
     {
         gameIsActive= false;
-        StartCoroutine(RestartGame());
+        StartCoroutine(RestartGame(2f));
     }
     
+    public void WonGame()
+    {
+        gameIsActive = false;
+        StartCoroutine(RestartGameAfterWin(4f));
+    }
 
    
-    private IEnumerator RestartGame()
+    private IEnumerator RestartGame(float waitTime)
     {
-        yield return new WaitForSeconds(2); 
+        yield return new WaitForSeconds(waitTime); 
+        SceneManager.LoadScene(0);
+    }
+    private IEnumerator RestartGameAfterWin(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        FindObjectOfType<MenusUI>().EndAnimation();
+        yield return new WaitForSeconds(2f);
         SceneManager.LoadScene(0);
     }
 

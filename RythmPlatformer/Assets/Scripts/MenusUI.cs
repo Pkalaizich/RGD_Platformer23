@@ -28,7 +28,7 @@ public class MenusUI : MonoBehaviour
         GameplayEvents.OnGameEnded.AddListener(EndAnimation);
     }
 
-    private void EndAnimation()
+    public void EndAnimation()
     {
         silhouette.rectTransform.DOScale(Vector3.one * 5.2f, 1f);
     }

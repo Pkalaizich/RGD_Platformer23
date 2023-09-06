@@ -18,6 +18,8 @@ public class GameplayEvents : MonoBehaviour
 
     private readonly UnityEvent gameEnded = new UnityEvent();
 
+    private readonly UnityEvent gameWon = new UnityEvent();
+
     private readonly UnityEvent countdownEnded = new UnityEvent();
 
     public static UnityEvent OnProcessInputs => instance.processInputsEvent;
@@ -27,6 +29,7 @@ public class GameplayEvents : MonoBehaviour
     public static UnityEvent OnGameStarted => instance.gameStarted;
     public static UnityEvent OnGameEnded => instance.gameEnded;
     public static UnityEvent OnCountdownEnded => instance.countdownEnded;
+    public static UnityEvent OnGameWon => instance.gameWon;
 
 
     private void Awake()
