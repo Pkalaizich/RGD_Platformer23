@@ -1,0 +1,20 @@
+Event	ID	Name			Wwise Object Path	Notes
+	1548130050	jumpLand			\Default Work Unit\SFXS\PLAYER\jumpLand	
+	3833651337	jump			\Default Work Unit\SFXS\PLAYER\jump	
+	3946660102	kickHit			\Default Work Unit\SFXS\PLAYER\kickHit	
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	96524381	jump 1	A:\GitHub Desktop\RGD_Platformer23\RythmPlatformer\RythmPlatformer_WwiseProject\.cache\Mac\SFX\jump 1_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player SFX\PLAYER SFX G\Jump\jump 1		626184
+	109117486	kickHit 3	A:\GitHub Desktop\RGD_Platformer23\RythmPlatformer\RythmPlatformer_WwiseProject\.cache\Mac\SFX\kickHit 3_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player SFX\PLAYER SFX G\Kick Hit\kickHit 3		751404
+	209138196	jumpLand 1	A:\GitHub Desktop\RGD_Platformer23\RythmPlatformer\RythmPlatformer_WwiseProject\.cache\Mac\SFX\jumpLand 1_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player SFX\PLAYER SFX G\Jump Land\jumpLand 1		250532
+	369679033	kickHit 4	A:\GitHub Desktop\RGD_Platformer23\RythmPlatformer\RythmPlatformer_WwiseProject\.cache\Mac\SFX\kickHit 4_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player SFX\PLAYER SFX G\Kick Hit\kickHit 4		751404
+	406201438	kickHit 5	A:\GitHub Desktop\RGD_Platformer23\RythmPlatformer\RythmPlatformer_WwiseProject\.cache\Mac\SFX\kickHit 5_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player SFX\PLAYER SFX G\Kick Hit\kickHit 5		751404
+	420404161	jumpLand 4	A:\GitHub Desktop\RGD_Platformer23\RythmPlatformer\RythmPlatformer_WwiseProject\.cache\Mac\SFX\jumpLand 4_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player SFX\PLAYER SFX G\Jump Land\jumpLand 4		250532
+	716472605	jump 2	A:\GitHub Desktop\RGD_Platformer23\RythmPlatformer\RythmPlatformer_WwiseProject\.cache\Mac\SFX\jump 2_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player SFX\PLAYER SFX G\Jump\jump 2		626184
+	759301624	kickHit 2	A:\GitHub Desktop\RGD_Platformer23\RythmPlatformer\RythmPlatformer_WwiseProject\.cache\Mac\SFX\kickHit 2_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player SFX\PLAYER SFX G\Kick Hit\kickHit 2		751404
+	934171046	jumpLand 5	A:\GitHub Desktop\RGD_Platformer23\RythmPlatformer\RythmPlatformer_WwiseProject\.cache\Mac\SFX\jumpLand 5_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player SFX\PLAYER SFX G\Jump Land\jumpLand 5		250532
+	941204623	kickHit 1	A:\GitHub Desktop\RGD_Platformer23\RythmPlatformer\RythmPlatformer_WwiseProject\.cache\Mac\SFX\kickHit 1_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player SFX\PLAYER SFX G\Kick Hit\kickHit 1		751404
+	944814583	jump 3	A:\GitHub Desktop\RGD_Platformer23\RythmPlatformer\RythmPlatformer_WwiseProject\.cache\Mac\SFX\jump 3_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player SFX\PLAYER SFX G\Jump\jump 3		626184
+	991254648	jumpLand 3	A:\GitHub Desktop\RGD_Platformer23\RythmPlatformer\RythmPlatformer_WwiseProject\.cache\Mac\SFX\jumpLand 3_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player SFX\PLAYER SFX G\Jump Land\jumpLand 3		250532
+	999959925	jumpLand 2	A:\GitHub Desktop\RGD_Platformer23\RythmPlatformer\RythmPlatformer_WwiseProject\.cache\Mac\SFX\jumpLand 2_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player SFX\PLAYER SFX G\Jump Land\jumpLand 2		250532
+

@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SoundBanksInfo Platform="Mac" BasePlatform="Mac" SchemaVersion="16" SoundBankVersion="145">
+	<RootPaths>
+		<ProjectRoot>../..</ProjectRoot>
+		<SourceFilesRoot>../../.cache/Mac</SourceFilesRoot>
+		<SoundBanksRoot>.</SoundBanksRoot>
+		<ExternalSourcesInputFile></ExternalSourcesInputFile>
+		<ExternalSourcesOutputRoot>.</ExternalSourcesOutputRoot>
+	</RootPaths>
+	<DialogueEvents/>
+	<SoundBanks>
+		<SoundBank Id="602065129" Type="User" Language="SFX" Hash="{674D6829-8653-BB74-8B2F-30412A6DFDF8}">
+			<ShortName>SFXS</ShortName>
+			<Path>SFXS.bnk</Path>
+			<Media>
+				<File Id="96524381" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>jump 1.wav</ShortName>
+					<CachePath>SFX/jump 1_10C4C929.wem</CachePath>
+				</File>
+				<File Id="109117486" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>kickHit 3.wav</ShortName>
+					<CachePath>SFX/kickHit 3_10C4C929.wem</CachePath>
+				</File>
+				<File Id="209138196" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>jumpLand 1.wav</ShortName>
+					<CachePath>SFX/jumpLand 1_10C4C929.wem</CachePath>
+				</File>
+				<File Id="369679033" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>kickHit 4.wav</ShortName>
+					<CachePath>SFX/kickHit 4_10C4C929.wem</CachePath>
+				</File>
+				<File Id="406201438" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>kickHit 5.wav</ShortName>
+					<CachePath>SFX/kickHit 5_10C4C929.wem</CachePath>
+				</File>
+				<File Id="420404161" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>jumpLand 4.wav</ShortName>
+					<CachePath>SFX/jumpLand 4_10C4C929.wem</CachePath>
+				</File>
+				<File Id="716472605" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>jump 2.wav</ShortName>
+					<CachePath>SFX/jump 2_10C4C929.wem</CachePath>
+				</File>
+				<File Id="759301624" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>kickHit 2.wav</ShortName>
+					<CachePath>SFX/kickHit 2_10C4C929.wem</CachePath>
+				</File>
+				<File Id="934171046" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>jumpLand 5.wav</ShortName>
+					<CachePath>SFX/jumpLand 5_10C4C929.wem</CachePath>
+				</File>
+				<File Id="941204623" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>kickHit 1.wav</ShortName>
+					<CachePath>SFX/kickHit 1_10C4C929.wem</CachePath>
+				</File>
+				<File Id="944814583" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>jump 3.wav</ShortName>
+					<CachePath>SFX/jump 3_10C4C929.wem</CachePath>
+				</File>
+				<File Id="991254648" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>jumpLand 3.wav</ShortName>
+					<CachePath>SFX/jumpLand 3_10C4C929.wem</CachePath>
+				</File>
+				<File Id="999959925" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>jumpLand 2.wav</ShortName>
+					<CachePath>SFX/jumpLand 2_10C4C929.wem</CachePath>
+				</File>
+			</Media>
+			<Events>
+				<Event Id="3833651337" Name="jump" DurationType="OneShot" DurationMin="3.260875" DurationMax="3.260875">
+					<MediaRefs>
+						<MediaRef Id="96524381"/>
+						<MediaRef Id="716472605"/>
+						<MediaRef Id="944814583"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="1548130050" Name="jumpLand" DurationType="OneShot" DurationMin="1.3043542" DurationMax="1.3043542">
+					<MediaRefs>
+						<MediaRef Id="209138196"/>
+						<MediaRef Id="420404161"/>
+						<MediaRef Id="934171046"/>
+						<MediaRef Id="991254648"/>
+						<MediaRef Id="999959925"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3946660102" Name="kickHit" DurationType="OneShot" DurationMin="3.9130626" DurationMax="3.9130626">
+					<MediaRefs>
+						<MediaRef Id="109117486"/>
+						<MediaRef Id="369679033"/>
+						<MediaRef Id="406201438"/>
+						<MediaRef Id="759301624"/>
+						<MediaRef Id="941204623"/>
+					</MediaRefs>
+				</Event>
+			</Events>
+		</SoundBank>
+		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{327B6DA8-80C2-0A66-CC0F-4D0FCC0A7EBA}">
+			<ShortName>Init</ShortName>
+			<Path>Init.bnk</Path>
+			<Plugins>
+				<Custom>
+					<Plugin Id="229955363" Name="Brick_Wall_Minus_1dB_Peak_Fast_Release (Custom)" LibName="Wwise Peak Limiter" LibId="7208963"/>
+					<Plugin Id="1027672163" Name="High_Impact (Custom)" LibName="Wwise Compressor" LibId="7077891"/>
+				</Custom>
+				<ShareSets>
+					<Plugin Id="1459522457" Name="Brick_Wall_Minus_1dB_Peak_Fast_Release" LibName="Wwise Peak Limiter" LibId="7208963"/>
+				</ShareSets>
+				<AudioDevices>
+					<Plugin Id="2317455096" Name="No_Output" LibName="No Output" LibId="11862023"/>
+					<Plugin Id="3859886410" Name="System" LibName="System" LibId="11403271"/>
+				</AudioDevices>
+			</Plugins>
+			<Busses>
+				<Bus Id="602065129" Name="SFXS">
+					<PluginRefs>
+						<Custom>
+							<PluginRef Id="229955363"/>
+							<PluginRef Id="1027672163"/>
+						</Custom>
+					</PluginRefs>
+				</Bus>
+				<Bus Id="3803692087" Name="Master Audio Bus">
+					<PluginRefs>
+						<ShareSets>
+							<PluginRef Id="1459522457"/>
+						</ShareSets>
+					</PluginRefs>
+				</Bus>
+				<Bus Id="3991942870" Name="MUSIC"/>
+			</Busses>
+		</SoundBank>
+		<SoundBank Id="3991942870" Type="User" Language="SFX" Hash="{B687E882-D5C4-D9A2-D38A-BDA097FC981E}">
+			<ShortName>MUSIC</ShortName>
+			<Path>MUSIC.bnk</Path>
+			<Media>
+				<File Id="345716418" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>BG Music LAYER 3.wav</ShortName>
+					<CachePath>SFX/BG Music LAYER 3_D79FB2B7.wem</CachePath>
+				</File>
+				<File Id="855501646" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>BG Music LAYER 1.wav</ShortName>
+					<CachePath>SFX/BG Music LAYER 1_D79FB2B7.wem</CachePath>
+				</File>
+				<File Id="940452665" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>BG Music LAYER 2.wav</ShortName>
+					<CachePath>SFX/BG Music LAYER 2_D79FB2B7.wem</CachePath>
+				</File>
+			</Media>
+			<Events>
+				<Event Id="626769978" Name="backgroundMusic" DurationType="Infinite">
+					<MediaRefs>
+						<MediaRef Id="345716418"/>
+						<MediaRef Id="855501646"/>
+						<MediaRef Id="940452665"/>
+					</MediaRefs>
+				</Event>
+			</Events>
+		</SoundBank>
+	</SoundBanks>
+	<FileHash>{28E057A9-9688-F6D4-DB3E-EFA49FA1303F}</FileHash>
+</SoundBanksInfo>
