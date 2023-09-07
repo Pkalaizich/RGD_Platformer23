@@ -35,6 +35,18 @@
 										</Reference>
 									</ReferenceList>
 								</Action>
+								<Action Name="" ID="{07FE10CC-685F-4555-A9DB-342E4BAF9F53}" ShortID="615378686">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="2"/>
+										<Property Name="FadeOutCurve" Type="int16" Value="6"/>
+										<Property Name="FadeTime" Type="Real64" Value="0.7"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Main Menu Music" ID="{1F1768A2-ADD5-42DA-8FDD-38772E1226E6}" WorkUnitID="{957C5BCC-1AE0-4EDB-BAFD-7D26320D7F06}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
 							</ChildrenList>
 						</Event>
 						<Event Name="mainMenuMusic" ID="{CB89F3C6-5DD2-4020-BADD-C9108FC3C235}">
@@ -53,6 +65,8 @@
 								<Action Name="" ID="{848F60F9-F4A8-4E85-A259-FF8362820CBC}" ShortID="1048015603">
 									<PropertyList>
 										<Property Name="ActionType" Type="int16" Value="2"/>
+										<Property Name="FadeOutCurve" Type="int16" Value="6"/>
+										<Property Name="FadeTime" Type="Real64" Value="0.5"/>
 									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Target">

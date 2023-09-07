@@ -254,7 +254,7 @@
 				<Bus Id="3991942870" Name="MUSIC"/>
 			</Busses>
 		</SoundBank>
-		<SoundBank Id="3991942870" Type="User" Language="SFX" Hash="{AE731C7F-A3F0-FD44-7911-D2025B819BEB}">
+		<SoundBank Id="3991942870" Type="User" Language="SFX" Hash="{AB3A82D8-ACED-3901-90F7-A216C390B06C}">
 			<ShortName>MUSIC</ShortName>
 			<Path>MUSIC.bnk</Path>
 			<Media>
@@ -291,5 +291,5 @@
 			</Events>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{897C9120-F93D-E3DE-2CE3-0237CEB9F45E}</FileHash>
+	<FileHash>{67C638C5-873F-A627-B609-6945C415F9C1}</FileHash>
 </SoundBanksInfo>
