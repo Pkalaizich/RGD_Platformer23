@@ -237,7 +237,8 @@ public class CharacterMovementRb : MonoBehaviour
                     }                    
                     playerVelocity.y += jumpSpeed;
                     CurrentState = PlayerStateRb.Jumping;
-                    SetAnimationByIndex(2);   //JUMP                 
+                    SetAnimationByIndex(2);   //JUMP
+                    MusicManager.Instance.PlaySound((int)MusicManager.AvailableSFX.Jump);
                 }
                 if(inputs.Contains(InputController.InputActions.Attack) && !inputs.Contains(InputController.InputActions.Jump))
                 {
@@ -269,6 +270,7 @@ public class CharacterMovementRb : MonoBehaviour
                         CurrentState = PlayerStateRb.Jumping;
                         wallGrab = false;
                         SetAnimationByIndex(2); //CAMBIAR POR ANIMACION DE WALLJUMP!!
+                        MusicManager.Instance.PlaySound((int)MusicManager.AvailableSFX.Jump);
                     }
                 }
             }
@@ -359,6 +361,10 @@ public class CharacterMovementRb : MonoBehaviour
         wallGrab = grabing;
         if(grabing)
         {
+            if(CurrentState!=PlayerStateRb.WallGrab)
+            {
+                MusicManager.Instance.PlaySound((int)MusicManager.AvailableSFX.WallGrab);
+            }
             animator.speed = 1;
             wallAtRight = playerVelocity.x > 0 ? true : false;
             currentGravity = grabbedGravity;

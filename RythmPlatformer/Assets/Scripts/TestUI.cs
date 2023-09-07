@@ -127,6 +127,7 @@ public class TestUI : MonoBehaviour
             countdown.Play();
             GameplayEvents.OnThresholdEnter.RemoveListener(CountDownBeat);
             GameplayEvents.OnCountdownEnded?.Invoke();
+            MusicManager.Instance.PlayMusic();
         }
     }
 }
