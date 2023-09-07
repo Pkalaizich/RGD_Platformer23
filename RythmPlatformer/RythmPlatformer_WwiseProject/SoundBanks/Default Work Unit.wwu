@@ -13,6 +13,7 @@
 						<Property Name="OverrideColor" Type="bool" Value="True"/>
 					</PropertyList>
 					<ObjectInclusionList>
+						<ObjectRef Name="mainMenuMusic" ID="{CB89F3C6-5DD2-4020-BADD-C9108FC3C235}" WorkUnitID="{33740BD9-AACF-44F1-8BE2-1AF2D66726E3}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="backgroundMusic" ID="{E208040A-0009-4ECD-AF13-C8E8DF79B738}" WorkUnitID="{33740BD9-AACF-44F1-8BE2-1AF2D66726E3}" Origin="Manual" Filter="7"/>
 					</ObjectInclusionList>
 					<ObjectExclusionList/>

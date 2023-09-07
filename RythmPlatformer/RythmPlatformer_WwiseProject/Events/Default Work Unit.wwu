@@ -17,7 +17,7 @@
 							<ChildrenList>
 								<Action Name="" ID="{8C750E8B-E1CD-43EC-ABF7-65FE32A32D4E}" ShortID="862900124">
 									<PropertyList>
-										<Property Name="Delay" Type="Real64">
+										<Property Name="Delay" Type="Real64" Value="1.412">
 											<ModifierList>
 												<ModifierInfo>
 													<Modifier Name="" ID="{366317D5-2731-4473-9304-99A7F3025764}">
@@ -174,11 +174,11 @@
 						</Folder>
 						<Folder Name="ENEMIES" ID="{4BF9E1B3-C9FE-4D6A-86AB-7E59096532A7}" ShortID="400120707">
 							<PropertyList>
-								<Property Name="Color" Type="int16" Value="9"/>
+								<Property Name="Color" Type="int16" Value="8"/>
 								<Property Name="OverrideColor" Type="bool" Value="True"/>
 							</PropertyList>
 							<ChildrenList>
-								<Event Name="Play_Saw_Idle" ID="{38665BB8-B4C2-4C12-B253-3C136D4FF2DA}">
+								<Event Name="sawIdle" ID="{38665BB8-B4C2-4C12-B253-3C136D4FF2DA}">
 									<PropertyList>
 										<Property Name="Color" Type="int16" Value="21"/>
 										<Property Name="OverrideColor" Type="bool" Value="True"/>

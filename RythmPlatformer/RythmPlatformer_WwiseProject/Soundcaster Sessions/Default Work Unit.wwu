@@ -38,7 +38,7 @@
 							<Position X="1" Y="3"/>
 						</Module>
 						<Module>
-							<ObjectRef Name="Play_Saw_Idle" ID="{38665BB8-B4C2-4C12-B253-3C136D4FF2DA}" WorkUnitID="{33740BD9-AACF-44F1-8BE2-1AF2D66726E3}"/>
+							<ObjectRef Name="sawIdle" ID="{38665BB8-B4C2-4C12-B253-3C136D4FF2DA}" WorkUnitID="{33740BD9-AACF-44F1-8BE2-1AF2D66726E3}"/>
 							<Position X="1" Y="4"/>
 						</Module>
 					</ModuleList>

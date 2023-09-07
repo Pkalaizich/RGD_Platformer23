@@ -6,7 +6,7 @@
 				<ActorMixer Name="PLAYER SFX G" ID="{53238C4A-B186-449B-A6EB-85D05D987295}" ShortID="1055987438">
 					<ReferenceList>
 						<Reference Name="Conversion">
-							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E7DAC419-D403-4D29-B82C-60D6209C4C87}"/>
+							<ObjectRef Name="Vorbis Quality High" ID="{53A9DE0F-3F4F-4B59-8614-3F9E3C7358FC}" WorkUnitID="{F6B2880C-85E5-47FA-A126-645B5DFD9ACC}"/>
 						</Reference>
 						<Reference Name="OutputBus">
 							<ObjectRef Name="SFXS" ID="{FB971F3C-DDBD-4110-9238-8D5E41CC1234}" WorkUnitID="{E23833B1-86B5-4EB8-A43D-B8F76007D866}"/>

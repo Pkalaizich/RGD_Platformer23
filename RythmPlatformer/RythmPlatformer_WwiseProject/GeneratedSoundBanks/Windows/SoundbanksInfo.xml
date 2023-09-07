@@ -9,141 +9,141 @@
 	</RootPaths>
 	<DialogueEvents/>
 	<SoundBanks>
-		<SoundBank Id="602065129" Type="User" Language="SFX" Hash="{53F29752-7BD1-6D37-8982-E2EFBDC27690}">
+		<SoundBank Id="602065129" Type="User" Language="SFX" Hash="{8F21524F-BBC5-A932-E7D0-462F330AF5B5}">
 			<ShortName>SFXS</ShortName>
 			<Path>SFXS.bnk</Path>
 			<Media>
 				<File Id="14196481" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>dmg 1.wav</ShortName>
-					<CachePath>SFX/dmg 1_10C4C929.wem</CachePath>
+					<CachePath>SFX/dmg 1_3F75BDB9.wem</CachePath>
 				</File>
 				<File Id="76277175" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>fstp 4.wav</ShortName>
-					<CachePath>SFX/fstp 4_10C4C929.wem</CachePath>
+					<CachePath>SFX/fstp 4_3F75BDB9.wem</CachePath>
 				</File>
 				<File Id="93970225" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>dmg 2.wav</ShortName>
-					<CachePath>SFX/dmg 2_10C4C929.wem</CachePath>
+					<CachePath>SFX/dmg 2_3F75BDB9.wem</CachePath>
 				</File>
 				<File Id="96524381" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>jump 1.wav</ShortName>
-					<CachePath>SFX/jump 1_10C4C929.wem</CachePath>
+					<CachePath>SFX/jump 1_3F75BDB9.wem</CachePath>
 				</File>
 				<File Id="109117486" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>kickHit 3.wav</ShortName>
-					<CachePath>SFX/kickHit 3_10C4C929.wem</CachePath>
+					<CachePath>SFX/kickHit 3_3F75BDB9.wem</CachePath>
 				</File>
 				<File Id="156453035" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>wallGrab 1.wav</ShortName>
-					<CachePath>SFX/wallGrab 1_10C4C929.wem</CachePath>
+					<CachePath>SFX/wallGrab 1_3F75BDB9.wem</CachePath>
 				</File>
 				<File Id="179927645" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>kickSwing 2.wav</ShortName>
-					<CachePath>SFX/kickSwing 2_10C4C929.wem</CachePath>
+					<CachePath>SFX/kickSwing 2_3F75BDB9.wem</CachePath>
 				</File>
 				<File Id="189194347" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>dmg 4.wav</ShortName>
-					<CachePath>SFX/dmg 4_10C4C929.wem</CachePath>
+					<CachePath>SFX/dmg 4_3F75BDB9.wem</CachePath>
 				</File>
 				<File Id="209138196" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>jumpLand 1.wav</ShortName>
-					<CachePath>SFX/jumpLand 1_10C4C929.wem</CachePath>
+					<CachePath>SFX/jumpLand 1_3F75BDB9.wem</CachePath>
 				</File>
 				<File Id="319152352" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>fstp 1.wav</ShortName>
-					<CachePath>SFX/fstp 1_10C4C929.wem</CachePath>
+					<CachePath>SFX/fstp 1_3F75BDB9.wem</CachePath>
 				</File>
 				<File Id="341305912" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>fstp 6.wav</ShortName>
-					<CachePath>SFX/fstp 6_10C4C929.wem</CachePath>
+					<CachePath>SFX/fstp 6_3F75BDB9.wem</CachePath>
 				</File>
 				<File Id="359772736" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>fstp 5.wav</ShortName>
-					<CachePath>SFX/fstp 5_10C4C929.wem</CachePath>
+					<CachePath>SFX/fstp 5_3F75BDB9.wem</CachePath>
 				</File>
 				<File Id="369679033" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>kickHit 4.wav</ShortName>
-					<CachePath>SFX/kickHit 4_10C4C929.wem</CachePath>
+					<CachePath>SFX/kickHit 4_3F75BDB9.wem</CachePath>
 				</File>
 				<File Id="406201438" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>kickHit 5.wav</ShortName>
-					<CachePath>SFX/kickHit 5_10C4C929.wem</CachePath>
+					<CachePath>SFX/kickHit 5_3F75BDB9.wem</CachePath>
 				</File>
 				<File Id="420404161" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>jumpLand 4.wav</ShortName>
-					<CachePath>SFX/jumpLand 4_10C4C929.wem</CachePath>
+					<CachePath>SFX/jumpLand 4_3F75BDB9.wem</CachePath>
 				</File>
 				<File Id="519027451" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>dmg 3.wav</ShortName>
-					<CachePath>SFX/dmg 3_10C4C929.wem</CachePath>
+					<CachePath>SFX/dmg 3_3F75BDB9.wem</CachePath>
 				</File>
 				<File Id="556225698" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>kickSwing 4.wav</ShortName>
-					<CachePath>SFX/kickSwing 4_10C4C929.wem</CachePath>
+					<CachePath>SFX/kickSwing 4_3F75BDB9.wem</CachePath>
 				</File>
 				<File Id="644136659" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>fstp 3.wav</ShortName>
-					<CachePath>SFX/fstp 3_10C4C929.wem</CachePath>
+					<CachePath>SFX/fstp 3_3F75BDB9.wem</CachePath>
 				</File>
 				<File Id="651553064" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>wallGrab 3.wav</ShortName>
-					<CachePath>SFX/wallGrab 3_10C4C929.wem</CachePath>
+					<CachePath>SFX/wallGrab 3_3F75BDB9.wem</CachePath>
 				</File>
 				<File Id="665553228" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>wallGrab 6.wav</ShortName>
-					<CachePath>SFX/wallGrab 6_10C4C929.wem</CachePath>
+					<CachePath>SFX/wallGrab 6_3F75BDB9.wem</CachePath>
 				</File>
 				<File Id="678376587" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>wallGrab 2.wav</ShortName>
-					<CachePath>SFX/wallGrab 2_10C4C929.wem</CachePath>
+					<CachePath>SFX/wallGrab 2_3F75BDB9.wem</CachePath>
 				</File>
 				<File Id="716472605" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>jump 2.wav</ShortName>
-					<CachePath>SFX/jump 2_10C4C929.wem</CachePath>
+					<CachePath>SFX/jump 2_3F75BDB9.wem</CachePath>
 				</File>
 				<File Id="759301624" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>kickHit 2.wav</ShortName>
-					<CachePath>SFX/kickHit 2_10C4C929.wem</CachePath>
+					<CachePath>SFX/kickHit 2_3F75BDB9.wem</CachePath>
 				</File>
 				<File Id="839512746" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>kickSwing 3.wav</ShortName>
-					<CachePath>SFX/kickSwing 3_10C4C929.wem</CachePath>
+					<CachePath>SFX/kickSwing 3_3F75BDB9.wem</CachePath>
 				</File>
 				<File Id="892530135" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>fstp 2.wav</ShortName>
-					<CachePath>SFX/fstp 2_10C4C929.wem</CachePath>
+					<CachePath>SFX/fstp 2_3F75BDB9.wem</CachePath>
 				</File>
 				<File Id="934171046" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>jumpLand 5.wav</ShortName>
-					<CachePath>SFX/jumpLand 5_10C4C929.wem</CachePath>
+					<CachePath>SFX/jumpLand 5_3F75BDB9.wem</CachePath>
 				</File>
 				<File Id="941204623" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>kickHit 1.wav</ShortName>
-					<CachePath>SFX/kickHit 1_10C4C929.wem</CachePath>
+					<CachePath>SFX/kickHit 1_3F75BDB9.wem</CachePath>
 				</File>
 				<File Id="944814583" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>jump 3.wav</ShortName>
-					<CachePath>SFX/jump 3_10C4C929.wem</CachePath>
+					<CachePath>SFX/jump 3_3F75BDB9.wem</CachePath>
 				</File>
 				<File Id="984564523" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>wallGrab 4.wav</ShortName>
-					<CachePath>SFX/wallGrab 4_10C4C929.wem</CachePath>
+					<CachePath>SFX/wallGrab 4_3F75BDB9.wem</CachePath>
 				</File>
 				<File Id="987353467" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>wallGrab 5.wav</ShortName>
-					<CachePath>SFX/wallGrab 5_10C4C929.wem</CachePath>
+					<CachePath>SFX/wallGrab 5_3F75BDB9.wem</CachePath>
 				</File>
 				<File Id="991254648" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>jumpLand 3.wav</ShortName>
-					<CachePath>SFX/jumpLand 3_10C4C929.wem</CachePath>
+					<CachePath>SFX/jumpLand 3_3F75BDB9.wem</CachePath>
 				</File>
 				<File Id="993090612" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>kickSwing 1.wav</ShortName>
-					<CachePath>SFX/kickSwing 1_10C4C929.wem</CachePath>
+					<CachePath>SFX/kickSwing 1_3F75BDB9.wem</CachePath>
 				</File>
 				<File Id="999959925" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>jumpLand 2.wav</ShortName>
-					<CachePath>SFX/jumpLand 2_10C4C929.wem</CachePath>
+					<CachePath>SFX/jumpLand 2_3F75BDB9.wem</CachePath>
 				</File>
 			</Media>
 			<Events>
@@ -245,21 +245,21 @@
 				<Bus Id="3991942870" Name="MUSIC"/>
 			</Busses>
 		</SoundBank>
-		<SoundBank Id="3991942870" Type="User" Language="SFX" Hash="{B687E882-D5C4-D9A2-D38A-BDA097FC981E}">
+		<SoundBank Id="3991942870" Type="User" Language="SFX" Hash="{CE5B9FF8-D13E-8A8E-534F-FB78DE2704CE}">
 			<ShortName>MUSIC</ShortName>
 			<Path>MUSIC.bnk</Path>
 			<Media>
 				<File Id="345716418" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>BG Music LAYER 3.wav</ShortName>
-					<CachePath>SFX/BG Music LAYER 3_D79FB2B7.wem</CachePath>
+					<CachePath>SFX/BG Music LAYER 3_9EDFC787.wem</CachePath>
 				</File>
 				<File Id="855501646" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>BG Music LAYER 1.wav</ShortName>
-					<CachePath>SFX/BG Music LAYER 1_D79FB2B7.wem</CachePath>
+					<CachePath>SFX/BG Music LAYER 1_9EDFC787.wem</CachePath>
 				</File>
 				<File Id="940452665" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>BG Music LAYER 2.wav</ShortName>
-					<CachePath>SFX/BG Music LAYER 2_D79FB2B7.wem</CachePath>
+					<CachePath>SFX/BG Music LAYER 2_9EDFC787.wem</CachePath>
 				</File>
 			</Media>
 			<Events>
@@ -270,8 +270,9 @@
 						<MediaRef Id="940452665"/>
 					</MediaRefs>
 				</Event>
+				<Event Id="1991862712" Name="mainMenuMusic" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
 			</Events>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{29AFC670-27DE-CF21-6760-A52817856020}</FileHash>
+	<FileHash>{96E38562-76ED-C493-562B-89E7DCCF1FEE}</FileHash>
 </SoundBanksInfo>

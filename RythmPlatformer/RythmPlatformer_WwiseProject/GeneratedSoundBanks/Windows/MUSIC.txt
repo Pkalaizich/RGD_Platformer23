@@ -1,8 +1,9 @@
 Event	ID	Name			Wwise Object Path	Notes
 	626769978	backgroundMusic			\Default Work Unit\MUSIC\backgroundMusic	
+	1991862712	mainMenuMusic			\Default Work Unit\MUSIC\mainMenuMusic	
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
-	345716418	BG Music LAYER 3	A:\GitHub Desktop\RGD_Platformer23\RythmPlatformer\RythmPlatformer_WwiseProject\.cache\Windows\SFX\BG Music LAYER 3_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\Music\Gameplay Music\Gameplay 1\BG Music LAYER 3		34059228
-	855501646	BG Music LAYER 1	A:\GitHub Desktop\RGD_Platformer23\RythmPlatformer\RythmPlatformer_WwiseProject\.cache\Windows\SFX\BG Music LAYER 1_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\Music\Gameplay Music\Gameplay 1\BG Music LAYER 1		34059228
-	940452665	BG Music LAYER 2	A:\GitHub Desktop\RGD_Platformer23\RythmPlatformer\RythmPlatformer_WwiseProject\.cache\Windows\SFX\BG Music LAYER 2_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\Music\Gameplay Music\Gameplay 1\BG Music LAYER 2		34059228
+	345716418	BG Music LAYER 3	A:\GitHub Desktop\RGD_Platformer23\RythmPlatformer\RythmPlatformer_WwiseProject\.cache\Windows\SFX\BG Music LAYER 3_9EDFC787.wem		\Interactive Music Hierarchy\Default Work Unit\Music\Gameplay Music\Gameplay 1\BG Music LAYER 3		3509513
+	855501646	BG Music LAYER 1	A:\GitHub Desktop\RGD_Platformer23\RythmPlatformer\RythmPlatformer_WwiseProject\.cache\Windows\SFX\BG Music LAYER 1_9EDFC787.wem		\Interactive Music Hierarchy\Default Work Unit\Music\Gameplay Music\Gameplay 1\BG Music LAYER 1		3241067
+	940452665	BG Music LAYER 2	A:\GitHub Desktop\RGD_Platformer23\RythmPlatformer\RythmPlatformer_WwiseProject\.cache\Windows\SFX\BG Music LAYER 2_9EDFC787.wem		\Interactive Music Hierarchy\Default Work Unit\Music\Gameplay Music\Gameplay 1\BG Music LAYER 2		3063348
 
