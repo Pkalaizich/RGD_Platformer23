@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ProjectInfo>
+	<Project Name="RythmPlatformer_WwiseProject" GUID="{3A907029-BDED-4643-B527-66A69D9A06E0}" Generator="2022.1.7.8290"/>
+	<CacheRoot>../../../../RythmPlatformer_WwiseProject/.cache</CacheRoot>
+	<Platforms>
+		<Platform Name="Mac" GUID="{369157EE-6636-4809-B6F4-62372E94CD84}" BasePlatform="Mac" BasePlatformGUID="{9C6217D5-DD11-4795-87C1-6CE02853C540}" Path="../../../../RythmPlatformer_WwiseProject/GeneratedSoundBanks/Mac"/>
+		<Platform Name="Windows" GUID="{72D4188B-73A8-470F-8083-AF370C4F4122}" BasePlatform="Windows" BasePlatformGUID="{6E0CB257-C6C8-4C5C-8366-2740DFC441EB}" Path="../../../../RythmPlatformer_WwiseProject/GeneratedSoundBanks/Windows"/>
+	</Platforms>
+	<Languages>
+		<Language Name="English(US)" Id="684519430" GUID="{44960FF0-778D-47CC-900E-1E4BCE5E9A46}" Default="true" UseAsStandIn="true"/>
+	</Languages>
+	<FileHash>{A32EEA90-8412-8DC1-FA3B-F8F2E44F0FFC}</FileHash>
+</ProjectInfo>

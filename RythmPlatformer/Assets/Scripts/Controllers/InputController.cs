@@ -10,7 +10,7 @@ public class InputController : MonoBehaviour
     private bool inTimeWindow;
 
     private bool validTime;
-
+    private bool validInput = false;
     public List<InputActions> thisBeatActions { get; private set; }
 
 
@@ -23,7 +23,7 @@ public class InputController : MonoBehaviour
             if (_instance == null)
             {
                 _instance = GameObject.FindObjectOfType<InputController>();
-                DontDestroyOnLoad(_instance.gameObject);
+                //DontDestroyOnLoad(_instance.gameObject);
             }
             return _instance;
         }
@@ -35,90 +35,100 @@ public class InputController : MonoBehaviour
         thisBeatActions = new List<InputActions>();
         inTimeWindow = false;
         validTime = false;
+        GameplayEvents.OnCountdownEnded.AddListener(ActivateInput);
+    }
+
+    private void ActivateInput()
+    {
+        validInput= true;
     }
 
     private void Update()
     {
-        validTime = RythmController.Instance.validInput;
-
-        #region Inputs
-        if (!thisBeatActions.Contains(InputActions.Offbeat))
+        if(GameManager.Instance.gameIsActive && validInput)
         {
-            if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
-            {
-                if(validTime)
-                {                                   
-                    if(!thisBeatActions.Contains(InputActions.Left)&& !thisBeatActions.Contains(InputActions.Down))
-                        AddInputToList(InputActions.Right);
-                }
-                else
-                {
-                    AddInputToList(InputActions.Offbeat);
-                }
-            }
+            validTime = RythmController.Instance.validInput;
 
-            if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
+            #region Inputs
+            if (!thisBeatActions.Contains(InputActions.Offbeat))
             {
-                if (validTime)
+                if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
                 {
-                    if (!thisBeatActions.Contains(InputActions.Right) && !thisBeatActions.Contains(InputActions.Down))
-                        AddInputToList(InputActions.Left);
+                    if (validTime)
+                    {
+                        if (!thisBeatActions.Contains(InputActions.Left) && !thisBeatActions.Contains(InputActions.Down))
+                            AddInputToList(InputActions.Right);
+                    }
+                    else
+                    {
+                        AddInputToList(InputActions.Offbeat);
+                    }
                 }
-                else
+
+                if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
                 {
-                    AddInputToList(InputActions.Offbeat);
+                    if (validTime)
+                    {
+                        if (!thisBeatActions.Contains(InputActions.Right) && !thisBeatActions.Contains(InputActions.Down))
+                            AddInputToList(InputActions.Left);
+                    }
+                    else
+                    {
+                        AddInputToList(InputActions.Offbeat);
+                    }
                 }
+                if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
+                {
+                    if (validTime)
+                    {
+                        if (!thisBeatActions.Contains(InputActions.Right) && !thisBeatActions.Contains(InputActions.Left))
+                            AddInputToList(InputActions.Down);
+                    }
+                    else
+                    {
+                        AddInputToList(InputActions.Offbeat);
+                    }
+                }
+                if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
+                {
+                    if (validTime)
+                    {
+                        AddInputToList(InputActions.Jump);
+                    }
+                    else
+                    {
+                        AddInputToList(InputActions.Offbeat);
+                    }
+                }
+                if (Input.GetKeyDown(KeyCode.LeftShift))
+                {
+                    if (validTime)
+                    {
+                        AddInputToList(InputActions.Dash);
+                    }
+                    else
+                    {
+                        AddInputToList(InputActions.Offbeat);
+                    }
+                }
+                if (Input.GetButtonDown("Fire1"))
+                {
+                    if (validTime)
+                    {
+                        AddInputToList(InputActions.Attack);
+                    }
+                    else
+                    {
+                        AddInputToList(InputActions.Offbeat);
+                    }
+                }
+                #endregion
             }
-            if (Input.GetKeyDown(KeyCode.S)|| Input.GetKeyDown(KeyCode.DownArrow))
-            {
-                if (validTime)
-                {
-                    if (!thisBeatActions.Contains(InputActions.Right) && !thisBeatActions.Contains(InputActions.Left))
-                        AddInputToList(InputActions.Down);
-                }
-                else
-                {
-                    AddInputToList(InputActions.Offbeat);
-                }
-            }
-            if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
-            {
-                if (validTime)
-                {                    
-                    AddInputToList(InputActions.Jump);
-                }
-                else
-                {
-                    AddInputToList(InputActions.Offbeat);
-                }
-            }
-            if (Input.GetKeyDown(KeyCode.LeftShift))
-            {
-                if (validTime)
-                {
-                    AddInputToList(InputActions.Dash);
-                }
-                else
-                {
-                    AddInputToList(InputActions.Offbeat);
-                }
-            }
-            if (Input.GetButtonDown("Fire1"))
-            {
-                if (validTime)
-                {
-                    AddInputToList(InputActions.Attack);
-                }
-                else
-                {
-                    AddInputToList(InputActions.Offbeat);
-                }
-            }
-            #endregion
         }
+        
     }
 
-    private void AddInputToList(InputActions input)
+    public void AddInputToList(InputActions input)
     {
         //RythmController.Instance.recivedInputInBeat = true;
         if (!inTimeWindow)

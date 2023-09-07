@@ -36,7 +36,7 @@ public class RythmController : MonoBehaviour
             if (_instance == null)
             {
                 _instance = GameObject.FindObjectOfType<RythmController>();
-                DontDestroyOnLoad(_instance.gameObject);
+                //DontDestroyOnLoad(_instance.gameObject);
             }
             return _instance;
         }
@@ -51,13 +51,16 @@ public class RythmController : MonoBehaviour
         testUI = FindObjectOfType<TestUI>();
         inThresHold = true;
     }
+    private void Start()
+    {
+        GameplayEvents.OnGameStarted.AddListener(StartRythm);
+    }
 
     private void Update()
     {
-        if(gameStarted)
+        if(GameManager.Instance.gameIsActive)
         {
             float currentTime = Time.time - lastBeatTime;            
-            testUI.UpdateDotPosition(currentTime / secPerBeat);
             if (currentTime >= secPerBeat) 
             {
                 aSource.PlayOneShot(tickSFX);
@@ -85,17 +88,21 @@ public class RythmController : MonoBehaviour
                 validInput= false;
             }
         }
-        else
+        /*else
         {
             if(Input.GetKeyDown(KeyCode.P)) 
             {
                 gameStarted= true;
-                aSource.PlayOneShot(tickSFX);
-                lastBeatTime= Time.time;
+                
             }
-        }
+        }*/
     }
 
+    private void StartRythm()
+    {
+        //aSource.PlayOneShot(tickSFX);
+        lastBeatTime = Time.time;
+    }
     private IEnumerator CheckInput()
     {
         yield return new WaitForSeconds(inputThreshold*secPerBeat);

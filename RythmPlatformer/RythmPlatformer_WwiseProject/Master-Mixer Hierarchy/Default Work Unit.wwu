@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{E23833B1-86B5-4EB8-A43D-B8F76007D866}" SchemaVersion="110">
+	<Busses>
+		<WorkUnit Name="Default Work Unit" ID="{E23833B1-86B5-4EB8-A43D-B8F76007D866}" PersistMode="Standalone">
+			<ChildrenList>
+				<Bus Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}">
+					<PropertyList>
+						<Property Name="BusVolume" Type="Real64">
+							<ValueList>
+								<Value>-6</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Color" Type="int16" Value="11"/>
+						<Property Name="OverrideColor" Type="bool" Value="True"/>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="AudioDevice" PluginName="System" CompanyID="0" PluginID="174" PluginType="7">
+							<ObjectRef Name="System" ID="{246F78E6-4E2C-4529-89C9-C5A4AA1B94E6}" WorkUnitID="{02956508-F3A6-4F75-A498-0BAD6853F864}"/>
+						</Reference>
+						<Reference Name="Effect0" PluginName="Wwise Peak Limiter" CompanyID="0" PluginID="110" PluginType="3">
+							<ObjectRef Name="Brick_Wall_Minus_1dB_Peak_Fast_Release" ID="{2144284E-7ADD-4341-86A4-4E468BEC9A2D}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<Bus Name="MUSIC" ID="{DF8BB020-DCA9-4D51-8846-A9E8BF74C1D6}">
+							<PropertyList>
+								<Property Name="BusVolume" Type="Real64">
+									<ValueList>
+										<Value>-12</Value>
+									</ValueList>
+								</Property>
+								<Property Name="Color" Type="int16" Value="24"/>
+								<Property Name="OverrideColor" Type="bool" Value="True"/>
+							</PropertyList>
+						</Bus>
+						<Bus Name="SFXS" ID="{FB971F3C-DDBD-4110-9238-8D5E41CC1234}">
+							<PropertyList>
+								<Property Name="Color" Type="int16" Value="24"/>
+								<Property Name="OverrideColor" Type="bool" Value="True"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Effect0">
+									<Custom CreatedFrom="{2AFD6FB0-C906-4683-A377-FEEEF72967B0}">
+										<Effect Name="High_Impact (Custom)" ID="{C2D85097-207C-4D0C-A978-EB76C17028A0}" ShortID="1027672163" PluginName="Wwise Compressor" CompanyID="0" PluginID="108" PluginType="3">
+											<PropertyList>
+												<Property Name="AttackTime" Type="Real32" Value="0.04"/>
+												<Property Name="Ratio" Type="Real32" Value="12"/>
+												<Property Name="ReleaseTime" Type="Real32" Value="0.5"/>
+												<Property Name="Threshold" Type="Real32" Value="-6"/>
+											</PropertyList>
+										</Effect>
+									</Custom>
+								</Reference>
+								<Reference Name="Effect1">
+									<Custom CreatedFrom="{2144284E-7ADD-4341-86A4-4E468BEC9A2D}">
+										<Effect Name="Brick_Wall_Minus_1dB_Peak_Fast_Release (Custom)" ID="{D9410E8B-84AF-4FC4-AED4-E26AE9F056F0}" ShortID="229955363" PluginName="Wwise Peak Limiter" CompanyID="0" PluginID="110" PluginType="3">
+											<PropertyList>
+												<Property Name="OutputGain" Type="Real32" Value="2"/>
+												<Property Name="Ratio" Type="Real32" Value="50"/>
+												<Property Name="ReleaseTime" Type="Real32" Value="0.02"/>
+												<Property Name="Threshold" Type="Real32" Value="-1"/>
+											</PropertyList>
+										</Effect>
+									</Custom>
+								</Reference>
+							</ReferenceList>
+						</Bus>
+					</ChildrenList>
+				</Bus>
+			</ChildrenList>
+		</WorkUnit>
+	</Busses>
+</WwiseDocument>

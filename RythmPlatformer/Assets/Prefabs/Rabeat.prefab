@@ -511,7 +511,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.4
+  m_Radius: 0.7
   m_Height: 4
   m_Direction: 1
   m_Center: {x: 0, y: 1.9, z: 0.15}
@@ -545,7 +545,9 @@ MonoBehaviour:
   maxEnergy: 20
   energyLossPerError: 2
   maxEnergyLoss: 5
+  enemyCollisionEnergyLoss: 10
   energyRecoveredPerBeat: 1
+  timeToResetErrors: 23
   armature: {fileID: 8343860953871924429}
   groundDistanceFallAnimation: 3
   wrongInputShakeTime: 0.1

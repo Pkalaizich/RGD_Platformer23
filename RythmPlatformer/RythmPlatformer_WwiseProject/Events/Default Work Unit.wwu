@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{33740BD9-AACF-44F1-8BE2-1AF2D66726E3}" SchemaVersion="110">
+	<Events>
+		<WorkUnit Name="Default Work Unit" ID="{33740BD9-AACF-44F1-8BE2-1AF2D66726E3}" PersistMode="Standalone">
+			<ChildrenList>
+				<Folder Name="MUSIC" ID="{32D165CE-D3DE-4A23-86E6-F880B2EFDC7A}" ShortID="9537531">
+					<PropertyList>
+						<Property Name="Color" Type="int16" Value="2"/>
+						<Property Name="OverrideColor" Type="bool" Value="True"/>
+					</PropertyList>
+					<ChildrenList>
+						<Event Name="backgroundMusic" ID="{E208040A-0009-4ECD-AF13-C8E8DF79B738}">
+							<PropertyList>
+								<Property Name="Color" Type="int16" Value="15"/>
+								<Property Name="OverrideColor" Type="bool" Value="True"/>
+							</PropertyList>
+							<ChildrenList>
+								<Action Name="" ID="{8C750E8B-E1CD-43EC-ABF7-65FE32A32D4E}" ShortID="862900124">
+									<PropertyList>
+										<Property Name="Delay" Type="Real64">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{366317D5-2731-4473-9304-99A7F3025764}">
+														<PropertyList>
+															<Property Name="Min" Type="Real64" Value="-4"/>
+														</PropertyList>
+													</Modifier>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Gameplay Music" ID="{DA2CAEF6-CCF9-4385-AA29-7BDAA10DDE98}" WorkUnitID="{957C5BCC-1AE0-4EDB-BAFD-7D26320D7F06}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="mainMenuMusic" ID="{CB89F3C6-5DD2-4020-BADD-C9108FC3C235}">
+							<PropertyList>
+								<Property Name="Color" Type="int16" Value="15"/>
+								<Property Name="OverrideColor" Type="bool" Value="True"/>
+							</PropertyList>
+							<ChildrenList>
+								<Action Name="" ID="{848F60F9-F4A8-4E85-A259-FF8362820CBC}" ShortID="1048015603">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="2"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Gameplay Music" ID="{DA2CAEF6-CCF9-4385-AA29-7BDAA10DDE98}" WorkUnitID="{957C5BCC-1AE0-4EDB-BAFD-7D26320D7F06}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+					</ChildrenList>
+				</Folder>
+				<Folder Name="SFXS" ID="{D74A3D90-B3BB-49EA-831E-87470576CCD8}" ShortID="742364904">
+					<ChildrenList>
+						<Folder Name="PLAYER" ID="{844C6C70-1AED-4A62-8119-AD7ADD15827C}" ShortID="711029706">
+							<PropertyList>
+								<Property Name="Color" Type="int16" Value="4"/>
+								<Property Name="OverrideColor" Type="bool" Value="True"/>
+							</PropertyList>
+							<ChildrenList>
+								<Event Name="kickHit" ID="{0E376073-BEA2-4CEE-BFB1-83AB9B899F22}">
+									<PropertyList>
+										<Property Name="Color" Type="int16" Value="17"/>
+										<Property Name="OverrideColor" Type="bool" Value="True"/>
+									</PropertyList>
+									<ChildrenList>
+										<Action Name="" ID="{E86FF880-9CA5-4787-88EF-79619D56373F}" ShortID="680621974">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Kick Hit" ID="{D27E7C8E-523C-458D-8478-C4C9BB496F26}" WorkUnitID="{277AB089-C7F6-498C-84AD-3501CCF68B31}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="jump" ID="{BBFB3AEA-F4CB-4773-B681-6FD4DE21D79B}">
+									<PropertyList>
+										<Property Name="Color" Type="int16" Value="17"/>
+										<Property Name="OverrideColor" Type="bool" Value="True"/>
+									</PropertyList>
+									<ChildrenList>
+										<Action Name="" ID="{77CB5213-BFF3-47FA-A9E6-D202FCEE5D48}" ShortID="818299175">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Jump" ID="{0BF775DF-FFCE-4AB5-BCF3-24C2AC7A7E14}" WorkUnitID="{277AB089-C7F6-498C-84AD-3501CCF68B31}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="jumpLand" ID="{C366B2AB-94A6-46E3-94B2-BF0530F3DE5C}">
+									<PropertyList>
+										<Property Name="Color" Type="int16" Value="17"/>
+										<Property Name="OverrideColor" Type="bool" Value="True"/>
+									</PropertyList>
+									<ChildrenList>
+										<Action Name="" ID="{D5B8F699-633A-4EA7-9DCF-F8D76C62178B}" ShortID="273052321">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Jump Land" ID="{A866A43D-B7EF-42BD-8542-18EC1509CD21}" WorkUnitID="{277AB089-C7F6-498C-84AD-3501CCF68B31}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="footsteps" ID="{71850E24-68AD-41B3-9CD2-166265107607}">
+									<PropertyList>
+										<Property Name="Color" Type="int16" Value="17"/>
+										<Property Name="OverrideColor" Type="bool" Value="True"/>
+									</PropertyList>
+									<ChildrenList>
+										<Action Name="" ID="{EEED0D6D-BF25-4BA2-A80A-EE1225AD468E}" ShortID="613183432">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Footsteps" ID="{666D6C6C-E509-4D76-90EC-B9D7AD951BB2}" WorkUnitID="{277AB089-C7F6-498C-84AD-3501CCF68B31}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="kickSwing" ID="{ADCF71A2-2BD1-4687-A84F-EE5D82BB9603}">
+									<PropertyList>
+										<Property Name="Color" Type="int16" Value="17"/>
+										<Property Name="OverrideColor" Type="bool" Value="True"/>
+									</PropertyList>
+									<ChildrenList>
+										<Action Name="" ID="{3C45D682-EF22-40E9-8568-3F1EDB06FDA7}" ShortID="1047150289">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Kick Swing" ID="{B768D9C3-7651-484F-9894-F0C876AE6308}" WorkUnitID="{277AB089-C7F6-498C-84AD-3501CCF68B31}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="wallgrab" ID="{F45F6F7C-8024-473B-9F6C-60CE37FD774E}">
+									<PropertyList>
+										<Property Name="Color" Type="int16" Value="17"/>
+										<Property Name="OverrideColor" Type="bool" Value="True"/>
+									</PropertyList>
+									<ChildrenList>
+										<Action Name="" ID="{C8F9490A-EAFD-4D76-B1E0-04E1AB4CB3CC}" ShortID="9352450">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Wallgrab" ID="{1411EAD4-7784-4A62-934F-021793316ECD}" WorkUnitID="{277AB089-C7F6-498C-84AD-3501CCF68B31}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="dmg" ID="{16F05975-730A-4D25-8D01-323677860DCE}">
+									<PropertyList>
+										<Property Name="Color" Type="int16" Value="17"/>
+										<Property Name="OverrideColor" Type="bool" Value="True"/>
+									</PropertyList>
+									<ChildrenList>
+										<Action Name="" ID="{5179E7FC-EE1F-463C-8D82-8F8DD135B12B}" ShortID="658956649">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Dmg" ID="{A3E9224D-7E51-43A2-9A10-3263DA7A90FC}" WorkUnitID="{277AB089-C7F6-498C-84AD-3501CCF68B31}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+							</ChildrenList>
+						</Folder>
+						<Folder Name="ENEMIES" ID="{4BF9E1B3-C9FE-4D6A-86AB-7E59096532A7}" ShortID="400120707">
+							<PropertyList>
+								<Property Name="Color" Type="int16" Value="9"/>
+								<Property Name="OverrideColor" Type="bool" Value="True"/>
+							</PropertyList>
+							<ChildrenList>
+								<Event Name="Play_Saw_Idle" ID="{38665BB8-B4C2-4C12-B253-3C136D4FF2DA}">
+									<PropertyList>
+										<Property Name="Color" Type="int16" Value="21"/>
+										<Property Name="OverrideColor" Type="bool" Value="True"/>
+									</PropertyList>
+									<ChildrenList>
+										<Action Name="" ID="{C3FB6555-E435-40AC-BB45-842F4010701B}" ShortID="168824215">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Saw Idle" ID="{8F47A7F6-9051-4614-A369-CBC7A02D469C}" WorkUnitID="{E39C3D3D-61DD-48D3-BB0F-E7E2CE56A87F}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+							</ChildrenList>
+						</Folder>
+					</ChildrenList>
+				</Folder>
+			</ChildrenList>
+		</WorkUnit>
+	</Events>
+</WwiseDocument>
