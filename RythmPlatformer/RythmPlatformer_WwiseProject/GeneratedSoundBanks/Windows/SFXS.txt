@@ -1,5 +1,6 @@
 Event	ID	Name			Wwise Object Path	Notes
 	513096003	dmg			\Default Work Unit\SFXS\PLAYER\dmg	
+	1177020078	sawIdle			\Default Work Unit\SFXS\ENEMIES\sawIdle	
 	1548130050	jumpLand			\Default Work Unit\SFXS\PLAYER\jumpLand	
 	1889171659	kickSwing			\Default Work Unit\SFXS\PLAYER\kickSwing	
 	2385628198	footsteps			\Default Work Unit\SFXS\PLAYER\footsteps	
@@ -32,6 +33,7 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	716472605	jump 2	A:\GitHub Desktop\RGD_Platformer23\RythmPlatformer\RythmPlatformer_WwiseProject\.cache\Windows\SFX\jump 2_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player SFX\PLAYER SFX G\Jump\jump 2		34412
 	759301624	kickHit 2	A:\GitHub Desktop\RGD_Platformer23\RythmPlatformer\RythmPlatformer_WwiseProject\.cache\Windows\SFX\kickHit 2_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player SFX\PLAYER SFX G\Kick Hit\kickHit 2		53410
 	839512746	kickSwing 3	A:\GitHub Desktop\RGD_Platformer23\RythmPlatformer\RythmPlatformer_WwiseProject\.cache\Windows\SFX\kickSwing 3_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player SFX\PLAYER SFX G\Kick Swing\kickSwing 3		7851
+	872038207	saw_idle LOOP	A:\GitHub Desktop\RGD_Platformer23\RythmPlatformer\RythmPlatformer_WwiseProject\.cache\Windows\SFX\saw_idle LOOP_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Enemies SFX\ENEMIES SFX G\Saw Idle\saw_idle LOOP		175449
 	892530135	fstp 2	A:\GitHub Desktop\RGD_Platformer23\RythmPlatformer\RythmPlatformer_WwiseProject\.cache\Windows\SFX\fstp 2_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player SFX\PLAYER SFX G\Footsteps\fstp 2		4656
 	934171046	jumpLand 5	A:\GitHub Desktop\RGD_Platformer23\RythmPlatformer\RythmPlatformer_WwiseProject\.cache\Windows\SFX\jumpLand 5_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player SFX\PLAYER SFX G\Jump Land\jumpLand 5		9647
 	941204623	kickHit 1	A:\GitHub Desktop\RGD_Platformer23\RythmPlatformer\RythmPlatformer_WwiseProject\.cache\Windows\SFX\kickHit 1_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player SFX\PLAYER SFX G\Kick Hit\kickHit 1		53505

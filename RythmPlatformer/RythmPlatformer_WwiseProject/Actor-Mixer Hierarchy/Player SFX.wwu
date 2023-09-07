@@ -2,8 +2,16 @@
 <WwiseDocument Type="WorkUnit" ID="{277AB089-C7F6-498C-84AD-3501CCF68B31}" SchemaVersion="110" RootDocumentID="{DFC538B9-07E5-4681-9B55-A7B34A8FA046}" ParentDocumentID="{DFC538B9-07E5-4681-9B55-A7B34A8FA046}">
 	<AudioObjects>
 		<WorkUnit Name="Player SFX" ID="{277AB089-C7F6-498C-84AD-3501CCF68B31}" OwnerID="{DFC538B9-07E5-4681-9B55-A7B34A8FA046}" PersistMode="Nested">
+			<PropertyList>
+				<Property Name="Color" Type="int16" Value="4"/>
+				<Property Name="OverrideColor" Type="bool" Value="True"/>
+			</PropertyList>
 			<ChildrenList>
 				<ActorMixer Name="PLAYER SFX G" ID="{53238C4A-B186-449B-A6EB-85D05D987295}" ShortID="1055987438">
+					<PropertyList>
+						<Property Name="Color" Type="int16" Value="4"/>
+						<Property Name="OverrideColor" Type="bool" Value="True"/>
+					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Conversion">
 							<ObjectRef Name="Vorbis Quality High" ID="{53A9DE0F-3F4F-4B59-8614-3F9E3C7358FC}" WorkUnitID="{F6B2880C-85E5-47FA-A126-645B5DFD9ACC}"/>

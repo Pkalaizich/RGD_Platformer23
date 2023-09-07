@@ -26,6 +26,10 @@
 							<Position X="0" Y="4"/>
 						</Module>
 						<Module>
+							<ObjectRef Name="mainMenuMusic" ID="{CB89F3C6-5DD2-4020-BADD-C9108FC3C235}" WorkUnitID="{33740BD9-AACF-44F1-8BE2-1AF2D66726E3}"/>
+							<Position X="1" Y="0"/>
+						</Module>
+						<Module>
 							<ObjectRef Name="kickHit" ID="{0E376073-BEA2-4CEE-BFB1-83AB9B899F22}" WorkUnitID="{33740BD9-AACF-44F1-8BE2-1AF2D66726E3}"/>
 							<Position X="1" Y="1"/>
 						</Module>

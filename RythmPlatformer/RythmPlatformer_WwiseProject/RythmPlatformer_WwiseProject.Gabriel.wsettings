@@ -15,6 +15,7 @@
 				<Property Name="Event Action List\{16F05975-730A-4D25-8D01-323677860DCE}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{38665BB8-B4C2-4C12-B253-3C136D4FF2DA}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{71850E24-68AD-41B3-9CD2-166265107607}\x64_Expand States" Type="string" Value=""/>
+				<Property Name="Event Action List\{73FFB58A-94E0-4BD4-9DF9-F75AF6BD2FE7}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{ADCF71A2-2BD1-4687-A84F-EE5D82BB9603}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{BBFB3AEA-F4CB-4773-B681-6FD4DE21D79B}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{C366B2AB-94A6-46E3-94B2-BF0530F3DE5C}\x64_Expand States" Type="string" Value=""/>
@@ -43,6 +44,7 @@
 				<Property Name="GenerateSoundBanks\x64_SelectedSoundBanks" Type="string" Value="mEyhAkXpp0OEjPyWuTRjSxfTGE2knYtIi8Ib2g4tvpQ="/>
 				<Property Name="HardwareController\CurrentSession" Type="string" Value="{2451DD2E-A7B2-45E6-B93B-6F49B9B887AD}"/>
 				<Property Name="HardwareController\{2451DD2E-A7B2-45E6-B93B-6F49B9B887AD}\x64_ActiveGroups_v2" Type="string" Value="8cyot0q/w069/aeHirSlDgEA+jYwAAAAwJS37v5/AACoTFqU0gEAAAAAAADSAQAAwJS37v5/AAA0lOLu/n8AAJCNjqLSAQAAAAAAANIBAAAIAAAA0gEAAEjj+jYwAAAAkBD37v5/AACvEffu/n8AAJAQ9+7+fwAAwJS37v5/AADAlLfu/n8AAKhMWpTSAQAAAQAAAGlUCUGozqJMrR8EhqzhZV8BAPo2MAAAAMCUt+7+fwAAqExalNIBAAAAAAAA0gEAAMCUt+7+fwAANJTi7v5/AACQjY6i0gEAAAAAAADSAQAACAAAANIBAABI4/o2MAAAAJAQ9+7+fwAArxH37v5/AACQEPfu/n8AAMCUt+7+fwAAwJS37v5/AACoTFqU0gEAAAEAAAA="/>
+				<Property Name="Interactive Music\x64_{0D800DFF-8F2C-45AE-B364-A87D2FF59D0E} - SegmentEditorZoomInfo" Type="string" Value="uuzVXkCeC0AAAAAAAADwP8ST7cxyUiZAAAAAAAAA8D8AAAAAAAAAAAAAAAAAAAAA"/>
 				<Property Name="Interactive Music\x64_{3367B9B1-CFCF-48AD-B3E3-350DDA341607} - SegmentEditorZoomInfo" Type="string" Value="d/wyPBvWJ0AAAAAAAADwP6uqqqqqSghAAAAAAAAA8D8AAAAAAAAAAAAAAAAAAAAA"/>
 				<Property Name="Interactive Music\x64_{E23A0B7E-AD1A-4CF4-AD14-2C57A91BCDE5} - SegmentEditorZoomInfo" Type="string" Value="KH6MuWsJwT8AAAAAAADwPwAAAAAAQGJAAAAAAAAA8D8AAAAAAAAAAAAAAAAAAAAA"/>
 				<Property Name="MeterView\LastObject1" Type="string" Value="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}"/>

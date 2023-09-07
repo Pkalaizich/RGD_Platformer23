@@ -9,7 +9,7 @@
 	</RootPaths>
 	<DialogueEvents/>
 	<SoundBanks>
-		<SoundBank Id="602065129" Type="User" Language="SFX" Hash="{8F21524F-BBC5-A932-E7D0-462F330AF5B5}">
+		<SoundBank Id="602065129" Type="User" Language="SFX" Hash="{68A6F967-4386-0B6A-9208-B85FE4258B01}">
 			<ShortName>SFXS</ShortName>
 			<Path>SFXS.bnk</Path>
 			<Media>
@@ -109,6 +109,10 @@
 					<ShortName>kickSwing 3.wav</ShortName>
 					<CachePath>SFX/kickSwing 3_3F75BDB9.wem</CachePath>
 				</File>
+				<File Id="872038207" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>saw_idle LOOP.wav</ShortName>
+					<CachePath>SFX/saw_idle LOOP_3F75BDB9.wem</CachePath>
+				</File>
 				<File Id="892530135" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>fstp 2.wav</ShortName>
 					<CachePath>SFX/fstp 2_3F75BDB9.wem</CachePath>
@@ -198,6 +202,11 @@
 						<MediaRef Id="993090612"/>
 					</MediaRefs>
 				</Event>
+				<Event Id="1177020078" Name="sawIdle" MaxAttenuation="100" DurationType="Infinite">
+					<MediaRefs>
+						<MediaRef Id="872038207"/>
+					</MediaRefs>
+				</Event>
 				<Event Id="3604987179" Name="wallgrab" DurationType="OneShot" DurationMin="0.9782708" DurationMax="0.9782708">
 					<MediaRefs>
 						<MediaRef Id="156453035"/>
@@ -245,7 +254,7 @@
 				<Bus Id="3991942870" Name="MUSIC"/>
 			</Busses>
 		</SoundBank>
-		<SoundBank Id="3991942870" Type="User" Language="SFX" Hash="{CE5B9FF8-D13E-8A8E-534F-FB78DE2704CE}">
+		<SoundBank Id="3991942870" Type="User" Language="SFX" Hash="{BFDB5A0A-0E98-A191-622F-9D5C16755ECA}">
 			<ShortName>MUSIC</ShortName>
 			<Path>MUSIC.bnk</Path>
 			<Media>
@@ -256,6 +265,10 @@
 				<File Id="855501646" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>BG Music LAYER 1.wav</ShortName>
 					<CachePath>SFX/BG Music LAYER 1_9EDFC787.wem</CachePath>
+				</File>
+				<File Id="888483807" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Main Menu MUSIC LOOP.wav</ShortName>
+					<CachePath>SFX/Main Menu MUSIC LOOP_073B4D0C.wem</CachePath>
 				</File>
 				<File Id="940452665" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>BG Music LAYER 2.wav</ShortName>
@@ -270,9 +283,13 @@
 						<MediaRef Id="940452665"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="1991862712" Name="mainMenuMusic" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+				<Event Id="1991862712" Name="mainMenuMusic" DurationType="Infinite">
+					<MediaRefs>
+						<MediaRef Id="888483807"/>
+					</MediaRefs>
+				</Event>
 			</Events>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{96E38562-76ED-C493-562B-89E7DCCF1FEE}</FileHash>
+	<FileHash>{F5C305B9-C1D4-3004-0BF6-731A05E7CD33}</FileHash>
 </SoundBanksInfo>

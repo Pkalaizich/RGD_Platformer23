@@ -43,6 +43,13 @@
 								<Property Name="OverrideColor" Type="bool" Value="True"/>
 							</PropertyList>
 							<ChildrenList>
+								<Action Name="" ID="{B54FEEB4-96FC-4B72-B5BF-79720A009239}" ShortID="436016585">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Main Menu Music" ID="{1F1768A2-ADD5-42DA-8FDD-38772E1226E6}" WorkUnitID="{957C5BCC-1AE0-4EDB-BAFD-7D26320D7F06}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
 								<Action Name="" ID="{848F60F9-F4A8-4E85-A259-FF8362820CBC}" ShortID="1048015603">
 									<PropertyList>
 										<Property Name="ActionType" Type="int16" Value="2"/>

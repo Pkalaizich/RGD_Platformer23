@@ -5,5 +5,6 @@ Event	ID	Name			Wwise Object Path	Notes
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	345716418	BG Music LAYER 3	A:\GitHub Desktop\RGD_Platformer23\RythmPlatformer\RythmPlatformer_WwiseProject\.cache\Windows\SFX\BG Music LAYER 3_9EDFC787.wem		\Interactive Music Hierarchy\Default Work Unit\Music\Gameplay Music\Gameplay 1\BG Music LAYER 3		3509513
 	855501646	BG Music LAYER 1	A:\GitHub Desktop\RGD_Platformer23\RythmPlatformer\RythmPlatformer_WwiseProject\.cache\Windows\SFX\BG Music LAYER 1_9EDFC787.wem		\Interactive Music Hierarchy\Default Work Unit\Music\Gameplay Music\Gameplay 1\BG Music LAYER 1		3241067
+	888483807	Main Menu MUSIC LOOP	A:\GitHub Desktop\RGD_Platformer23\RythmPlatformer\RythmPlatformer_WwiseProject\.cache\Windows\SFX\Main Menu MUSIC LOOP_073B4D0C.wem		\Interactive Music Hierarchy\Default Work Unit\Music\Main Menu Music\Main Menu MUSIC LOOP\Main Menu MUSIC LOOP		2686100
 	940452665	BG Music LAYER 2	A:\GitHub Desktop\RGD_Platformer23\RythmPlatformer\RythmPlatformer_WwiseProject\.cache\Windows\SFX\BG Music LAYER 2_9EDFC787.wem		\Interactive Music Hierarchy\Default Work Unit\Music\Gameplay Music\Gameplay 1\BG Music LAYER 2		3063348
 
