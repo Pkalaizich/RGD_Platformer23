@@ -536,7 +536,7 @@ MonoBehaviour:
   enemyMask:
     serializedVersion: 2
     m_Bits: 128
-  unitsPerBeatSpeed: 7
+  unitsPerBeatSpeed: 6.5
   dashModificator: 4
   jumpSpeed: 25
   walljumpModificator: 1.25
