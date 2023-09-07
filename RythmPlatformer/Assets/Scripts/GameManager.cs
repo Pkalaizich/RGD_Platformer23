@@ -31,16 +31,20 @@ public class GameManager : MonoBehaviour
     {
         gameIsActive= true;
         GameplayEvents.OnGameStarted?.Invoke();
+        MusicManager.Instance.PlayMusic();
     }
 
     public void EndGame()
     {
-        gameIsActive= false;
+        MusicManager.Instance.StopMusic();
+        gameIsActive = false;
         StartCoroutine(RestartGame(2f));
+        
     }
     
     public void WonGame()
     {
+        MusicManager.Instance.StopMusic();
         gameIsActive = false;
         StartCoroutine(RestartGameAfterWin(4f));
     }

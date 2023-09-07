@@ -20,24 +20,19 @@ public class MusicManager : MonoBehaviour
     }
     #endregion
     [SerializeField] private AK.Wwise.Event musicEvent;
+    [SerializeField] private AK.Wwise.Event mainMenuMusic;
     [SerializeField] private AK.Wwise.Event testSfx;
     [SerializeField] private List<AK.Wwise.Event> soundEffects;
+    
     void Start()
     {
+        mainMenuMusic.Post(gameObject);
         
     }
-
-    // Update is called once per frame
+   
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.P))
-        {
-            musicEvent.Post(gameObject);
-        }
-        if (Input.GetKeyDown(KeyCode.O))
-        {
-            testSfx.Post(gameObject);
-        }
+        //if(Input.GetKeyDown(KeyCode.Q)) { musicEvent.Stop(gameObject); }
     }
 
     public void PlayMusic()
@@ -45,6 +40,10 @@ public class MusicManager : MonoBehaviour
         musicEvent.Post(gameObject);
     }
 
+    public void StopMusic()
+    {
+        musicEvent.Stop(gameObject);        
+    }
     public void PlaySound(int index)
     {
         //testSfx.Post(gameObject);

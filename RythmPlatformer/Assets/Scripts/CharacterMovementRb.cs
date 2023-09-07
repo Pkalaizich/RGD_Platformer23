@@ -44,6 +44,7 @@ public class CharacterMovementRb : MonoBehaviour
     private bool attacking =false;
 
     [SerializeField] private GameObject armature;
+    [SerializeField] private GameObject exclamation;
     [SerializeField] private float groundDistanceFallAnimation;
 
     [Header("Screen Shake Parameters")]
@@ -64,7 +65,7 @@ public class CharacterMovementRb : MonoBehaviour
     public PlayerStateRb CurrentState;
     private Animator animator;
     private TestUI testUI;
-
+    private WaitForSeconds wait;
     private static readonly int hGlobalParam = Animator.StringToHash("GlobalParameter");
     #endregion
 
@@ -84,6 +85,7 @@ public class CharacterMovementRb : MonoBehaviour
 
     private void Start()
     {        
+        wait = new WaitForSeconds(RythmController.Instance.secPerBeat/2);
         float jumpTime = RythmController.Instance.secPerBeat * jumpBeatDuration;        
         normalGravity = -(2 * jumpSpeed) / jumpTime;
         grabbedGravity = normalGravity * grabbedGravityModificator;
@@ -178,6 +180,8 @@ public class CharacterMovementRb : MonoBehaviour
 
     public void SetMovement()
     {
+        exclamation.SetActive(false);
+        StartCoroutine(WaitToCheck());
         attacking = false;
         if(Time.time - lastErrorTime>= timeToResetErrors)
         {
@@ -185,7 +189,7 @@ public class CharacterMovementRb : MonoBehaviour
         }
         bool right = armature.transform.localScale.y ==100? true:false;
         List<InputController.InputActions> inputs = InputController.Instance.thisBeatActions;
-        if (inputs.Count ==0 || inputs.Contains(InputController.InputActions.Offbeat))
+        if (inputs.Contains(InputController.InputActions.Offbeat) || (inputs.Count == 0 && (CurrentState != PlayerStateRb.WallGrab)))
         {
             if (currentSpeedLevel != 0)
             {
@@ -195,85 +199,100 @@ public class CharacterMovementRb : MonoBehaviour
         }
         else
         {
-            currentEnergy = Mathf.Clamp(currentEnergy+energyRecoveredPerBeat,0,maxEnergy);
-            testUI.UpdateEnergyBar(currentEnergy/maxEnergy);
-
-            if (grounded)
+            if(inputs.Count == 0 && (CurrentState!=PlayerStateRb.Falling|| CurrentState != PlayerStateRb.Jumping))
             {
-                if (inputs.Contains(InputController.InputActions.Down))
+                if (currentSpeedLevel != 0)
                 {
-                    if (currentSpeedLevel != 0)
-                    {
-                        right = (Mathf.Abs(playerVelocity.x) / playerVelocity.x) > 0 ? true : false;
-                    }
-                    currentSpeedLevel = 0;
-                    playerVelocity.x = currentSpeedLevel * unitMeasuredSpeedIncrement;
-                    SetAnimationByIndex(0);  //IDLE                                    
+                    right = (Mathf.Abs(playerVelocity.x) / playerVelocity.x) > 0 ? true : false;
                 }
-                if (inputs.Contains(InputController.InputActions.Right))
-                {
-                    right = true;
-                    currentSpeedLevel = 2;
-                    playerVelocity.x = currentSpeedLevel * unitMeasuredSpeedIncrement /2;
-                    SetAnimationByIndex(1);   //RUN                                     
-                }
-                if (inputs.Contains(InputController.InputActions.Left))
-                {
-                    right = false;
-                    currentSpeedLevel = 2;
-                    playerVelocity.x = -1f* currentSpeedLevel * unitMeasuredSpeedIncrement /2;
-                    SetAnimationByIndex(1);   //RUN                                     
-                }
-                if(inputs.Contains(InputController.InputActions.Jump))
-                {
-                    if(Mathf.Abs(playerVelocity.x) >=0.1f)
-                    {   
-                        if (currentSpeedLevel != 0)
-                        {
-                            right = (Mathf.Abs(playerVelocity.x) / playerVelocity.x) > 0 ? true : false;
-                            currentSpeedLevel= 2;
-                        }                        
-                        playerVelocity.x = (Mathf.Abs(playerVelocity.x) / playerVelocity.x) * currentSpeedLevel * unitMeasuredSpeedIncrement/2;
-                    }                    
-                    playerVelocity.y += jumpSpeed;
-                    CurrentState = PlayerStateRb.Jumping;
-                    SetAnimationByIndex(2);   //JUMP
-                    MusicManager.Instance.PlaySound((int)MusicManager.AvailableSFX.Jump);
-                }
-                if(inputs.Contains(InputController.InputActions.Attack) && !inputs.Contains(InputController.InputActions.Jump))
-                {
-                    attacking = true;
-                    SetAnimationByIndex(6);   //KICK   
-                    if (currentSpeedLevel != 0)
-                    {                        
-                        right = (Mathf.Abs(playerVelocity.x) / playerVelocity.x) > 0 ? true : false;
-                    }
-                    currentSpeedLevel = 2;
-                    int modif = right? 1 : -1;
-                    playerVelocity.x = modif * currentSpeedLevel * unitMeasuredSpeedIncrement / 2;
-                    Debug.Log("Atacando");
-                    missedAttack = !CheckEnemy();
-                }
+                currentSpeedLevel = 0;
+                playerVelocity.x = currentSpeedLevel * unitMeasuredSpeedIncrement;
+                SetAnimationByIndex(0);  //IDLE            
             }
             else
             {
-                if (inputs.Contains(InputController.InputActions.Jump))
+                currentEnergy = Mathf.Clamp(currentEnergy + energyRecoveredPerBeat, 0, maxEnergy);
+                testUI.UpdateEnergyBar(currentEnergy / maxEnergy);
+
+                if (grounded)
                 {
-                    if(CurrentState == PlayerStateRb.WallGrab)
+                    if (inputs.Contains(InputController.InputActions.Down))
                     {
-                        playerVelocity.y += walljumpModificator * jumpSpeed;
+                        if (currentSpeedLevel != 0)
+                        {
+                            right = (Mathf.Abs(playerVelocity.x) / playerVelocity.x) > 0 ? true : false;
+                        }
+                        currentSpeedLevel = 0;
+                        playerVelocity.x = currentSpeedLevel * unitMeasuredSpeedIncrement;
+                        SetAnimationByIndex(0);  //IDLE                                    
+                    }
+                    if (inputs.Contains(InputController.InputActions.Right))
+                    {
+                        right = true;
                         currentSpeedLevel = 2;
-                        int modificator = wallAtRight ? -1 : 1; 
-                        right = modificator ==1? true: false;
-                        playerVelocity.x = modificator * currentSpeedLevel * unitMeasuredSpeedIncrement/2;
-                        currentGravity = normalGravity;
+                        playerVelocity.x = currentSpeedLevel * unitMeasuredSpeedIncrement / 2;
+                        SetAnimationByIndex(1);   //RUN                                     
+                    }
+                    if (inputs.Contains(InputController.InputActions.Left))
+                    {
+                        right = false;
+                        currentSpeedLevel = 2;
+                        playerVelocity.x = -1f * currentSpeedLevel * unitMeasuredSpeedIncrement / 2;
+                        SetAnimationByIndex(1);   //RUN                                     
+                    }
+                    if (inputs.Contains(InputController.InputActions.Jump))
+                    {
+                        if (Mathf.Abs(playerVelocity.x) >= 0.1f)
+                        {
+                            if (currentSpeedLevel != 0)
+                            {
+                                right = (Mathf.Abs(playerVelocity.x) / playerVelocity.x) > 0 ? true : false;
+                                currentSpeedLevel = 2;
+                            }
+                            playerVelocity.x = (Mathf.Abs(playerVelocity.x) / playerVelocity.x) * currentSpeedLevel * unitMeasuredSpeedIncrement / 2;
+                        }
+                        playerVelocity.y += jumpSpeed;
                         CurrentState = PlayerStateRb.Jumping;
-                        wallGrab = false;
-                        SetAnimationByIndex(2); //CAMBIAR POR ANIMACION DE WALLJUMP!!
+                        SetAnimationByIndex(2);   //JUMP
                         MusicManager.Instance.PlaySound((int)MusicManager.AvailableSFX.Jump);
+                    }
+                    if (inputs.Contains(InputController.InputActions.Attack) && !inputs.Contains(InputController.InputActions.Jump))
+                    {
+                        attacking = true;
+                        SetAnimationByIndex(6);   //KICK
+                        MusicManager.Instance.PlaySound((int)MusicManager.AvailableSFX.KickSwing);
+                        if (currentSpeedLevel != 0)
+                        {
+                            right = (Mathf.Abs(playerVelocity.x) / playerVelocity.x) > 0 ? true : false;
+                        }
+                        currentSpeedLevel = 2;
+                        int modif = right ? 1 : -1;
+                        playerVelocity.x = modif * currentSpeedLevel * unitMeasuredSpeedIncrement / 2;
+                        Debug.Log("Atacando");
+                        missedAttack = !CheckEnemy();
+                    }
+                }
+                else
+                {
+                    if (inputs.Contains(InputController.InputActions.Jump))
+                    {
+                        if (CurrentState == PlayerStateRb.WallGrab)
+                        {
+                            playerVelocity.y += walljumpModificator * jumpSpeed;
+                            currentSpeedLevel = 2;
+                            int modificator = wallAtRight ? -1 : 1;
+                            right = modificator == 1 ? true : false;
+                            playerVelocity.x = modificator * currentSpeedLevel * unitMeasuredSpeedIncrement / 2;
+                            currentGravity = normalGravity;
+                            CurrentState = PlayerStateRb.Jumping;
+                            wallGrab = false;
+                            SetAnimationByIndex(2); //CAMBIAR POR ANIMACION DE WALLJUMP!!
+                            MusicManager.Instance.PlaySound((int)MusicManager.AvailableSFX.Jump);
+                        }
                     }
                 }
             }
+            
         }
         if (right)
         {
@@ -327,6 +346,10 @@ public class CharacterMovementRb : MonoBehaviour
         bool ground = Physics.Raycast(capsCollider.bounds.center, Vector3.down, capsCollider.height / 2 +0.05f ,groundMask);
         if(ground && playerVelocity.y<=0.5f)
         {
+            if(CurrentState == PlayerStateRb.Falling)
+            {
+                MusicManager.Instance.PlaySound((int)MusicManager.AvailableSFX.JumpLand);
+            }
             currentGravity = normalGravity;
             animator.speed = 1;
             if (currentSpeedLevel == 0)
@@ -408,7 +431,25 @@ public class CharacterMovementRb : MonoBehaviour
         }
         return false;
     }
+
+    private void CheckEnemyInNextBeat()
+    {
+        RaycastHit Hit;
+        float modifier = playerVelocity.x != 0 ? (Mathf.Abs(playerVelocity.x) / playerVelocity.x) : 1;
+        float currentHalf = currentSpeedLevel * unitsPerBeatSpeed / 2;
+        bool nearEnemy = Physics.Raycast(capsCollider.bounds.center, Vector3.right * modifier, out Hit, capsCollider.radius + unitsPerBeatSpeed + currentHalf-0.7f, enemyMask);
+        if(nearEnemy)
+        {
+            exclamation.SetActive(true);
+        }
+    }
     #endregion
+
+    private IEnumerator WaitToCheck()
+    {
+        yield return wait;
+        CheckEnemyInNextBeat();
+    }
 
     /// <summary>
     /// 0:IDLE
