@@ -94,6 +94,7 @@ public class CharacterMovementRb : MonoBehaviour
         unitMeasuredSpeedIncrement = unitsPerBeatSpeed / RythmController.Instance.secPerBeat;
         dashSpeed = unitMeasuredSpeedIncrement * dashModificator;
 
+        GameplayEvents.OnThresholdEnter.AddListener(CheckEnemyInNextBeat);
         GameplayEvents.OnProcessInputs.AddListener(SetMovement);
         GameplayEvents.OnGameWon.AddListener(()=> {
             SetAnimationByIndex(7);
@@ -181,7 +182,7 @@ public class CharacterMovementRb : MonoBehaviour
     public void SetMovement()
     {
         exclamation.SetActive(false);
-        StartCoroutine(WaitToCheck());
+        //StartCoroutine(WaitToCheck());
         attacking = false;
         if(Time.time - lastErrorTime>= timeToResetErrors)
         {
@@ -436,8 +437,8 @@ public class CharacterMovementRb : MonoBehaviour
     {
         RaycastHit Hit;
         float modifier = playerVelocity.x != 0 ? (Mathf.Abs(playerVelocity.x) / playerVelocity.x) : 1;
-        float currentHalf = currentSpeedLevel * unitsPerBeatSpeed / 2;
-        bool nearEnemy = Physics.Raycast(capsCollider.bounds.center, Vector3.right * modifier, out Hit, capsCollider.radius + unitsPerBeatSpeed + currentHalf-0.7f, enemyMask);
+        float thresholdDistance = currentSpeedLevel * unitsPerBeatSpeed / 2 * RythmController.Instance.ThresholdDuration();
+        bool nearEnemy = Physics.Raycast(capsCollider.bounds.center, Vector3.right * modifier, out Hit, capsCollider.radius + unitsPerBeatSpeed + thresholdDistance-0.7f, enemyMask);
         if(nearEnemy)
         {
             exclamation.SetActive(true);
@@ -445,11 +446,11 @@ public class CharacterMovementRb : MonoBehaviour
     }
     #endregion
 
-    private IEnumerator WaitToCheck()
-    {
-        yield return wait;
-        CheckEnemyInNextBeat();
-    }
+    //private IEnumerator WaitToCheck()
+    //{
+    //    yield return wait;
+    //    CheckEnemyInNextBeat();
+    //}
 
     /// <summary>
     /// 0:IDLE
