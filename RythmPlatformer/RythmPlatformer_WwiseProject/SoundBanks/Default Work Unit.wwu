@@ -13,6 +13,7 @@
 						<Property Name="OverrideColor" Type="bool" Value="True"/>
 					</PropertyList>
 					<ObjectInclusionList>
+						<ObjectRef Name="mainMenuMusic" ID="{CB89F3C6-5DD2-4020-BADD-C9108FC3C235}" WorkUnitID="{33740BD9-AACF-44F1-8BE2-1AF2D66726E3}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="backgroundMusic" ID="{E208040A-0009-4ECD-AF13-C8E8DF79B738}" WorkUnitID="{33740BD9-AACF-44F1-8BE2-1AF2D66726E3}" Origin="Manual" Filter="7"/>
 					</ObjectInclusionList>
 					<ObjectExclusionList/>
@@ -29,6 +30,7 @@
 						<ObjectRef Name="jumpLand" ID="{C366B2AB-94A6-46E3-94B2-BF0530F3DE5C}" WorkUnitID="{33740BD9-AACF-44F1-8BE2-1AF2D66726E3}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="wallgrab" ID="{F45F6F7C-8024-473B-9F6C-60CE37FD774E}" WorkUnitID="{33740BD9-AACF-44F1-8BE2-1AF2D66726E3}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="jump" ID="{BBFB3AEA-F4CB-4773-B681-6FD4DE21D79B}" WorkUnitID="{33740BD9-AACF-44F1-8BE2-1AF2D66726E3}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="sawIdle" ID="{38665BB8-B4C2-4C12-B253-3C136D4FF2DA}" WorkUnitID="{33740BD9-AACF-44F1-8BE2-1AF2D66726E3}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="kickHit" ID="{0E376073-BEA2-4CEE-BFB1-83AB9B899F22}" WorkUnitID="{33740BD9-AACF-44F1-8BE2-1AF2D66726E3}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="dmg" ID="{16F05975-730A-4D25-8D01-323677860DCE}" WorkUnitID="{33740BD9-AACF-44F1-8BE2-1AF2D66726E3}" Origin="Manual" Filter="7"/>
 					</ObjectInclusionList>

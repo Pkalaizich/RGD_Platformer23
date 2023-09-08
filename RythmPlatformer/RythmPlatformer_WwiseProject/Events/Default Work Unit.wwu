@@ -17,7 +17,7 @@
 							<ChildrenList>
 								<Action Name="" ID="{8C750E8B-E1CD-43EC-ABF7-65FE32A32D4E}" ShortID="862900124">
 									<PropertyList>
-										<Property Name="Delay" Type="Real64">
+										<Property Name="Delay" Type="Real64" Value="1.412">
 											<ModifierList>
 												<ModifierInfo>
 													<Modifier Name="" ID="{366317D5-2731-4473-9304-99A7F3025764}">
@@ -35,6 +35,18 @@
 										</Reference>
 									</ReferenceList>
 								</Action>
+								<Action Name="" ID="{07FE10CC-685F-4555-A9DB-342E4BAF9F53}" ShortID="615378686">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="2"/>
+										<Property Name="FadeOutCurve" Type="int16" Value="6"/>
+										<Property Name="FadeTime" Type="Real64" Value="0.7"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Main Menu Music" ID="{1F1768A2-ADD5-42DA-8FDD-38772E1226E6}" WorkUnitID="{957C5BCC-1AE0-4EDB-BAFD-7D26320D7F06}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
 							</ChildrenList>
 						</Event>
 						<Event Name="mainMenuMusic" ID="{CB89F3C6-5DD2-4020-BADD-C9108FC3C235}">
@@ -43,9 +55,18 @@
 								<Property Name="OverrideColor" Type="bool" Value="True"/>
 							</PropertyList>
 							<ChildrenList>
+								<Action Name="" ID="{B54FEEB4-96FC-4B72-B5BF-79720A009239}" ShortID="436016585">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Main Menu Music" ID="{1F1768A2-ADD5-42DA-8FDD-38772E1226E6}" WorkUnitID="{957C5BCC-1AE0-4EDB-BAFD-7D26320D7F06}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
 								<Action Name="" ID="{848F60F9-F4A8-4E85-A259-FF8362820CBC}" ShortID="1048015603">
 									<PropertyList>
 										<Property Name="ActionType" Type="int16" Value="2"/>
+										<Property Name="FadeOutCurve" Type="int16" Value="6"/>
+										<Property Name="FadeTime" Type="Real64" Value="0.5"/>
 									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Target">
@@ -174,11 +195,11 @@
 						</Folder>
 						<Folder Name="ENEMIES" ID="{4BF9E1B3-C9FE-4D6A-86AB-7E59096532A7}" ShortID="400120707">
 							<PropertyList>
-								<Property Name="Color" Type="int16" Value="9"/>
+								<Property Name="Color" Type="int16" Value="8"/>
 								<Property Name="OverrideColor" Type="bool" Value="True"/>
 							</PropertyList>
 							<ChildrenList>
-								<Event Name="Play_Saw_Idle" ID="{38665BB8-B4C2-4C12-B253-3C136D4FF2DA}">
+								<Event Name="sawIdle" ID="{38665BB8-B4C2-4C12-B253-3C136D4FF2DA}">
 									<PropertyList>
 										<Property Name="Color" Type="int16" Value="21"/>
 										<Property Name="OverrideColor" Type="bool" Value="True"/>

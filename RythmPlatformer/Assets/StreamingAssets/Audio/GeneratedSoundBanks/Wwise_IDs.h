@@ -20,6 +20,8 @@ namespace AK
         static const AkUniqueID JUMPLAND = 1548130050U;
         static const AkUniqueID KICKHIT = 3946660102U;
         static const AkUniqueID KICKSWING = 1889171659U;
+        static const AkUniqueID MAINMENUMUSIC = 1991862712U;
+        static const AkUniqueID SAWIDLE = 1177020078U;
         static const AkUniqueID WALLGRAB = 3604987179U;
     } // namespace EVENTS
 

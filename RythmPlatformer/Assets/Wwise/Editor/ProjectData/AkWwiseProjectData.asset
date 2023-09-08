@@ -24,7 +24,7 @@ MonoBehaviour:
     ParentPath: Virtual Acoustics\Default Work Unit
     guid: cf3c3a804531d24eb87c97e1492d711c
     GuidInternal: 
-    m_lastTime: -8585075546144791188
+    m_lastTime: -8585075765235470171
     List: []
   AuxBusWwu:
   - PhysicalPath: Master-Mixer Hierarchy\Default Work Unit.wwu
@@ -38,7 +38,7 @@ MonoBehaviour:
     ParentPath: Master-Mixer Hierarchy\Default Work Unit
     guid: b13338e2b586b84ea43db8f76007d866
     GuidInternal: 
-    m_lastTime: -8585075546167743412
+    m_lastTime: -8585074943168497755
     List:
     - name: Master Audio Bus
       guid: d8a41415a61d2a41a17e75ca0c2149f3
@@ -100,7 +100,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Default Work Unit
     guid: db16744dc8fbdf4387c499b7918dcfc1
     GuidInternal: 
-    m_lastTime: -8585075546144831105
+    m_lastTime: -8585074810320063601
     List:
     - name: MUSIC
       guid: 984ca10245e9a743848cfc96b934634b
@@ -142,7 +142,7 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit
     guid: d90b7433cfaaf1448be21af2d66726e3
     GuidInternal: 
-    m_lastTime: -8585075546184224375
+    m_lastTime: -8585074810327551371
     List:
     - name: backgroundMusic
       guid: 0a0408e20900cd4eaf13c8e8df79b738
@@ -359,29 +359,6 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
-    - name: Play_Saw_Idle
-      guid: b85b6638c2b4124cb2533c136d4ff2da
-      id: 1602974958
-      PathAndIcons:
-      - ElementName: Events
-        ObjectType: 5
-        guid: 00000000000000000000000000000000
-      - ElementName: Default Work Unit
-        ObjectType: 12
-        guid: d90b7433cfaaf1448be21af2d66726e3
-      - ElementName: SFXS
-        ObjectType: 4
-        guid: 903d4ad7bbb3ea49831e87470576ccd8
-      - ElementName: ENEMIES
-        ObjectType: 4
-        guid: b3e1f94bfec96a4d86ab7e59096532a7
-      - ElementName: Play_Saw_Idle
-        ObjectType: 3
-        guid: b85b6638c2b4124cb2533c136d4ff2da
-      Path: Events\Default Work Unit\SFXS\ENEMIES\Play_Saw_Idle
-      maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
     - name: PLAYER
       guid: 706c4c84ed1a624a8119ad7add15827c
       id: 1069431850
@@ -400,6 +377,29 @@ MonoBehaviour:
         guid: 706c4c84ed1a624a8119ad7add15827c
       Path: Events\Default Work Unit\SFXS\PLAYER
       maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: sawIdle
+      guid: b85b6638c2b4124cb2533c136d4ff2da
+      id: 1177020078
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: d90b7433cfaaf1448be21af2d66726e3
+      - ElementName: SFXS
+        ObjectType: 4
+        guid: 903d4ad7bbb3ea49831e87470576ccd8
+      - ElementName: ENEMIES
+        ObjectType: 4
+        guid: b3e1f94bfec96a4d86ab7e59096532a7
+      - ElementName: sawIdle
+        ObjectType: 3
+        guid: b85b6638c2b4124cb2533c136d4ff2da
+      Path: Events\Default Work Unit\SFXS\ENEMIES\sawIdle
+      maxAttenuation: 100
       maxDuration: -1
       minDuration: -1
     - name: SFXS
@@ -454,7 +454,7 @@ MonoBehaviour:
     ParentPath: Game Parameters\Default Work Unit
     guid: 24dfb7c30377bb4184508d128015bf14
     GuidInternal: 
-    m_lastTime: -8585075546184214111
+    m_lastTime: -8585075765287207973
     List: []
   StateWwu:
   - PhysicalPath: States\Default Work Unit.wwu
@@ -468,7 +468,7 @@ MonoBehaviour:
     ParentPath: States\Default Work Unit
     guid: 788e3970cb116046864786ad332aa84a
     GuidInternal: 
-    m_lastTime: -8585075546144810855
+    m_lastTime: -8585075765235490112
     List: []
   SwitchWwu:
   - PhysicalPath: Switches\Default Work Unit.wwu
@@ -482,7 +482,7 @@ MonoBehaviour:
     ParentPath: Switches\Default Work Unit
     guid: bbac14a7e960374ea55708200a75bd48
     GuidInternal: 
-    m_lastTime: -8585075546144810855
+    m_lastTime: -8585075765235480147
     List: []
   TriggerWwu:
   - PhysicalPath: Triggers\Default Work Unit.wwu
@@ -496,11 +496,11 @@ MonoBehaviour:
     ParentPath: Triggers\Default Work Unit
     guid: 5709e8c1d558f74b91a714d5740990fc
     GuidInternal: 
-    m_lastTime: -8585075546144801182
+    m_lastTime: -8585075765235480147
     List: []
-  ExpandedFileSystemItemIds: 
+  ExpandedFileSystemItemIds: 02000000030000000400000005000000060000000700000009000000
   ExpandedWaapiItemIds: 
   AutoSyncSelection: 0
   autoPopulateEnabled: 1
-  currentDataSource: 0
+  currentDataSource: 1
   CurrentPluginConfig: 
