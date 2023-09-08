@@ -9,13 +9,17 @@
 	</RootPaths>
 	<DialogueEvents/>
 	<SoundBanks>
-		<SoundBank Id="602065129" Type="User" Language="SFX" Hash="{68A6F967-4386-0B6A-9208-B85FE4258B01}">
+		<SoundBank Id="602065129" Type="User" Language="SFX" Hash="{742B03B5-1C64-96EB-F776-200588A8ECD7}">
 			<ShortName>SFXS</ShortName>
 			<Path>SFXS.bnk</Path>
 			<Media>
 				<File Id="14196481" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>dmg 1.wav</ShortName>
 					<CachePath>SFX/dmg 1_3F75BDB9.wem</CachePath>
+				</File>
+				<File Id="52282365" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>UI hover 1.wav</ShortName>
+					<CachePath>SFX/UI hover 1_755F56E2.wem</CachePath>
 				</File>
 				<File Id="76277175" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>fstp 4.wav</ShortName>
@@ -49,6 +53,14 @@
 					<ShortName>jumpLand 1.wav</ShortName>
 					<CachePath>SFX/jumpLand 1_3F75BDB9.wem</CachePath>
 				</File>
+				<File Id="212778103" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>UI confirm.wav</ShortName>
+					<CachePath>SFX/UI confirm_755F56E2.wem</CachePath>
+				</File>
+				<File Id="238298689" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>UI hover 2.wav</ShortName>
+					<CachePath>SFX/UI hover 2_755F56E2.wem</CachePath>
+				</File>
 				<File Id="319152352" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>fstp 1.wav</ShortName>
 					<CachePath>SFX/fstp 1_3F75BDB9.wem</CachePath>
@@ -56,6 +68,10 @@
 				<File Id="341305912" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>fstp 6.wav</ShortName>
 					<CachePath>SFX/fstp 6_3F75BDB9.wem</CachePath>
+				</File>
+				<File Id="343276601" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>UI hover 3.wav</ShortName>
+					<CachePath>SFX/UI hover 3_755F56E2.wem</CachePath>
 				</File>
 				<File Id="359772736" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>fstp 5.wav</ShortName>
@@ -100,6 +116,10 @@
 				<File Id="716472605" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>jump 2.wav</ShortName>
 					<CachePath>SFX/jump 2_3F75BDB9.wem</CachePath>
+				</File>
+				<File Id="735244642" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>UI hover 4.wav</ShortName>
+					<CachePath>SFX/UI hover 4_755F56E2.wem</CachePath>
 				</File>
 				<File Id="759301624" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>kickHit 2.wav</ShortName>
@@ -207,6 +227,19 @@
 						<MediaRef Id="872038207"/>
 					</MediaRefs>
 				</Event>
+				<Event Id="685626117" Name="UIconfirm" DurationType="OneShot" DurationMin="2.8235416" DurationMax="2.8235416">
+					<MediaRefs>
+						<MediaRef Id="212778103"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="199363535" Name="UIhover" DurationType="OneShot" DurationMin="0.70589584" DurationMax="0.70589584">
+					<MediaRefs>
+						<MediaRef Id="52282365"/>
+						<MediaRef Id="238298689"/>
+						<MediaRef Id="343276601"/>
+						<MediaRef Id="735244642"/>
+					</MediaRefs>
+				</Event>
 				<Event Id="3604987179" Name="wallgrab" DurationType="OneShot" DurationMin="0.9782708" DurationMax="0.9782708">
 					<MediaRefs>
 						<MediaRef Id="156453035"/>
@@ -291,5 +324,5 @@
 			</Events>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{52DA355A-30E4-F9D5-5C25-A8E5B6080EEF}</FileHash>
+	<FileHash>{90A38698-7B73-4739-FCED-D4F94C776FB8}</FileHash>
 </SoundBanksInfo>

@@ -22,6 +22,8 @@ namespace AK
         static const AkUniqueID KICKSWING = 1889171659U;
         static const AkUniqueID MAINMENUMUSIC = 1991862712U;
         static const AkUniqueID SAWIDLE = 1177020078U;
+        static const AkUniqueID UICONFIRM = 685626117U;
+        static const AkUniqueID UIHOVER = 199363535U;
         static const AkUniqueID WALLGRAB = 3604987179U;
     } // namespace EVENTS
 

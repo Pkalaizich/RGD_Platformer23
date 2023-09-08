@@ -1,5 +1,7 @@
 Event	ID	Name			Wwise Object Path	Notes
+	199363535	UIhover			\Default Work Unit\SFXS\UI\UIhover	
 	513096003	dmg			\Default Work Unit\SFXS\PLAYER\dmg	
+	685626117	UIconfirm			\Default Work Unit\SFXS\UI\UIconfirm	
 	1177020078	sawIdle			\Default Work Unit\SFXS\ENEMIES\sawIdle	
 	1548130050	jumpLand			\Default Work Unit\SFXS\PLAYER\jumpLand	
 	1889171659	kickSwing			\Default Work Unit\SFXS\PLAYER\kickSwing	
@@ -10,6 +12,7 @@ Event	ID	Name			Wwise Object Path	Notes
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	14196481	dmg 1	A:\GitHub Desktop\RGD_Platformer23\RythmPlatformer\RythmPlatformer_WwiseProject\.cache\Windows\SFX\dmg 1_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player SFX\PLAYER SFX G\Dmg\dmg 1		11376
+	52282365	UI hover 1	A:\GitHub Desktop\RGD_Platformer23\RythmPlatformer\RythmPlatformer_WwiseProject\.cache\Windows\SFX\UI hover 1_755F56E2.wem		\Actor-Mixer Hierarchy\Default Work Unit\UI SFX\UI hover\UI hover 1		6336
 	76277175	fstp 4	A:\GitHub Desktop\RGD_Platformer23\RythmPlatformer\RythmPlatformer_WwiseProject\.cache\Windows\SFX\fstp 4_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player SFX\PLAYER SFX G\Footsteps\fstp 4		5018
 	93970225	dmg 2	A:\GitHub Desktop\RGD_Platformer23\RythmPlatformer\RythmPlatformer_WwiseProject\.cache\Windows\SFX\dmg 2_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player SFX\PLAYER SFX G\Dmg\dmg 2		12029
 	96524381	jump 1	A:\GitHub Desktop\RGD_Platformer23\RythmPlatformer\RythmPlatformer_WwiseProject\.cache\Windows\SFX\jump 1_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player SFX\PLAYER SFX G\Jump\jump 1		34885
@@ -18,8 +21,11 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	179927645	kickSwing 2	A:\GitHub Desktop\RGD_Platformer23\RythmPlatformer\RythmPlatformer_WwiseProject\.cache\Windows\SFX\kickSwing 2_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player SFX\PLAYER SFX G\Kick Swing\kickSwing 2		6974
 	189194347	dmg 4	A:\GitHub Desktop\RGD_Platformer23\RythmPlatformer\RythmPlatformer_WwiseProject\.cache\Windows\SFX\dmg 4_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player SFX\PLAYER SFX G\Dmg\dmg 4		11975
 	209138196	jumpLand 1	A:\GitHub Desktop\RGD_Platformer23\RythmPlatformer\RythmPlatformer_WwiseProject\.cache\Windows\SFX\jumpLand 1_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player SFX\PLAYER SFX G\Jump Land\jumpLand 1		4881
+	212778103	UI Confirm	A:\GitHub Desktop\RGD_Platformer23\RythmPlatformer\RythmPlatformer_WwiseProject\.cache\Windows\SFX\UI confirm_755F56E2.wem		\Actor-Mixer Hierarchy\Default Work Unit\UI SFX\UI Confirm		111230
+	238298689	UI hover 2	A:\GitHub Desktop\RGD_Platformer23\RythmPlatformer\RythmPlatformer_WwiseProject\.cache\Windows\SFX\UI hover 2_755F56E2.wem		\Actor-Mixer Hierarchy\Default Work Unit\UI SFX\UI hover\UI hover 2		6790
 	319152352	fstp 1	A:\GitHub Desktop\RGD_Platformer23\RythmPlatformer\RythmPlatformer_WwiseProject\.cache\Windows\SFX\fstp 1_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player SFX\PLAYER SFX G\Footsteps\fstp 1		4646
 	341305912	fstp 6	A:\GitHub Desktop\RGD_Platformer23\RythmPlatformer\RythmPlatformer_WwiseProject\.cache\Windows\SFX\fstp 6_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player SFX\PLAYER SFX G\Footsteps\fstp 6		5062
+	343276601	UI hover 3	A:\GitHub Desktop\RGD_Platformer23\RythmPlatformer\RythmPlatformer_WwiseProject\.cache\Windows\SFX\UI hover 3_755F56E2.wem		\Actor-Mixer Hierarchy\Default Work Unit\UI SFX\UI hover\UI hover 3		6435
 	359772736	fstp 5	A:\GitHub Desktop\RGD_Platformer23\RythmPlatformer\RythmPlatformer_WwiseProject\.cache\Windows\SFX\fstp 5_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player SFX\PLAYER SFX G\Footsteps\fstp 5		4500
 	369679033	kickHit 4	A:\GitHub Desktop\RGD_Platformer23\RythmPlatformer\RythmPlatformer_WwiseProject\.cache\Windows\SFX\kickHit 4_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player SFX\PLAYER SFX G\Kick Hit\kickHit 4		54477
 	406201438	kickHit 5	A:\GitHub Desktop\RGD_Platformer23\RythmPlatformer\RythmPlatformer_WwiseProject\.cache\Windows\SFX\kickHit 5_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player SFX\PLAYER SFX G\Kick Hit\kickHit 5		52489
@@ -31,6 +37,7 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	665553228	wallGrab 6	A:\GitHub Desktop\RGD_Platformer23\RythmPlatformer\RythmPlatformer_WwiseProject\.cache\Windows\SFX\wallGrab 6_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player SFX\PLAYER SFX G\Wallgrab\wallGrab 6		3304
 	678376587	wallGrab 2	A:\GitHub Desktop\RGD_Platformer23\RythmPlatformer\RythmPlatformer_WwiseProject\.cache\Windows\SFX\wallGrab 2_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player SFX\PLAYER SFX G\Wallgrab\wallGrab 2		4594
 	716472605	jump 2	A:\GitHub Desktop\RGD_Platformer23\RythmPlatformer\RythmPlatformer_WwiseProject\.cache\Windows\SFX\jump 2_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player SFX\PLAYER SFX G\Jump\jump 2		34412
+	735244642	UI hover 4	A:\GitHub Desktop\RGD_Platformer23\RythmPlatformer\RythmPlatformer_WwiseProject\.cache\Windows\SFX\UI hover 4_755F56E2.wem		\Actor-Mixer Hierarchy\Default Work Unit\UI SFX\UI hover\UI hover 4		7129
 	759301624	kickHit 2	A:\GitHub Desktop\RGD_Platformer23\RythmPlatformer\RythmPlatformer_WwiseProject\.cache\Windows\SFX\kickHit 2_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player SFX\PLAYER SFX G\Kick Hit\kickHit 2		53410
 	839512746	kickSwing 3	A:\GitHub Desktop\RGD_Platformer23\RythmPlatformer\RythmPlatformer_WwiseProject\.cache\Windows\SFX\kickSwing 3_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player SFX\PLAYER SFX G\Kick Swing\kickSwing 3		7851
 	872038207	saw_idle LOOP	A:\GitHub Desktop\RGD_Platformer23\RythmPlatformer\RythmPlatformer_WwiseProject\.cache\Windows\SFX\saw_idle LOOP_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Enemies SFX\ENEMIES SFX G\Saw Idle\saw_idle LOOP		175449

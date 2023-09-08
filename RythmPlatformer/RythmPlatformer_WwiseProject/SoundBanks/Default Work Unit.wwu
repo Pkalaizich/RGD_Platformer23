@@ -26,9 +26,11 @@
 					</PropertyList>
 					<ObjectInclusionList>
 						<ObjectRef Name="footsteps" ID="{71850E24-68AD-41B3-9CD2-166265107607}" WorkUnitID="{33740BD9-AACF-44F1-8BE2-1AF2D66726E3}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="UIhover" ID="{4B416551-CEF5-42A7-8247-9F5D201B0675}" WorkUnitID="{33740BD9-AACF-44F1-8BE2-1AF2D66726E3}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="kickSwing" ID="{ADCF71A2-2BD1-4687-A84F-EE5D82BB9603}" WorkUnitID="{33740BD9-AACF-44F1-8BE2-1AF2D66726E3}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="jumpLand" ID="{C366B2AB-94A6-46E3-94B2-BF0530F3DE5C}" WorkUnitID="{33740BD9-AACF-44F1-8BE2-1AF2D66726E3}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="wallgrab" ID="{F45F6F7C-8024-473B-9F6C-60CE37FD774E}" WorkUnitID="{33740BD9-AACF-44F1-8BE2-1AF2D66726E3}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="UIconfirm" ID="{D08F5F8E-CCDC-4756-938D-E8E6CF69B537}" WorkUnitID="{33740BD9-AACF-44F1-8BE2-1AF2D66726E3}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="jump" ID="{BBFB3AEA-F4CB-4773-B681-6FD4DE21D79B}" WorkUnitID="{33740BD9-AACF-44F1-8BE2-1AF2D66726E3}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="sawIdle" ID="{38665BB8-B4C2-4C12-B253-3C136D4FF2DA}" WorkUnitID="{33740BD9-AACF-44F1-8BE2-1AF2D66726E3}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="kickHit" ID="{0E376073-BEA2-4CEE-BFB1-83AB9B899F22}" WorkUnitID="{33740BD9-AACF-44F1-8BE2-1AF2D66726E3}" Origin="Manual" Filter="7"/>
