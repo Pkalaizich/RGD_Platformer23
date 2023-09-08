@@ -58,6 +58,8 @@ public class MusicManager : MonoBehaviour
         JumpLand,
         KickSwing,
         KickHit,
-        WallGrab
+        WallGrab,
+        UIConfirm,
+        UIHover
     }
 }

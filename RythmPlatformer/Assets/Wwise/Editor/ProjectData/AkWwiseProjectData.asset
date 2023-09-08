@@ -100,7 +100,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Default Work Unit
     guid: db16744dc8fbdf4387c499b7918dcfc1
     GuidInternal: 
-    m_lastTime: -8585074810320063601
+    m_lastTime: -8585073945986273984
     List:
     - name: MUSIC
       guid: 984ca10245e9a743848cfc96b934634b
@@ -142,7 +142,7 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit
     guid: d90b7433cfaaf1448be21af2d66726e3
     GuidInternal: 
-    m_lastTime: -8585074810327551371
+    m_lastTime: -8585073979914924900
     List:
     - name: backgroundMusic
       guid: 0a0408e20900cd4eaf13c8e8df79b738
@@ -419,6 +419,72 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
+    - name: UI
+      guid: 95dbf34c91229646b86a2f1e5a672c43
+      id: 1551306167
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: d90b7433cfaaf1448be21af2d66726e3
+      - ElementName: SFXS
+        ObjectType: 4
+        guid: 903d4ad7bbb3ea49831e87470576ccd8
+      - ElementName: UI
+        ObjectType: 4
+        guid: 95dbf34c91229646b86a2f1e5a672c43
+      Path: Events\Default Work Unit\SFXS\UI
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: UIconfirm
+      guid: 8e5f8fd0dccc5647938de8e6cf69b537
+      id: 685626117
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: d90b7433cfaaf1448be21af2d66726e3
+      - ElementName: SFXS
+        ObjectType: 4
+        guid: 903d4ad7bbb3ea49831e87470576ccd8
+      - ElementName: UI
+        ObjectType: 4
+        guid: 95dbf34c91229646b86a2f1e5a672c43
+      - ElementName: UIconfirm
+        ObjectType: 3
+        guid: 8e5f8fd0dccc5647938de8e6cf69b537
+      Path: Events\Default Work Unit\SFXS\UI\UIconfirm
+      maxAttenuation: 0
+      maxDuration: 2.8235416
+      minDuration: 2.8235416
+    - name: UIhover
+      guid: 5165414bf5cea74282479f5d201b0675
+      id: 199363535
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: d90b7433cfaaf1448be21af2d66726e3
+      - ElementName: SFXS
+        ObjectType: 4
+        guid: 903d4ad7bbb3ea49831e87470576ccd8
+      - ElementName: UI
+        ObjectType: 4
+        guid: 95dbf34c91229646b86a2f1e5a672c43
+      - ElementName: UIhover
+        ObjectType: 3
+        guid: 5165414bf5cea74282479f5d201b0675
+      Path: Events\Default Work Unit\SFXS\UI\UIhover
+      maxAttenuation: 0
+      maxDuration: 0.70589584
+      minDuration: 0.70589584
     - name: wallgrab
       guid: 7c6f5ff424803b479f6c60ce37fd774e
       id: 3604987179

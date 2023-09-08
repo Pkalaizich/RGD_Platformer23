@@ -43,8 +43,7 @@ public class GameManager : MonoBehaviour
     }
     
     public void WonGame()
-    {
-        MusicManager.Instance.StopMusic();
+    {        
         gameIsActive = false;
         StartCoroutine(RestartGameAfterWin(4f));
     }
@@ -59,6 +58,7 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(waitTime);
         FindObjectOfType<MenusUI>().EndAnimation();
+        MusicManager.Instance.StopMusic();
         yield return new WaitForSeconds(2f);
         SceneManager.LoadScene(0);
     }
