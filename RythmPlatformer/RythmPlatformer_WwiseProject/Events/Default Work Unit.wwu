@@ -216,6 +216,44 @@
 								</Event>
 							</ChildrenList>
 						</Folder>
+						<Folder Name="UI" ID="{4CF3DB95-2291-4696-B86A-2F1E5A672C43}" ShortID="1038213306">
+							<PropertyList>
+								<Property Name="Color" Type="int16" Value="4"/>
+								<Property Name="OverrideColor" Type="bool" Value="True"/>
+							</PropertyList>
+							<ChildrenList>
+								<Event Name="UIhover" ID="{4B416551-CEF5-42A7-8247-9F5D201B0675}">
+									<PropertyList>
+										<Property Name="Color" Type="int16" Value="17"/>
+										<Property Name="OverrideColor" Type="bool" Value="True"/>
+									</PropertyList>
+									<ChildrenList>
+										<Action Name="" ID="{BB493F60-9805-4D72-8D85-1A6B7397CEDB}" ShortID="446545554">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="UI hover" ID="{4D0503BE-AB6D-4ABE-BDDE-5CBA223FDA9B}" WorkUnitID="{0E707163-FAA0-4A8B-9535-522BE4CDA46F}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="UIconfirm" ID="{D08F5F8E-CCDC-4756-938D-E8E6CF69B537}">
+									<PropertyList>
+										<Property Name="Color" Type="int16" Value="17"/>
+										<Property Name="OverrideColor" Type="bool" Value="True"/>
+									</PropertyList>
+									<ChildrenList>
+										<Action Name="" ID="{A17F9136-D1B1-488F-9FC9-1A1B3E6A4BB9}" ShortID="386726575">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="UI Confirm" ID="{2F06505B-6C70-4DBC-83EA-64AF90167FDE}" WorkUnitID="{0E707163-FAA0-4A8B-9535-522BE4CDA46F}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+							</ChildrenList>
+						</Folder>
 					</ChildrenList>
 				</Folder>
 			</ChildrenList>

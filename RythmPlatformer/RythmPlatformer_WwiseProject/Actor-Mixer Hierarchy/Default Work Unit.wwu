@@ -8,6 +8,7 @@
 			<ChildrenList>
 				<WorkUnit Name="Player SFX" ID="{277AB089-C7F6-498C-84AD-3501CCF68B31}" PersistMode="Reference"/>
 				<WorkUnit Name="Enemies SFX" ID="{E39C3D3D-61DD-48D3-BB0F-E7E2CE56A87F}" PersistMode="Reference"/>
+				<WorkUnit Name="UI SFX" ID="{0E707163-FAA0-4A8B-9535-522BE4CDA46F}" PersistMode="Reference"/>
 			</ChildrenList>
 		</WorkUnit>
 	</AudioObjects>
