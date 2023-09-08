@@ -67,6 +67,8 @@ public class CharacterMovementRb : MonoBehaviour
     private TestUI testUI;
     private WaitForSeconds wait;
     private static readonly int hGlobalParam = Animator.StringToHash("GlobalParameter");
+    private float kickDuration;
+    private float kickTime;
     #endregion
 
 
@@ -90,7 +92,7 @@ public class CharacterMovementRb : MonoBehaviour
         normalGravity = -(2 * jumpSpeed) / jumpTime;
         grabbedGravity = normalGravity * grabbedGravityModificator;
         currentGravity= normalGravity;
-
+        kickDuration = RythmController.Instance.secPerBeat / 2;
         unitMeasuredSpeedIncrement = unitsPerBeatSpeed / RythmController.Instance.secPerBeat;
         dashSpeed = unitMeasuredSpeedIncrement * dashModificator;
 
@@ -137,6 +139,18 @@ public class CharacterMovementRb : MonoBehaviour
                 playerVelocity.y = -1f * jumpSpeed;
             }
             rb.velocity = playerVelocity;
+            if(attacking)
+            {
+                if(Time.time - kickTime > kickDuration)
+                {
+                    attacking=false;
+                    playerVelocity.x = 0;
+                    currentSpeedLevel = 0;
+                    SetAnimationByIndex(0); //IDLE
+                    KickResult();
+                }
+                
+            }
         }              
     }
 
@@ -188,13 +202,17 @@ public class CharacterMovementRb : MonoBehaviour
         {
             totalErrors = 0;
         }
-        bool right = armature.transform.localScale.y ==100? true:false;
+        bool right = armature.transform.localScale.y >=50? true:false;
         List<InputController.InputActions> inputs = InputController.Instance.thisBeatActions;
         if (inputs.Contains(InputController.InputActions.Offbeat) || (inputs.Count == 0 && (CurrentState != PlayerStateRb.WallGrab)))
         {
             if (currentSpeedLevel != 0)
             {
                 right = (Mathf.Abs(playerVelocity.x) / playerVelocity.x) >0? true : false;
+            }
+            else
+            {
+                right = armature.transform.localScale.y >= 50 ? true : false;
             }
             WrongInput();
         }
@@ -205,6 +223,10 @@ public class CharacterMovementRb : MonoBehaviour
                 if (currentSpeedLevel != 0)
                 {
                     right = (Mathf.Abs(playerVelocity.x) / playerVelocity.x) > 0 ? true : false;
+                }
+                else
+                {
+                    right = armature.transform.localScale.y >= 50 ? true : false;
                 }
                 currentSpeedLevel = 0;
                 playerVelocity.x = currentSpeedLevel * unitMeasuredSpeedIncrement;
@@ -266,11 +288,12 @@ public class CharacterMovementRb : MonoBehaviour
                         {
                             right = (Mathf.Abs(playerVelocity.x) / playerVelocity.x) > 0 ? true : false;
                         }
-                        currentSpeedLevel = 2;
+                        currentSpeedLevel = 4;
                         int modif = right ? 1 : -1;
                         playerVelocity.x = modif * currentSpeedLevel * unitMeasuredSpeedIncrement / 2;
                         Debug.Log("Atacando");
                         missedAttack = !CheckEnemy();
+                        kickTime = Time.time;
                     }
                 }
                 else
@@ -304,11 +327,11 @@ public class CharacterMovementRb : MonoBehaviour
             armature.transform.localScale = new Vector3(100, -100, 100);
         }
         InputController.Instance.ResetInputs();
-        if (missedAttack)
+        /*if (missedAttack)
         {
             InputController.Instance.AddInputToList(InputController.InputActions.Offbeat);
             missedAttack= false;
-        }
+        }*/
     }
 
     public void EnemyCollision()
@@ -318,6 +341,21 @@ public class CharacterMovementRb : MonoBehaviour
         lastErrorTime = Time.time;
         EnergyLoss(enemyCollisionEnergyLoss);
         damageFromEnemy = true;
+    }
+
+    private void KickResult()
+    {
+        if(missedAttack)
+        {
+            totalErrors += 1;
+            lastErrorTime = Time.time;
+            EnergyLoss(totalErrors*energyLossPerError);
+        }
+        else
+        {
+            MusicManager.Instance.PlaySound((int)MusicManager.AvailableSFX.KickHit);
+        }
+        missedAttack= false;
     }
 
     public void EnergyLoss(float loss)
@@ -350,27 +388,27 @@ public class CharacterMovementRb : MonoBehaviour
             if(CurrentState == PlayerStateRb.Falling)
             {
                 MusicManager.Instance.PlaySound((int)MusicManager.AvailableSFX.JumpLand);
+                if (currentSpeedLevel == 0)
+                {
+                    CurrentState = PlayerStateRb.Stopped;
+                    SetAnimationByIndex(0);
+                }
+                if (currentSpeedLevel == 1)
+                {
+                    //animator.StartPlayback();
+                    SetAnimationByIndex(1);
+                    animator.speed = 0.5f;
+                    CurrentState = PlayerStateRb.RunningHalfSpeed;
+                }
+                if (currentSpeedLevel == 2)
+                {
+                    //animator.StartPlayback();
+                    SetAnimationByIndex(1);
+                    CurrentState = PlayerStateRb.Running;
+                }
             }
             currentGravity = normalGravity;
-            animator.speed = 1;
-            if (currentSpeedLevel == 0)
-            {
-                CurrentState = PlayerStateRb.Stopped;                
-                SetAnimationByIndex(0);
-            }
-            if (currentSpeedLevel == 1) 
-            {
-                //animator.StartPlayback();
-                SetAnimationByIndex(1);
-                animator.speed = 0.5f;
-                CurrentState = PlayerStateRb.RunningHalfSpeed;
-            }
-            if (currentSpeedLevel == 2)
-            {
-                //animator.StartPlayback();
-                SetAnimationByIndex(1);
-                CurrentState = PlayerStateRb.Running;
-            } 
+            animator.speed = 1;            
         }
         return ground;
         
@@ -417,7 +455,7 @@ public class CharacterMovementRb : MonoBehaviour
         //bool nearEnemy = Physics.SphereCast(capsCollider.bounds.center + new Vector3((capsCollider.radius + unitsPerBeatSpeed * 1f / 6f) * modifier, 0, 0), unitsPerBeatSpeed * (1f / 6f), Vector3.right * modifier, out nearHit,Mathf.Infinity, enemyMask);        
         if (nearEnemy)
         {
-            nearHit.transform.GetComponent<Enemy>().DeactivateEnemy(RythmController.Instance.secPerBeat* (1f/ 12f));
+            nearHit.transform.GetComponent<Enemy>().DeactivateEnemy(kickDuration);
             Debug.Log("Ataque cercano");
             return true;
         }
@@ -426,7 +464,7 @@ public class CharacterMovementRb : MonoBehaviour
         //bool farEnemy = Physics.SphereCast(capsCollider.bounds.center + new Vector3((capsCollider.radius + unitsPerBeatSpeed * 4f / 6f) * modifier, 0, 0), unitsPerBeatSpeed * (2f / 6f), Vector3.right * modifier, out farHit, Mathf.Infinity, enemyMask);        
         if (farEnemy)
         {
-            farHit.transform.GetComponent<Enemy>().DeactivateEnemy(RythmController.Instance.secPerBeat *(5f/ 12f));
+            farHit.transform.GetComponent<Enemy>().DeactivateEnemy(kickDuration);
             Debug.Log("Ataque lejano");
             return true;
         }
