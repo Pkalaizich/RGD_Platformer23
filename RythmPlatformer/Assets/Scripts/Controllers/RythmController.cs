@@ -100,7 +100,7 @@ public class RythmController : MonoBehaviour
 
     private void StartRythm()
     {
-        //aSource.PlayOneShot(tickSFX);
+        aSource.PlayOneShot(tickSFX);
         lastBeatTime = Time.time;
     }
     private IEnumerator CheckInput()
