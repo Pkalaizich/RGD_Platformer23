@@ -204,7 +204,7 @@ public class CharacterMovementRb : MonoBehaviour
         }
         bool right = armature.transform.localScale.y >=50? true:false;
         List<InputController.InputActions> inputs = InputController.Instance.thisBeatActions;
-        if (inputs.Contains(InputController.InputActions.Offbeat) || (inputs.Count == 0 && (CurrentState != PlayerStateRb.WallGrab)))
+        if (inputs.Contains(InputController.InputActions.Offbeat) || (inputs.Count == 0 && (CurrentState == PlayerStateRb.WallGrab)))
         {
             if (currentSpeedLevel != 0)
             {
@@ -218,7 +218,7 @@ public class CharacterMovementRb : MonoBehaviour
         }
         else
         {
-            if(inputs.Count == 0 && (CurrentState!=PlayerStateRb.Falling|| CurrentState != PlayerStateRb.Jumping))
+            if(inputs.Count == 0 && (CurrentState!=PlayerStateRb.Falling&& CurrentState != PlayerStateRb.Jumping))
             {
                 if (currentSpeedLevel != 0)
                 {
@@ -326,12 +326,9 @@ public class CharacterMovementRb : MonoBehaviour
         {
             armature.transform.localScale = new Vector3(100, -100, 100);
         }
+
         InputController.Instance.ResetInputs();
-        /*if (missedAttack)
-        {
-            InputController.Instance.AddInputToList(InputController.InputActions.Offbeat);
-            missedAttack= false;
-        }*/
+        
     }
 
     public void EnemyCollision()
