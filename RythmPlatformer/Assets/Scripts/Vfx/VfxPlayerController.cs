@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class VfxPlayerController : MonoBehaviour
 {
+    [SerializeField] private ParticleSystem _dustParticles;
+
     // Start is called before the first frame update
     void Start()
     {

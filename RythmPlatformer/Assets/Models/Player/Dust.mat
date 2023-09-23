@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Music Notes
+  m_Name: Dust
   m_Shader: {fileID: 211, guid: 0000000000000000f000000000000000, type: 0}
   m_ValidKeywords:
   - _ALPHATEST_ON
@@ -45,11 +45,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
-        m_Texture: {fileID: 2800000, guid: 3c43bb9b9b20d7449b591da5391128f8, type: 3}
+        m_Texture: {fileID: 2800000, guid: 5b01e6a3fe46a6c4089f0340474dc39a, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 3c43bb9b9b20d7449b591da5391128f8, type: 3}
+        m_Texture: {fileID: 2800000, guid: 5b01e6a3fe46a6c4089f0340474dc39a, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -127,13 +127,13 @@ Material:
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _CameraFadeParams: {r: 0, g: Infinity, b: 0, a: 0}
-    - _Color: {r: 1, g: 0, b: 0.35794687, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _ColorAddSubDiff: {r: 0, g: 0, b: 0, a: 0}
-    - _EmissionColor: {r: 5.9921575, g: 0.627451, b: 1.882353, a: 1}
+    - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
     - _SoftParticleFadeParams: {r: 0, g: 0, b: 0, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
---- !u!114 &6484841560485662670
+--- !u!114 &4078113395437388648
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
