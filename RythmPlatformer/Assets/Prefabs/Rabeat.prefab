@@ -766,7 +766,8 @@ MonoBehaviour:
   dashModificator: 4
   jumpSpeed: 28
   walljumpModificator: 1.2
-  grabbedGravityModificator: 0.1
+  grabbedGravityModificator: 0
+  wallGrabBeatsDuration: 3
   jumpBeatDuration: 2
   maxEnergy: 55
   energyLossPerError: 1
@@ -814,6 +815,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14dc0dd46b81c9140a980bb084b43ab2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _dustParticles: {fileID: 0}
 --- !u!1 &2227850234606707306
 GameObject:
   m_ObjectHideFlags: 0

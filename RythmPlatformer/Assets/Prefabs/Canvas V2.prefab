@@ -531,7 +531,9 @@ MonoBehaviour:
   testMessage: {fileID: 5779664579754213817}
   energyIndicator: {fileID: 5846775114615567005}
   bunnyHead: {fileID: 5779664580112167314}
-  normalHead: {fileID: 21300000, guid: ca6ea35f972dd3b41b2d9c8227a32587, type: 3}
+  correctHead: {fileID: 21300000, guid: f61ff0c2be3f7cc43ba89153bee00e54, type: 3}
+  normalHead: {fileID: 21300000, guid: 0ff582d0f85fd314fbefcb30d435b6e1, type: 3}
+  interactableHead: {fileID: 21300000, guid: ca6ea35f972dd3b41b2d9c8227a32587, type: 3}
   failedHead: {fileID: 21300000, guid: 8e2498b4d5733474da44c64cc65efe31, type: 3}
   countdownTMP: {fileID: 4802511638571309054}
 --- !u!1 &5779664579530872109

@@ -15,7 +15,9 @@ public class TestUI : MonoBehaviour
     [SerializeField] private Image energyIndicator;
 
     [SerializeField] private Image bunnyHead;
+    [SerializeField] private Sprite correctHead;
     [SerializeField] private Sprite normalHead;
+    [SerializeField] private Sprite interactableHead;
     [SerializeField] private Sprite failedHead;
 
     [SerializeField] private TextMeshProUGUI countdownTMP;
@@ -45,7 +47,7 @@ public class TestUI : MonoBehaviour
         //animDuration = 0.2f;
         GameplayEvents.OnThresholdEnter.AddListener(RabbitHeadScale);
         GameplayEvents.OnThresholdEnter.AddListener(CountDownBeat);
-        GameplayEvents.OnBadAction.AddListener(ChangeFace);        
+        GameplayEvents.OnBadAction.AddListener(()=>ChangeFace(false));        
     }
     public void UpdateDotPosition(float percentage)
     {
@@ -90,19 +92,24 @@ public class TestUI : MonoBehaviour
     {
         Sequence scaling = DOTween.Sequence();
 
+        bunnyHead.sprite = interactableHead;
         scaling.Append(bunnyHead.rectTransform.DOScale(Vector3.one * 1.1f, animDuration).SetEase(Ease.Linear)).Join(energyBar.DOScale(Vector3.one * 1.1f, animDuration).SetEase(Ease.Linear))
             .Append(bunnyHead.rectTransform.DOScale(Vector3.one, animDuration).SetEase(Ease.Linear)).Join(energyBar.DOScale(Vector3.one, animDuration).SetEase(Ease.Linear));
+        scaling.OnComplete(() =>
+        {
+            bunnyHead.sprite = normalHead;
+        });
         scaling.Play();
     }
 
-    public void ChangeFace()
+    public void ChangeFace(bool correct)
     {
-        StartCoroutine(SpriteChange());
+        StartCoroutine(SpriteChange(correct));
     }
 
-    private IEnumerator SpriteChange()
-    {
-        bunnyHead.sprite = failedHead;
+    private IEnumerator SpriteChange(bool correct)
+    {        
+        bunnyHead.sprite = correct? correctHead:failedHead;
         yield return wait;
         bunnyHead.sprite = normalHead;
     }

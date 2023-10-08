@@ -21,12 +21,14 @@ public class CharacterMovementRb : MonoBehaviour
     private float unitMeasuredSpeedIncrement;
     [SerializeField] private int dashModificator;
     private float dashSpeed;
-    [SerializeField] private float jumpSpeed;   
+    [SerializeField] private float jumpSpeed;
+    [Tooltip("Multiplicador que afecta a la velocidad vertical inicial del salto cuando se hace un walljump")]
     [Range(1f, 2f)]
     [SerializeField] private float walljumpModificator;
-    [Tooltip("Multiplicador que afecta a la velocidad vertical inicial del salto cuando se hace un walljump")]
     [Range(0f, 1f)]
     [SerializeField] private float grabbedGravityModificator;
+    [Tooltip("Cuantos Beats puede estar agarrado a la pared")]
+    [SerializeField] private int wallGrabBeatsDuration;
     [SerializeField] private float jumpBeatDuration;
 
     [SerializeField] private float maxEnergy;
@@ -69,6 +71,7 @@ public class CharacterMovementRb : MonoBehaviour
     private static readonly int hGlobalParam = Animator.StringToHash("GlobalParameter");
     private float kickDuration;
     private float kickTime;
+    private int totalBeatsGrabbed;
     #endregion
 
 
@@ -176,9 +179,17 @@ public class CharacterMovementRb : MonoBehaviour
             }
             currentSpeedLevel = currentSpeedLevel == 2 ? 1 : 0;            
             if(CurrentState == PlayerStateRb.WallGrab)
-            {
-                currentGravity= normalGravity;
-                CurrentState= PlayerStateRb.Jumping;
+            {                
+                totalBeatsGrabbed += 1;
+                if(totalBeatsGrabbed>wallGrabBeatsDuration)
+                {
+                    totalErrors += 1;
+                    lastErrorTime = Time.time;
+                    float energyLoss = Mathf.Clamp(totalErrors * energyLossPerError, energyLossPerError, maxEnergyLoss);
+                    EnergyLoss(energyLoss);
+                    currentGravity = normalGravity;
+                    CurrentState = PlayerStateRb.Jumping;
+                }                
             }
             if (currentSpeedLevel != 0)
             {                
@@ -204,6 +215,10 @@ public class CharacterMovementRb : MonoBehaviour
         }
         bool right = armature.transform.localScale.y >=50? true:false;
         List<InputController.InputActions> inputs = InputController.Instance.thisBeatActions;
+        if(inputs.Count > 0 && !inputs.Contains(InputController.InputActions.Offbeat))
+        {
+            TestUI.Instance.ChangeFace(true);
+        }
         if (inputs.Contains(InputController.InputActions.Offbeat) || (inputs.Count == 0 && (CurrentState == PlayerStateRb.WallGrab)))
         {
             if (currentSpeedLevel != 0)
@@ -424,6 +439,7 @@ public class CharacterMovementRb : MonoBehaviour
             {
                 MusicManager.Instance.PlaySound((int)MusicManager.AvailableSFX.WallGrab);
             }
+            totalBeatsGrabbed = 0;
             animator.speed = 1;
             wallAtRight = playerVelocity.x > 0 ? true : false;
             currentGravity = grabbedGravity;
@@ -431,10 +447,8 @@ public class CharacterMovementRb : MonoBehaviour
             playerVelocity.y = 0f;
             currentSpeedLevel = 0;
             CurrentState = PlayerStateRb.WallGrab;
-            SetAnimationByIndex(4); //CAMBIAR POR ANIMACION DE WALLGRAB!!!
+            SetAnimationByIndex(4); 
         }
-        
-
         return grabing;
     }
 
@@ -480,12 +494,7 @@ public class CharacterMovementRb : MonoBehaviour
         }
     }
     #endregion
-
-    //private IEnumerator WaitToCheck()
-    //{
-    //    yield return wait;
-    //    CheckEnemyInNextBeat();
-    //}
+       
 
     /// <summary>
     /// 0:IDLE
