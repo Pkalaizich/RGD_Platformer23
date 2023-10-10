@@ -61,12 +61,12 @@ public class RythmController : MonoBehaviour
         if(GameManager.Instance.gameIsActive)
         {
             float currentTime = Time.time - lastBeatTime;            
-            if (currentTime >= secPerBeat) 
-            {
-                aSource.PlayOneShot(tickSFX);
-                lastBeatTime = Time.time;
-                StartCoroutine(CheckInput());
-            }
+            //if (currentTime >= secPerBeat) 
+            //{
+            //    //aSource.PlayOneShot(tickSFX);
+            //    lastBeatTime = Time.time;
+            //    StartCoroutine(CheckInput());
+            //}
             if(currentTime < inputThreshold*secPerBeat || currentTime > secPerBeat * (1-inputThreshold)) 
             {
                 if(!inThresHold)
@@ -87,36 +87,18 @@ public class RythmController : MonoBehaviour
                 testUI.SetIndicatorInvalid();
                 validInput= false;
             }
-        }
-        /*else
-        {
-            if(Input.GetKeyDown(KeyCode.P)) 
-            {
-                gameStarted= true;
-                
-            }
-        }*/
+        }        
     }
 
     private void StartRythm()
     {
-        aSource.PlayOneShot(tickSFX);
-        lastBeatTime = Time.time;
+        //aSource.PlayOneShot(tickSFX);
+        //lastBeatTime = Time.time;
     }
     private IEnumerator CheckInput()
     {
         yield return new WaitForSeconds(inputThreshold*secPerBeat);
-        InputController.Instance.ProcessInput();
-        /*if(!recivedInputInBeat)
-        {
-            //charMov.InputNotSent();
-            charMovRb.WrongInput();
-            TestUI.Instance.SetMessage("MAL!");
-        }
-        else
-        {
-            recivedInputInBeat= false;
-        }*/
+        InputController.Instance.ProcessInput();        
     }
 
     /// <summary>
@@ -127,5 +109,16 @@ public class RythmController : MonoBehaviour
     {
         float duration = inputThreshold * secPerBeat * 2;
         return duration;
+    }
+
+    public void EnterBeat()
+    {
+        lastBeatTime = Time.time;
+        StartCoroutine(CheckInput());
+    }
+
+    public void CountDownBeat()
+    {
+        lastBeatTime = Time.time;
     }
 }

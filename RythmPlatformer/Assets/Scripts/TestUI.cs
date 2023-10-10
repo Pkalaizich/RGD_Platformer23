@@ -47,7 +47,8 @@ public class TestUI : MonoBehaviour
         //animDuration = 0.2f;
         GameplayEvents.OnThresholdEnter.AddListener(RabbitHeadScale);
         GameplayEvents.OnThresholdEnter.AddListener(CountDownBeat);
-        GameplayEvents.OnBadAction.AddListener(()=>ChangeFace(false));        
+        GameplayEvents.OnBadAction.AddListener(()=>ChangeFace(false));
+        GameplayEvents.OnGameStarted.AddListener(()=>CountDownBeat());
     }
     public void UpdateDotPosition(float percentage)
     {
@@ -119,11 +120,13 @@ public class TestUI : MonoBehaviour
         beat += 1;
         if(beat < 4) 
         {
+            StartCoroutine(NextNumber());
             Sequence countdown = DOTween.Sequence();
             countdownTMP.text = beat.ToString();
             countdown.Append(countdownTMP.rectTransform.DOScale(Vector3.one,animDuration*2)).Join(countdownTMP.DOFade(1,animDuration*2)).
                 Append(countdownTMP.rectTransform.DOScale(Vector3.zero, 0.1f)).Join(countdownTMP.DOFade(0, 0.1f));
             countdown.Play();
+            GameplayEvents.OnCountdownEnded?.Invoke();
         }
         else
         {
@@ -133,8 +136,13 @@ public class TestUI : MonoBehaviour
                 Append(countdownTMP.rectTransform.DOScale(Vector3.zero, 0.1f)).Join(countdownTMP.DOFade(0, 0.1f));
             countdown.Play();
             GameplayEvents.OnThresholdEnter.RemoveListener(CountDownBeat);
-            GameplayEvents.OnCountdownEnded?.Invoke();
-            //MusicManager.Instance.PlayMusic();
+            //GameplayEvents.OnCountdownEnded?.Invoke();            
         }
+    }
+
+    private IEnumerator NextNumber()
+    {
+        yield return new WaitForSeconds(RythmController.Instance.secPerBeat);
+        GameplayEvents.OnThresholdEnter?.Invoke();
     }
 }

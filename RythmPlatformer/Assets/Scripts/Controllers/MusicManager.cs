@@ -37,7 +37,7 @@ public class MusicManager : MonoBehaviour
 
     public void PlayMusic()
     {
-        musicEvent.Post(gameObject);
+        musicEvent.Post(gameObject, (uint)AkCallbackType.AK_MusicSyncBeat,EnterBeat);
     }
 
     public void StopMusic()
@@ -48,6 +48,11 @@ public class MusicManager : MonoBehaviour
     {
         //testSfx.Post(gameObject);
         soundEffects[index].Post(gameObject);
+    }
+
+    public void EnterBeat(object in_cookie, AkCallbackType in_type, object in_info)
+    {
+        RythmController.Instance.EnterBeat();
     }
 
     public enum AvailableSFX
