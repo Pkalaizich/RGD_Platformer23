@@ -2157,29 +2157,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1867781651202108645, guid: 5aa70fda9c329434480a0a50eac8b16e, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 760
-      objectReference: {fileID: 0}
-    - target: {fileID: 1867781651202108645, guid: 5aa70fda9c329434480a0a50eac8b16e, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 146.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 5008061743191030881, guid: 5aa70fda9c329434480a0a50eac8b16e, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 760
-      objectReference: {fileID: 0}
-    - target: {fileID: 5008061743191030881, guid: 5aa70fda9c329434480a0a50eac8b16e, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 90.37
-      objectReference: {fileID: 0}
     - target: {fileID: 6206809998213650786, guid: 5aa70fda9c329434480a0a50eac8b16e, type: 3}
       propertyPath: m_Name
       value: Level Assets
-      objectReference: {fileID: 0}
-    - target: {fileID: 6206809998213650786, guid: 5aa70fda9c329434480a0a50eac8b16e, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6206809998213650797, guid: 5aa70fda9c329434480a0a50eac8b16e, type: 3}
       propertyPath: m_RootOrder
@@ -2224,14 +2204,6 @@ PrefabInstance:
     - target: {fileID: 6206809998213650797, guid: 5aa70fda9c329434480a0a50eac8b16e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8199882140178895753, guid: 5aa70fda9c329434480a0a50eac8b16e, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 760
-      objectReference: {fileID: 0}
-    - target: {fileID: 8199882140178895753, guid: 5aa70fda9c329434480a0a50eac8b16e, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 118.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5aa70fda9c329434480a0a50eac8b16e, type: 3}
