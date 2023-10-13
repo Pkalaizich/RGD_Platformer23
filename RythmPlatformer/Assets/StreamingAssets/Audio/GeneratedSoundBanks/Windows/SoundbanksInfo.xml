@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="16" SoundBankVersion="145">
+	<RootPaths>
+		<ProjectRoot>../..</ProjectRoot>
+		<SourceFilesRoot>../../.cache/Windows</SourceFilesRoot>
+		<SoundBanksRoot>.</SoundBanksRoot>
+		<ExternalSourcesInputFile></ExternalSourcesInputFile>
+		<ExternalSourcesOutputRoot>.</ExternalSourcesOutputRoot>
+	</RootPaths>
+	<DialogueEvents/>
+	<SoundBanks>
+		<SoundBank Id="602065129" Type="User" Language="SFX" Hash="{742B03B5-1C64-96EB-F776-200588A8ECD7}">
+			<ShortName>SFXS</ShortName>
+			<Path>SFXS.bnk</Path>
+			<Media>
+				<File Id="14196481" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>dmg 1.wav</ShortName>
+					<CachePath>SFX/dmg 1_3F75BDB9.wem</CachePath>
+				</File>
+				<File Id="52282365" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>UI hover 1.wav</ShortName>
+					<CachePath>SFX/UI hover 1_755F56E2.wem</CachePath>
+				</File>
+				<File Id="76277175" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>fstp 4.wav</ShortName>
+					<CachePath>SFX/fstp 4_3F75BDB9.wem</CachePath>
+				</File>
+				<File Id="93970225" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>dmg 2.wav</ShortName>
+					<CachePath>SFX/dmg 2_3F75BDB9.wem</CachePath>
+				</File>
+				<File Id="96524381" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>jump 1.wav</ShortName>
+					<CachePath>SFX/jump 1_3F75BDB9.wem</CachePath>
+				</File>
+				<File Id="109117486" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>kickHit 3.wav</ShortName>
+					<CachePath>SFX/kickHit 3_3F75BDB9.wem</CachePath>
+				</File>
+				<File Id="156453035" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>wallGrab 1.wav</ShortName>
+					<CachePath>SFX/wallGrab 1_3F75BDB9.wem</CachePath>
+				</File>
+				<File Id="179927645" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>kickSwing 2.wav</ShortName>
+					<CachePath>SFX/kickSwing 2_3F75BDB9.wem</CachePath>
+				</File>
+				<File Id="189194347" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>dmg 4.wav</ShortName>
+					<CachePath>SFX/dmg 4_3F75BDB9.wem</CachePath>
+				</File>
+				<File Id="209138196" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>jumpLand 1.wav</ShortName>
+					<CachePath>SFX/jumpLand 1_3F75BDB9.wem</CachePath>
+				</File>
+				<File Id="212778103" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>UI confirm.wav</ShortName>
+					<CachePath>SFX/UI confirm_755F56E2.wem</CachePath>
+				</File>
+				<File Id="238298689" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>UI hover 2.wav</ShortName>
+					<CachePath>SFX/UI hover 2_755F56E2.wem</CachePath>
+				</File>
+				<File Id="319152352" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>fstp 1.wav</ShortName>
+					<CachePath>SFX/fstp 1_3F75BDB9.wem</CachePath>
+				</File>
+				<File Id="341305912" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>fstp 6.wav</ShortName>
+					<CachePath>SFX/fstp 6_3F75BDB9.wem</CachePath>
+				</File>
+				<File Id="343276601" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>UI hover 3.wav</ShortName>
+					<CachePath>SFX/UI hover 3_755F56E2.wem</CachePath>
+				</File>
+				<File Id="359772736" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>fstp 5.wav</ShortName>
+					<CachePath>SFX/fstp 5_3F75BDB9.wem</CachePath>
+				</File>
+				<File Id="369679033" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>kickHit 4.wav</ShortName>
+					<CachePath>SFX/kickHit 4_3F75BDB9.wem</CachePath>
+				</File>
+				<File Id="406201438" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>kickHit 5.wav</ShortName>
+					<CachePath>SFX/kickHit 5_3F75BDB9.wem</CachePath>
+				</File>
+				<File Id="420404161" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>jumpLand 4.wav</ShortName>
+					<CachePath>SFX/jumpLand 4_3F75BDB9.wem</CachePath>
+				</File>
+				<File Id="519027451" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>dmg 3.wav</ShortName>
+					<CachePath>SFX/dmg 3_3F75BDB9.wem</CachePath>
+				</File>
+				<File Id="556225698" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>kickSwing 4.wav</ShortName>
+					<CachePath>SFX/kickSwing 4_3F75BDB9.wem</CachePath>
+				</File>
+				<File Id="644136659" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>fstp 3.wav</ShortName>
+					<CachePath>SFX/fstp 3_3F75BDB9.wem</CachePath>
+				</File>
+				<File Id="651553064" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>wallGrab 3.wav</ShortName>
+					<CachePath>SFX/wallGrab 3_3F75BDB9.wem</CachePath>
+				</File>
+				<File Id="665553228" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>wallGrab 6.wav</ShortName>
+					<CachePath>SFX/wallGrab 6_3F75BDB9.wem</CachePath>
+				</File>
+				<File Id="678376587" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>wallGrab 2.wav</ShortName>
+					<CachePath>SFX/wallGrab 2_3F75BDB9.wem</CachePath>
+				</File>
+				<File Id="716472605" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>jump 2.wav</ShortName>
+					<CachePath>SFX/jump 2_3F75BDB9.wem</CachePath>
+				</File>
+				<File Id="735244642" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>UI hover 4.wav</ShortName>
+					<CachePath>SFX/UI hover 4_755F56E2.wem</CachePath>
+				</File>
+				<File Id="759301624" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>kickHit 2.wav</ShortName>
+					<CachePath>SFX/kickHit 2_3F75BDB9.wem</CachePath>
+				</File>
+				<File Id="839512746" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>kickSwing 3.wav</ShortName>
+					<CachePath>SFX/kickSwing 3_3F75BDB9.wem</CachePath>
+				</File>
+				<File Id="872038207" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>saw_idle LOOP.wav</ShortName>
+					<CachePath>SFX/saw_idle LOOP_3F75BDB9.wem</CachePath>
+				</File>
+				<File Id="892530135" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>fstp 2.wav</ShortName>
+					<CachePath>SFX/fstp 2_3F75BDB9.wem</CachePath>
+				</File>
+				<File Id="934171046" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>jumpLand 5.wav</ShortName>
+					<CachePath>SFX/jumpLand 5_3F75BDB9.wem</CachePath>
+				</File>
+				<File Id="941204623" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>kickHit 1.wav</ShortName>
+					<CachePath>SFX/kickHit 1_3F75BDB9.wem</CachePath>
+				</File>
+				<File Id="944814583" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>jump 3.wav</ShortName>
+					<CachePath>SFX/jump 3_3F75BDB9.wem</CachePath>
+				</File>
+				<File Id="984564523" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>wallGrab 4.wav</ShortName>
+					<CachePath>SFX/wallGrab 4_3F75BDB9.wem</CachePath>
+				</File>
+				<File Id="987353467" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>wallGrab 5.wav</ShortName>
+					<CachePath>SFX/wallGrab 5_3F75BDB9.wem</CachePath>
+				</File>
+				<File Id="991254648" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>jumpLand 3.wav</ShortName>
+					<CachePath>SFX/jumpLand 3_3F75BDB9.wem</CachePath>
+				</File>
+				<File Id="993090612" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>kickSwing 1.wav</ShortName>
+					<CachePath>SFX/kickSwing 1_3F75BDB9.wem</CachePath>
+				</File>
+				<File Id="999959925" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>jumpLand 2.wav</ShortName>
+					<CachePath>SFX/jumpLand 2_3F75BDB9.wem</CachePath>
+				</File>
+			</Media>
+			<Events>
+				<Event Id="513096003" Name="dmg" DurationType="OneShot" DurationMin="1.6304375" DurationMax="1.6304375">
+					<MediaRefs>
+						<MediaRef Id="14196481"/>
+						<MediaRef Id="93970225"/>
+						<MediaRef Id="189194347"/>
+						<MediaRef Id="519027451"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="2385628198" Name="footsteps" DurationType="OneShot" DurationMin="0.9782708" DurationMax="0.9782708">
+					<MediaRefs>
+						<MediaRef Id="76277175"/>
+						<MediaRef Id="319152352"/>
+						<MediaRef Id="341305912"/>
+						<MediaRef Id="359772736"/>
+						<MediaRef Id="644136659"/>
+						<MediaRef Id="892530135"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3833651337" Name="jump" DurationType="OneShot" DurationMin="3.260875" DurationMax="3.260875">
+					<MediaRefs>
+						<MediaRef Id="96524381"/>
+						<MediaRef Id="716472605"/>
+						<MediaRef Id="944814583"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="1548130050" Name="jumpLand" DurationType="OneShot" DurationMin="1.3043542" DurationMax="1.3043542">
+					<MediaRefs>
+						<MediaRef Id="209138196"/>
+						<MediaRef Id="420404161"/>
+						<MediaRef Id="934171046"/>
+						<MediaRef Id="991254648"/>
+						<MediaRef Id="999959925"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3946660102" Name="kickHit" DurationType="OneShot" DurationMin="3.9130626" DurationMax="3.9130626">
+					<MediaRefs>
+						<MediaRef Id="109117486"/>
+						<MediaRef Id="369679033"/>
+						<MediaRef Id="406201438"/>
+						<MediaRef Id="759301624"/>
+						<MediaRef Id="941204623"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="1889171659" Name="kickSwing" DurationType="OneShot" DurationMin="1.3043542" DurationMax="1.3043542">
+					<MediaRefs>
+						<MediaRef Id="179927645"/>
+						<MediaRef Id="556225698"/>
+						<MediaRef Id="839512746"/>
+						<MediaRef Id="993090612"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="1177020078" Name="sawIdle" MaxAttenuation="100" DurationType="Infinite">
+					<MediaRefs>
+						<MediaRef Id="872038207"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="685626117" Name="UIconfirm" DurationType="OneShot" DurationMin="2.8235416" DurationMax="2.8235416">
+					<MediaRefs>
+						<MediaRef Id="212778103"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="199363535" Name="UIhover" DurationType="OneShot" DurationMin="0.70589584" DurationMax="0.70589584">
+					<MediaRefs>
+						<MediaRef Id="52282365"/>
+						<MediaRef Id="238298689"/>
+						<MediaRef Id="343276601"/>
+						<MediaRef Id="735244642"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3604987179" Name="wallgrab" DurationType="OneShot" DurationMin="0.9782708" DurationMax="0.9782708">
+					<MediaRefs>
+						<MediaRef Id="156453035"/>
+						<MediaRef Id="651553064"/>
+						<MediaRef Id="665553228"/>
+						<MediaRef Id="678376587"/>
+						<MediaRef Id="984564523"/>
+						<MediaRef Id="987353467"/>
+					</MediaRefs>
+				</Event>
+			</Events>
+		</SoundBank>
+		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{576CA674-0140-4E2D-884B-CDB81048E9EF}">
+			<ShortName>Init</ShortName>
+			<Path>Init.bnk</Path>
+			<Plugins>
+				<Custom>
+					<Plugin Id="229955363" Name="Brick_Wall_Minus_1dB_Peak_Fast_Release (Custom)" LibName="Wwise Peak Limiter" LibId="7208963"/>
+					<Plugin Id="1027672163" Name="High_Impact (Custom)" LibName="Wwise Compressor" LibId="7077891"/>
+				</Custom>
+				<ShareSets>
+					<Plugin Id="1459522457" Name="Brick_Wall_Minus_1dB_Peak_Fast_Release" LibName="Wwise Peak Limiter" LibId="7208963"/>
+				</ShareSets>
+				<AudioDevices>
+					<Plugin Id="2317455096" Name="No_Output" LibName="No Output" LibId="11862023"/>
+					<Plugin Id="3859886410" Name="System" LibName="System" LibId="11403271"/>
+				</AudioDevices>
+			</Plugins>
+			<Busses>
+				<Bus Id="602065129" Name="SFXS">
+					<PluginRefs>
+						<Custom>
+							<PluginRef Id="229955363"/>
+							<PluginRef Id="1027672163"/>
+						</Custom>
+					</PluginRefs>
+				</Bus>
+				<Bus Id="3803692087" Name="Master Audio Bus">
+					<PluginRefs>
+						<ShareSets>
+							<PluginRef Id="1459522457"/>
+						</ShareSets>
+					</PluginRefs>
+				</Bus>
+				<Bus Id="3991942870" Name="MUSIC"/>
+			</Busses>
+		</SoundBank>
+		<SoundBank Id="3991942870" Type="User" Language="SFX" Hash="{44E19066-B9E0-88A2-733E-C6E52B3D3FE9}">
+			<ShortName>MUSIC</ShortName>
+			<Path>MUSIC.bnk</Path>
+			<Media>
+				<File Id="345716418" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>BG Music LAYER 3.wav</ShortName>
+					<CachePath>SFX/BG Music LAYER 3_9EDFC787.wem</CachePath>
+				</File>
+				<File Id="855501646" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>BG Music LAYER 1.wav</ShortName>
+					<CachePath>SFX/BG Music LAYER 1_9EDFC787.wem</CachePath>
+				</File>
+				<File Id="888483807" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Main Menu MUSIC LOOP.wav</ShortName>
+					<CachePath>SFX/Main Menu MUSIC LOOP_073B4D0C.wem</CachePath>
+				</File>
+				<File Id="940452665" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>BG Music LAYER 2.wav</ShortName>
+					<CachePath>SFX/BG Music LAYER 2_9EDFC787.wem</CachePath>
+				</File>
+			</Media>
+			<Events>
+				<Event Id="626769978" Name="backgroundMusic" DurationType="Infinite">
+					<MediaRefs>
+						<MediaRef Id="345716418"/>
+						<MediaRef Id="855501646"/>
+						<MediaRef Id="940452665"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="1991862712" Name="mainMenuMusic" DurationType="Infinite">
+					<MediaRefs>
+						<MediaRef Id="888483807"/>
+					</MediaRefs>
+				</Event>
+			</Events>
+		</SoundBank>
+	</SoundBanks>
+	<FileHash>{90A38698-7B73-4739-FCED-D4F94C776FB8}</FileHash>
+</SoundBanksInfo>
